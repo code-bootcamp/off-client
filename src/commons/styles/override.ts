@@ -13,7 +13,7 @@ export const MenuDrawer = styled(Drawer)`
             width: 60%!important;
         }
         @media (min-width: ${B.mobile}px) and (max-width: ${B.SmallTablet - 1}px) {
-            width: 80%!important;
+            width: 70%!important;
         }
         @media (max-width: ${B.mobile - 1}px) {
             width: 80%!important;
@@ -36,12 +36,27 @@ export const MenuDrawer = styled(Drawer)`
                                 font-size: ${B.bigTabletFontSizeMiddle}rem!important;
                             }
                             @media (min-width: ${B.mobile}px) and (max-width: ${B.SmallTablet - 1}px) {
-                                font-size: ${B.SmallTabletFontSizeMiddle}rem!important;
+                                font-size: ${B.smallTabletFontSizeMiddle}rem!important;
                             }
                             @media (max-width: ${B.mobile - 1}px) {
                                 font-size: ${B.mobileFontSizeMiddle}rem!important;
                             }
                         }
+                    }
+                }
+                div.ant-drawer-body {
+                    padding: 3rem!important;
+                    @media (min-width: ${B.bigTablet}px) and (max-width: ${B.noteBook - 1}px) {
+                        padding: 0.5rem!important;
+                    } 
+                    @media (min-width: ${B.SmallTablet}px) and (max-width: ${B.bigTablet - 1}px) {
+                        padding: 0.8rem!important;
+                    }
+                    @media (min-width: ${B.mobile}px) and (max-width: ${B.SmallTablet - 1}px) {
+                        padding: 1.2rem!important;
+                    }
+                    @media (max-width: ${B.mobile - 1}px) {
+                        padding: 1.4rem!important;
                     }
                 }
             }

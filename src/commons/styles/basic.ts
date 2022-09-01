@@ -10,10 +10,10 @@ export const mobile = 576
 
 // fontSizes
 // desktop = standardSize: 80px
-export const deskTopFontSizeLg = 0.75 // 60px 
-export const deskTopFontSizeMiddle = 0.37 // 30px
-export const deskTopFontSizeSmall = 0.31 // 25px
-export const deskTopFontSizeMicro = 0.25 // 20px
+export const deskTopFontSizeLg = 3.75 // 60px 
+export const deskTopFontSizeMiddle = 1.87 // 30px
+export const deskTopFontSizeSmall = 1.56 // 25px
+export const deskTopFontSizeMicro = 1.25 // 20px
 
 // noteBook = standardSize: 60px
 export const noteBookFontSizeLg = 1 // 60px 
@@ -28,10 +28,10 @@ export const bigTabletFontSizeSmall = 0.5 // 25px
 export const bigTabletFontSizeMicro = 0.4 // 20px
 
 // SmallTablet = standardSize: 38px
-export const SmallTabletFontSizeLg = 1.44 // 55px 
-export const SmallTabletFontSizeMiddle = 0.78 // 30px
-export const SmallTabletFontSizeSmall = 0.65 // 25px
-export const SmallTabletFontSizeMicro = 0.52 // 20px
+export const smallTabletFontSizeLg = 1.44 // 55px 
+export const smallTabletFontSizeMiddle = 0.78 // 30px
+export const smallTabletFontSizeSmall = 0.65 // 25px
+export const smallTabletFontSizeMicro = 0.52 // 20px
 
 // mobile = standardSize: 29px
 export const mobileFontSizeLg = 1.89 // 55px 
