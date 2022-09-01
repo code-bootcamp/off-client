@@ -9,19 +9,39 @@ export const SmallTablet = 768
 export const mobile = 576 
 
 // fontSizes
-export const fontSizeSuperLg = ""
-export const fontSizeLg = ""
-export const fontSizeMiddle = ""
-export const fontSizeSmall = ""
-export const fontSizeSuperSmall = ""
-export const fontSizeMicro = ""
+// desktop = standardSize: 80px
+export const deskTopFontSizeLg = 0.75 // 60px 
+export const deskTopFontSizeMiddle = 0.37 // 30px
+export const deskTopFontSizeSmall = 0.31 // 25px
+export const deskTopFontSizeMicro = 0.25 // 20px
+
+// noteBook = standardSize: 60px
+export const noteBookFontSizeLg = 1 // 60px 
+export const noteBookFontSizeMiddle = 0.5 // 30px
+export const noteBookFontSizeSmall = 0.41 // 25px
+export const noteBookFontSizeMicro = 0.33 // 20px
+
+// bigTablet = standardSize: 50px
+export const bigTabletFontSizeLg = 1.1 // 55px 
+export const bigTabletFontSizeMiddle = 0.6 // 30px
+export const bigTabletFontSizeSmall = 0.5 // 25px
+export const bigTabletFontSizeMicro = 0.4 // 20px
+
+// SmallTablet = standardSize: 38px
+export const SmallTabletFontSizeLg = 1.44 // 55px 
+export const SmallTabletFontSizeMiddle = 0.78 // 30px
+export const SmallTabletFontSizeSmall = 0.65 // 25px
+export const SmallTabletFontSizeMicro = 0.52 // 20px
+
+// mobile = standardSize: 29px
+export const mobileFontSizeLg = 1.89 // 55px 
+export const mobileFontSizeMiddle = 1.2 // 35px
+export const mobileFontSizeSmall = 0.86 // 25px
+export const mobileFontSizeMicro = 0.69 // 20px
 
 // colors
-export const mainColor = "#"
+export const mainColor = "#58DBED"
 export const subColor = "#"
-export const whiteColor = "#"
-export const blackColor = "#"
-
-// padding
-
-// margin
+export const whiteColor = "#F1F1F1"
+export const blackColor = "#000000"
+export const grayColor = "#999999"

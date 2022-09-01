@@ -4,19 +4,7 @@ import * as B from './basic'
 
 export const resetStyles = css`
     html {
-        font-size: 100%;
-        @media (min-width: ${B.bigTablet}px) and (max-width: ${B.noteBook - 1}px) {
-            font-size: 5vw!important;
-        } 
-        @media (min-width: ${B.SmallTablet}px) and (max-width: ${B.bigTablet - 1}px) {
-            font-size: 5vw!important;
-        }
-        @media (min-width: ${B.mobile}px) and (max-width: ${B.SmallTablet - 1}px) {
-            font-size: 5vw!important;
-        }
-        @media (max-width: ${B.mobile - 1}px) {
-            font-size: 5vw!important;
-        }
+        font-size: 5vw!important;
     }
     /* * {
         font-family: 'myfont', cursive!important;
