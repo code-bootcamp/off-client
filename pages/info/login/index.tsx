@@ -1,5 +1,6 @@
-import LoginContainer from "../../../src/components/units/login/Login.container";
+import Login from "../../../src/components/units/info/login/Login.container";
+
 
 export default function LoginPage() {
-    return<LoginContainer/>
+    return<Login/>
 }

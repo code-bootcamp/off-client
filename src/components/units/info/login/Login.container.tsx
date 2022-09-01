@@ -1,5 +1,5 @@
 import LoginUI from "./Login.presenter";
 
-export default function LoginContainer() {
+export default function Login() {
   return <LoginUI />;
 }
