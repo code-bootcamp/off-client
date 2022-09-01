@@ -12,7 +12,7 @@ export const Header = styled.header`
     z-index: 999;
     @media (min-width: ${B.bigTablet}px) and (max-width: ${B.noteBook - 1}px) {
         height: 1.5rem;
-    } 
+    }
     @media (min-width: ${B.SmallTablet}px) and (max-width: ${B.bigTablet - 1}px) {
         height: 1.7rem;
     }
@@ -32,7 +32,7 @@ export const HeaderAlignBox = styled.div`
     height: 100%;
     @media (min-width: ${B.bigTablet}px) and (max-width: ${B.noteBook - 1}px) {
         padding: 0 0.8rem;
-    } 
+    }
     @media (min-width: ${B.SmallTablet}px) and (max-width: ${B.bigTablet - 1}px) {
         padding: 0 0.8rem;
     }
@@ -50,7 +50,7 @@ export const Logo = styled.a`
     font-size: ${B.deskTopFontSizeLg}rem;
     @media (min-width: ${B.bigTablet}px) and (max-width: ${B.noteBook - 1}px) {
         font-size: ${B.noteBookFontSizeLg}rem;
-    } 
+    }
     @media (min-width: ${B.SmallTablet}px) and (max-width: ${B.bigTablet - 1}px) {
         font-size: ${B.bigTabletFontSizeLg}rem;
     }
@@ -70,7 +70,7 @@ export const MenuIcon = styled(MenuOutlined)`
     font-size: ${B.deskTopFontSizeLg}rem;
     @media (min-width: ${B.bigTablet}px) and (max-width: ${B.noteBook - 1}px) {
         font-size: ${B.noteBookFontSizeLg}rem;
-    } 
+    }
     @media (min-width: ${B.SmallTablet}px) and (max-width: ${B.bigTablet - 1}px) {
         font-size: ${B.bigTabletFontSizeLg}rem;
     }
@@ -92,7 +92,7 @@ export const MenuItem = styled.li`
     @media (min-width: ${B.bigTablet}px) and (max-width: ${B.noteBook - 1}px) {
         font-size: ${B.noteBookFontSizeLg}rem;
         margin-bottom: 0.8rem;
-    } 
+    }
     @media (min-width: ${B.SmallTablet}px) and (max-width: ${B.bigTablet - 1}px) {
         font-size: ${B.bigTabletFontSizeLg}rem;
         margin-bottom: 1rem;
@@ -106,14 +106,17 @@ export const MenuItem = styled.li`
         margin-bottom: 1.5rem;
     }
     a {
+        display: inline-block;
         color: ${B.whiteColor};
-        filter: drop-shadow(0 4px 4px rgba(0, 0, 0, 30%));
+        filter: drop-shadow(0 3px 2px rgba(0, 0, 0, 30%));
         &:hover {
-            filter: drop-shadow(4px 4px 4px rgba(0, 0, 0, 90%));
+            filter: drop-shadow(10px 3px 3px rgba(0, 0, 0, 90%));
+            transition: 0.15s;
+            transform: translateX(-0.2rem) translateY(-0.1rem);
         }
     }
 `
 
 export const MenuLink = styled(Link)`
-   
+
 `
