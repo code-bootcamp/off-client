@@ -4,15 +4,30 @@ import * as B from './basic'
 
 export const resetStyles = css`
     html {
-        font-size: 5vw!important;
-    }
-    /* * {
-        font-family: 'myfont', cursive!important;
+        font-size: 100%!important;
+        @media (min-width: ${B.bigTablet}px) and (max-width: ${B.noteBook - 1}px) {
+            font-size: 5vw!important;
+        } 
+        @media (min-width: ${B.SmallTablet}px) and (max-width: ${B.bigTablet - 1}px) {
+            font-size: 5vw!important;
+        }
+        @media (min-width: ${B.mobile}px) and (max-width: ${B.SmallTablet - 1}px) {
+            font-size: 5vw!important;
+        }
+        @media (max-width: ${B.mobile - 1}px) {
+            font-size: 5vw!important;
+        }
     }
     @font-face {
-        font-family: "myfont";
-        src: url("/fonts/SuncheonR.ttf");
-    } */
+        font-family: "Binggrae";
+        src: url("/font/Binggrae.ttf") format("truetype");
+        font-weight: normal;
+    } 
+    @font-face {
+        font-family: "Binggrae";
+        src: url("/font/Binggrae-Bold.ttf") format("truetype");
+        font-weight: bold;
+    }
     html, body, div, span, applet, object, iframe,
     h1, h2, h3, h4, h5, h6, p, blockquote, pre,
     a, abbr, acronym, address, big, cite, code,
@@ -31,6 +46,7 @@ export const resetStyles = css`
 	    border: 0;
 	    font-size: 100%;
 	    font: inherit;
+        font-family: -apple-system, Binggrae, sans-serif!important;
 	    vertical-align: baseline;
     }
     article, aside, details, figcaption, figure, 
