@@ -1,5 +1,10 @@
-import { NormaInput } from "./NormalInput.styles";
+import { NormalInput } from "./NormalInput.styles";
+import { INormalInputUIProps } from "./NormalInput.types";
 
-export default function NormalInputUI(props) {
-    return<NormaInput title={props.title} type={props.type} {...props.register} placeholder={props.placeholder} defaultValue={props.defaultValue}/>
+export default function NormalInputUI(props: INormalInputUIProps) {
+    return (
+        <NormalInput 
+        placeholder = { props.placeholder } 
+        />  
+    )
 }

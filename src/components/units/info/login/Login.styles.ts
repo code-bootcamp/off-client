@@ -1,16 +1,15 @@
 import styled from "@emotion/styled";
-import * as B from "../../../commons/styles/basic";
+import * as B from "../../../../commons/styles/basic";
 
 export const Wrapper = styled.div`
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    align-items: center;
-    width: 100%;
-`;
+    width: 80%;
+    margin: 0 auto;
+`
+
 export const Title = styled.h1`
+    color: ${B.mainColor};
     font-size: ${B.deskTopFontSizeLg}rem;
-    color: ${B.blackColor};
+    text-align: center;
     @media (min-width: ${B.bigTablet}px) and (max-width: ${B.noteBook - 1}px) {
         font-size: ${B.noteBookFontSizeLg}rem;
     }
@@ -18,11 +17,16 @@ export const Title = styled.h1`
         font-size: ${B.bigTabletFontSizeLg}rem;
     }
     @media (min-width: ${B.mobile}px) and (max-width: ${B.SmallTablet - 1}px) {
-        font-size: ${B.SmallTabletFontSizeLg}rem;
+        font-size: ${B.smallTabletFontSizeLg}rem;
     }
     @media (max-width: ${B.mobile - 1}px) {
         font-size: ${B.mobileFontSizeLg}rem;
     }
 `
+
+export const Form = styled.form`
+    width: 100%;
+`
+
 
 
