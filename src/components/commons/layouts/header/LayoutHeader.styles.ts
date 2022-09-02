@@ -9,14 +9,16 @@ export const Header = styled.header`
     height: 7rem;
     border-bottom: 1px solid ${B.blackColor};
     position: fixed;
+    background-color: ${B.whiteColor};
+    opacity: 90%;
     z-index: 999;
     @media (min-width: ${B.bigTablet}px) and (max-width: ${B.noteBook - 1}px) {
         height: 1.5rem;
     }
-    @media (min-width: ${B.SmallTablet}px) and (max-width: ${B.bigTablet - 1}px) {
+    @media (min-width: ${B.smallTablet}px) and (max-width: ${B.bigTablet - 1}px) {
         height: 1.7rem;
     }
-    @media (min-width: ${B.mobile}px) and (max-width: ${B.SmallTablet - 1}px) {
+    @media (min-width: ${B.mobile}px) and (max-width: ${B.smallTablet - 1}px) {
         height: 2.2rem;
     }
     @media (max-width: ${B.mobile - 1}px) {
@@ -33,10 +35,10 @@ export const HeaderAlignBox = styled.div`
     @media (min-width: ${B.bigTablet}px) and (max-width: ${B.noteBook - 1}px) {
         padding: 0 0.8rem;
     }
-    @media (min-width: ${B.SmallTablet}px) and (max-width: ${B.bigTablet - 1}px) {
+    @media (min-width: ${B.smallTablet}px) and (max-width: ${B.bigTablet - 1}px) {
         padding: 0 0.8rem;
     }
-    @media (min-width: ${B.mobile}px) and (max-width: ${B.SmallTablet - 1}px) {
+    @media (min-width: ${B.mobile}px) and (max-width: ${B.smallTablet - 1}px) {
         padding: 0 1rem;
     }
     @media (max-width: ${B.mobile - 1}px) {
@@ -51,10 +53,10 @@ export const Logo = styled.a`
     @media (min-width: ${B.bigTablet}px) and (max-width: ${B.noteBook - 1}px) {
         font-size: ${B.noteBookFontSizeLg}rem;
     }
-    @media (min-width: ${B.SmallTablet}px) and (max-width: ${B.bigTablet - 1}px) {
+    @media (min-width: ${B.smallTablet}px) and (max-width: ${B.bigTablet - 1}px) {
         font-size: ${B.bigTabletFontSizeLg}rem;
     }
-    @media (min-width: ${B.mobile}px) and (max-width: ${B.SmallTablet - 1}px) {
+    @media (min-width: ${B.mobile}px) and (max-width: ${B.smallTablet - 1}px) {
         font-size: ${B.smallTabletFontSizeLg}rem;
     }
     @media (max-width: ${B.mobile - 1}px) {
@@ -71,10 +73,10 @@ export const MenuIcon = styled(MenuOutlined)`
     @media (min-width: ${B.bigTablet}px) and (max-width: ${B.noteBook - 1}px) {
         font-size: ${B.noteBookFontSizeLg}rem;
     }
-    @media (min-width: ${B.SmallTablet}px) and (max-width: ${B.bigTablet - 1}px) {
+    @media (min-width: ${B.smallTablet}px) and (max-width: ${B.bigTablet - 1}px) {
         font-size: ${B.bigTabletFontSizeLg}rem;
     }
-    @media (min-width: ${B.mobile}px) and (max-width: ${B.SmallTablet - 1}px) {
+    @media (min-width: ${B.mobile}px) and (max-width: ${B.smallTablet - 1}px) {
         font-size: ${B.smallTabletFontSizeLg}rem;
     }
     @media (max-width: ${B.mobile - 1}px) {
@@ -93,11 +95,11 @@ export const MenuItem = styled.li`
         font-size: ${B.noteBookFontSizeLg}rem;
         margin-bottom: 0.8rem;
     }
-    @media (min-width: ${B.SmallTablet}px) and (max-width: ${B.bigTablet - 1}px) {
+    @media (min-width: ${B.smallTablet}px) and (max-width: ${B.bigTablet - 1}px) {
         font-size: ${B.bigTabletFontSizeLg}rem;
         margin-bottom: 1rem;
     }
-    @media (min-width: ${B.mobile}px) and (max-width: ${B.SmallTablet - 1}px) {
+    @media (min-width: ${B.mobile}px) and (max-width: ${B.smallTablet - 1}px) {
         font-size: ${B.smallTabletFontSizeLg}rem;
         margin-bottom: 1.3rem;
     }

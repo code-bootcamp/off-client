@@ -8,11 +8,11 @@ export const MenuDrawer = styled(Drawer)`
         width: 40%!important;
         @media (min-width: ${B.bigTablet}px) and (max-width: ${B.noteBook - 1}px) {
             width: 50%!important;
-        } 
-        @media (min-width: ${B.SmallTablet}px) and (max-width: ${B.bigTablet - 1}px) {
+        }
+        @media (min-width: ${B.smallTablet}px) and (max-width: ${B.bigTablet - 1}px) {
             width: 60%!important;
         }
-        @media (min-width: ${B.mobile}px) and (max-width: ${B.SmallTablet - 1}px) {
+        @media (min-width: ${B.mobile}px) and (max-width: ${B.smallTablet - 1}px) {
             width: 70%!important;
         }
         @media (max-width: ${B.mobile - 1}px) {
@@ -31,11 +31,11 @@ export const MenuDrawer = styled(Drawer)`
                             font-size: ${B.deskTopFontSizeMiddle}rem!important;
                             @media (min-width: ${B.bigTablet}px) and (max-width: ${B.noteBook - 1}px) {
                                 font-size: ${B.noteBookFontSizeMiddle}rem!important;
-                            } 
-                            @media (min-width: ${B.SmallTablet}px) and (max-width: ${B.bigTablet - 1}px) {
+                            }
+                            @media (min-width: ${B.smallTablet}px) and (max-width: ${B.bigTablet - 1}px) {
                                 font-size: ${B.bigTabletFontSizeMiddle}rem!important;
                             }
-                            @media (min-width: ${B.mobile}px) and (max-width: ${B.SmallTablet - 1}px) {
+                            @media (min-width: ${B.mobile}px) and (max-width: ${B.smallTablet - 1}px) {
                                 font-size: ${B.smallTabletFontSizeMiddle}rem!important;
                             }
                             @media (max-width: ${B.mobile - 1}px) {
@@ -48,11 +48,11 @@ export const MenuDrawer = styled(Drawer)`
                     padding: 3rem!important;
                     @media (min-width: ${B.bigTablet}px) and (max-width: ${B.noteBook - 1}px) {
                         padding: 0.5rem!important;
-                    } 
-                    @media (min-width: ${B.SmallTablet}px) and (max-width: ${B.bigTablet - 1}px) {
+                    }
+                    @media (min-width: ${B.smallTablet}px) and (max-width: ${B.bigTablet - 1}px) {
                         padding: 0.8rem!important;
                     }
-                    @media (min-width: ${B.mobile}px) and (max-width: ${B.SmallTablet - 1}px) {
+                    @media (min-width: ${B.mobile}px) and (max-width: ${B.smallTablet - 1}px) {
                         padding: 1.2rem!important;
                     }
                     @media (max-width: ${B.mobile - 1}px) {

@@ -3,8 +3,9 @@ import { INormalInputUIProps } from "./NormalInput.types";
 
 export default function NormalInputUI(props: INormalInputUIProps) {
     return (
-        <NormalInput 
-        placeholder = { props.placeholder } 
-        />  
+        <NormalInput
+        type={ props.type }
+        placeholder = { props.placeholder }
+        />
     )
 }

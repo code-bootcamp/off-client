@@ -7,11 +7,11 @@ export const resetStyles = css`
         font-size: 100%!important;
         @media (min-width: ${B.bigTablet}px) and (max-width: ${B.noteBook - 1}px) {
             font-size: 5vw!important;
-        } 
-        @media (min-width: ${B.SmallTablet}px) and (max-width: ${B.bigTablet - 1}px) {
+        }
+        @media (min-width: ${B.smallTablet}px) and (max-width: ${B.bigTablet - 1}px) {
             font-size: 5vw!important;
         }
-        @media (min-width: ${B.mobile}px) and (max-width: ${B.SmallTablet - 1}px) {
+        @media (min-width: ${B.mobile}px) and (max-width: ${B.smallTablet - 1}px) {
             font-size: 5vw!important;
         }
         @media (max-width: ${B.mobile - 1}px) {
@@ -22,7 +22,7 @@ export const resetStyles = css`
         font-family: "Binggrae";
         src: url("/font/Binggrae.ttf") format("truetype");
         font-weight: normal;
-    } 
+    }
     @font-face {
         font-family: "Binggrae";
         src: url("/font/Binggrae-Bold.ttf") format("truetype");
@@ -37,8 +37,8 @@ export const resetStyles = css`
     dl, dt, dd, ol, ul, li,
     fieldset, form, label, legend,
     table, caption, tbody, tfoot, thead, tr, th, td,
-    article, aside, canvas, details, embed, 
-    figure, figcaption, footer, header, hgroup, 
+    article, aside, canvas, details, embed,
+    figure, figcaption, footer, header, hgroup,
     menu, nav, output, ruby, section, summary,
     time, mark, audio, video {
         margin: 0;
@@ -49,7 +49,7 @@ export const resetStyles = css`
         font-family: -apple-system, Binggrae, sans-serif!important;
 	    vertical-align: baseline;
     }
-    article, aside, details, figcaption, figure, 
+    article, aside, details, figcaption, figure,
     footer, header, hgroup, menu, nav, section {
         display: block;
     }
