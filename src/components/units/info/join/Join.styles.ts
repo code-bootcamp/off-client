@@ -1,11 +1,11 @@
-import styled from "@emotion/styled";
-import Link from "next/link";
-import * as B from "../../../../commons/styles/basic";
+import styled from "@emotion/styled"
+import Link from "next/link"
+import * as B from "../../../../commons/styles/basic"
 
 export const Wrapper = styled.div`
-    width: 30%;
+    width: 80%;
     margin: 0 auto;
-    @media (min-width: ${B.bigTablet}px) and (max-width: ${B.noteBook - 1}px) {
+    /* @media (min-width: ${B.bigTablet}px) and (max-width: ${B.noteBook - 1}px) {
         width: 40%;
     }
     @media (min-width: ${B.smallTablet}px) and (max-width: ${B.bigTablet - 1}px) {
@@ -16,7 +16,7 @@ export const Wrapper = styled.div`
     }
     @media (max-width: ${B.mobile - 1}px) {
         width: 80%;
-    }
+    } */
 `
 
 export const Title = styled.h1`
@@ -52,21 +52,45 @@ export const Form = styled.form`
 
 export const RowBox = styled.div`
     display: flex;
-    a{
-        font-size: ${B.deskTopFontSizeMiddle}rem;
+    justify-content: center;
+    width: 100%;
+    span {
         color: ${B.blackColor};
         @media (min-width: ${B.bigTablet}px) and (max-width: ${B.noteBook - 1}px) {
-            font-size: ${B.noteBookFontSizeMiddle}rem;
+            font-size: 0.26rem;
         }
         @media (min-width: ${B.smallTablet}px) and (max-width: ${B.bigTablet - 1}px) {
-            font-size: ${B.bigTabletFontSizeMiddle}rem;
+            font-size: 0.32rem;
         }
         @media (min-width: ${B.mobile}px) and (max-width: ${B.smallTablet - 1}px) {
-            font-size: ${B.smallTabletFontSizeMiddle}rem;
+            font-size: 0.42rem;
         }
         @media (max-width: ${B.mobile - 1}px) {
-            font-size: ${B.mobileFontSizeMiddle}rem;
+            font-size: 0.55rem;
         }
+    }
+    a {
+        color: ${B.blackColor};
+        @media (min-width: ${B.bigTablet}px) and (max-width: ${B.noteBook - 1}px) {
+            font-size: 0.26rem;
+        }
+        @media (min-width: ${B.smallTablet}px) and (max-width: ${B.bigTablet - 1}px) {
+            font-size: 0.32rem;
+        }
+        @media (min-width: ${B.mobile}px) and (max-width: ${B.smallTablet - 1}px) {
+            font-size: 0.42rem;
+        }
+        @media (max-width: ${B.mobile - 1}px) {
+            font-size: 0.55rem;
+        }
+    };
+    input {
+        &:first-of-type{
+            margin-right: 1rem;
+        }
+    }
+    button{
+        width: 20%;
     }
 `
 

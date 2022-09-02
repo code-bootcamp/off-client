@@ -17,11 +17,11 @@ const LayoutBody = styled.div`
     padding-top: 7rem;
     @media (min-width: ${B.bigTablet}px) and (max-width: ${B.noteBook - 1}px) {
         padding-top: 1.5rem;
-    } 
-    @media (min-width: ${B.SmallTablet}px) and (max-width: ${B.bigTablet - 1}px) {
+    }
+    @media (min-width: ${B.smallTablet}px) and (max-width: ${B.bigTablet - 1}px) {
         padding-top: 1.7rem;
     }
-    @media (min-width: ${B.mobile}px) and (max-width: ${B.SmallTablet - 1}px) {
+    @media (min-width: ${B.mobile}px) and (max-width: ${B.smallTablet - 1}px) {
         padding-top: 2.2rem;
     }
     @media (max-width: ${B.mobile - 1}px) {
