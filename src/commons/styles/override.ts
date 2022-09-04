@@ -19,33 +19,32 @@ export const MenuDrawer = styled(Drawer)`
             width: 80%!important;
         }
         div.ant-drawer-content {
-            background: linear-gradient(#58DBED, #A2F1F5)!important;
-            border-radius: 30px 0 0 30px;
+            box-shadow: -6px 0px 23px #00000029;
             div.ant-drawer-wrapper-body {
                 div.ant-drawer-header {
                     border-bottom: none!important;
                     div.ant-drawer-header-title {
                         justify-content: flex-end!important;
                         button.ant-drawer-close {
-                            color: ${B.whiteColor}!important;
+                            color: ${B.lightGrayColor}!important;
                             font-size: ${B.deskTopFontSizeMiddle}rem!important;
                             @media (min-width: ${B.bigTablet}px) and (max-width: ${B.noteBook - 1}px) {
                                 font-size: ${B.noteBookFontSizeMiddle}rem!important;
                             }
                             @media (min-width: ${B.smallTablet}px) and (max-width: ${B.bigTablet - 1}px) {
-                                font-size: ${B.bigTabletFontSizeMiddle}rem!important;
+                                font-size: ${B.bigTabletFontSizeLg}rem!important;
                             }
                             @media (min-width: ${B.mobile}px) and (max-width: ${B.smallTablet - 1}px) {
-                                font-size: ${B.smallTabletFontSizeMiddle}rem!important;
+                                font-size: ${B.smallTabletFontSizeLg}rem!important;
                             }
                             @media (max-width: ${B.mobile - 1}px) {
-                                font-size: ${B.mobileFontSizeMiddle}rem!important;
+                                font-size: ${B.mobileFontSizeLg}rem!important;
                             }
                         }
                     }
                 }
                 div.ant-drawer-body {
-                    padding: 3rem!important;
+                    padding: 0.5rem;
                     @media (min-width: ${B.bigTablet}px) and (max-width: ${B.noteBook - 1}px) {
                         padding: 0.5rem!important;
                     }
