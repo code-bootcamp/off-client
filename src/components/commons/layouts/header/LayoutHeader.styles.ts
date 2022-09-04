@@ -12,16 +12,16 @@ export const Header = styled.header`
     box-shadow: 0px 8px 16px #0000000A;
     z-index: 999;
     @media (min-width: ${B.bigTablet}px) and (max-width: ${B.noteBook - 1}px) {
-        
+        height: 1.6rem;
     }
     @media (min-width: ${B.smallTablet}px) and (max-width: ${B.bigTablet - 1}px) {
-        
+        height: 1.8rem;
     }
     @media (min-width: ${B.mobile}px) and (max-width: ${B.smallTablet - 1}px) {
-        
+        height: 2.1rem;
     }
     @media (max-width: ${B.mobile - 1}px) {
-        
+        height: 2.5rem;
     }
 `
 
@@ -32,16 +32,16 @@ export const HeaderAlignBox = styled.div`
     height: 100%;
     padding: 0 0.7rem;
     @media (min-width: ${B.bigTablet}px) and (max-width: ${B.noteBook - 1}px) {
-        
+        padding: 0 0.8rem;
     }
     @media (min-width: ${B.smallTablet}px) and (max-width: ${B.bigTablet - 1}px) {
-        
+        padding: 0 1rem;
     }
     @media (min-width: ${B.mobile}px) and (max-width: ${B.smallTablet - 1}px) {
-       
+        padding: 0 1rem;
     }
     @media (max-width: ${B.mobile - 1}px) {
-        
+        padding: 0 1.5rem;
     }
 `
 
@@ -58,13 +58,13 @@ export const Logo = styled.a`
         font-size: ${B.noteBookFontSizeMiddle}rem;
     }
     @media (min-width: ${B.smallTablet}px) and (max-width: ${B.bigTablet - 1}px) {
-        
+        font-size: ${B.bigTabletFontSizeLg}rem;
     }
     @media (min-width: ${B.mobile}px) and (max-width: ${B.smallTablet - 1}px) {
-        
+        font-size: ${B.smallTabletFontSizeLg}rem;
     }
     @media (max-width: ${B.mobile - 1}px) {
-        
+        font-size: ${B.mobileFontSizeLg}rem;
     }
 `
 
@@ -76,16 +76,16 @@ export const MenuIcon = styled(MenuOutlined)`
     display: block;
     font-size: ${B.deskTopFontSizeMiddle}rem;
     @media (min-width: ${B.bigTablet}px) and (max-width: ${B.noteBook - 1}px) {
-        
+        font-size: ${B.noteBookFontSizeMiddle}rem;
     }
     @media (min-width: ${B.smallTablet}px) and (max-width: ${B.bigTablet - 1}px) {
-        
+        font-size: ${B.bigTabletFontSizeLg}rem;
     }
     @media (min-width: ${B.mobile}px) and (max-width: ${B.smallTablet - 1}px) {
-        
+        font-size: ${B.smallTabletFontSizeLg}rem;
     }
     @media (max-width: ${B.mobile - 1}px) {
-        
+        font-size: ${B.mobileFontSizeLg}rem;
     }
 `
 
@@ -94,22 +94,35 @@ export const MenuWrapper = styled.ul`
 `
 
 export const MenuItem = styled.li`
-    
+    font-size: ${B.deskTopFontSizeMiddle}rem;
+    font-weight: bold;
+    margin-bottom: 0.7rem;
     @media (min-width: ${B.bigTablet}px) and (max-width: ${B.noteBook - 1}px) {
-        
+        font-size: ${B.noteBookFontSizeMiddle}rem;
+        margin-bottom: 0.7rem;
     }
     @media (min-width: ${B.smallTablet}px) and (max-width: ${B.bigTablet - 1}px) {
-       
+        font-size: ${B.bigTabletFontSizeLg}rem;
+        margin-bottom: 1rem;
     }
     @media (min-width: ${B.mobile}px) and (max-width: ${B.smallTablet - 1}px) {
-       
+        font-size: ${B.smallTabletFontSizeLg}rem;
+        margin-bottom: 1rem;
     }
     @media (max-width: ${B.mobile - 1}px) {
-        
+        font-size: ${B.mobileFontSizeLg}rem;
+        margin-bottom: 1.3rem;
+    }
+    a {
+        color: ${B.lightGrayColor};
+        &:hover {
+            color: ${B.mainColor};
+        }
     }
 `
 
 export const LogoLink = styled(Link)`
+
 `
 
 export const MenuLink = styled(Link)`
