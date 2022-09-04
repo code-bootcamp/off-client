@@ -3,43 +3,63 @@ import Link from "next/link"
 import * as B from "../../../../commons/styles/basic"
 
 export const Wrapper = styled.div`
-    width: 80%;
+    width: 50%;
     margin: 0 auto;
-    /* @media (min-width: ${B.bigTablet}px) and (max-width: ${B.noteBook - 1}px) {
-        width: 40%;
+    @media (min-width: ${B.bigTablet}px) and (max-width: ${B.noteBook - 1}px) {
+        width: 58%;
     }
     @media (min-width: ${B.smallTablet}px) and (max-width: ${B.bigTablet - 1}px) {
-        width: 50%;
+        width: 70%;
     }
     @media (min-width: ${B.mobile}px) and (max-width: ${B.smallTablet - 1}px) {
-        width: 50%;
+        width: 90%;
     }
     @media (max-width: ${B.mobile - 1}px) {
-        width: 80%;
-    } */
+        width: 91%;
+    }
 `
 
 export const Title = styled.h1`
     color: ${B.blackColor};
     font-weight: bold;
-    font-size: ${B.deskTopFontSizeLg}rem;
-    text-align: center;
-    margin: 6rem 0 3rem;
+    font-size: ${B.deskTopFontSizeMiddle}rem;
+    text-align: start;
+    margin: 2rem 0 0.2rem;
     @media (min-width: ${B.bigTablet}px) and (max-width: ${B.noteBook - 1}px) {
-        font-size: ${B.noteBookFontSizeLg}rem;
-        margin: 1.6rem 0 0.8rem;
+        font-size: ${B.noteBookFontSizeMiddle}rem;
+        margin: 2.67rem 0 0.26rem;
     }
     @media (min-width: ${B.smallTablet}px) and (max-width: ${B.bigTablet - 1}px) {
-        font-size: ${B.bigTabletFontSizeLg}rem;
-        margin: 1.92rem 0 0.96rem;
+        font-size: ${B.bigTabletFontSizeMiddle}rem;
+        margin: 3.2rem 0 0.32rem;
     }
     @media (min-width: ${B.mobile}px) and (max-width: ${B.smallTablet - 1}px) {
-        font-size: ${B.smallTabletFontSizeLg}rem;
-        margin: 2.52rem 0 1.26rem;
+        font-size: ${B.smallTabletFontSizeMiddle}rem;
+        margin: 4.21rem 0 0.42rem;
     }
     @media (max-width: ${B.mobile - 1}px) {
-        font-size: ${B.mobileFontSizeLg}rem;
-        margin: 3.31rem 0 1.65rem;
+        font-size: ${B.mobileFontSizeMiddle}rem;
+        margin: 5.51rem 0 0.55rem;
+    }
+`
+export const TitleInfo = styled.p`
+    width: 100%;
+    font-size: ${B.deskTopFontSizeMicro}rem;
+    border-bottom: 2px solid ${B.mainColor};
+    color: ${B.strongGrayColor};
+    padding: 0 0 0.2rem 0;
+    margin: 0 0 0.5rem 0;
+    @media (min-width: ${B.bigTablet}px) and (max-width: ${B.noteBook - 1}px) {
+        font-size: ${B.noteBookFontSizeMicro}rem;
+    }
+    @media (min-width: ${B.smallTablet}px) and (max-width: ${B.bigTablet - 1}px) {
+        font-size: ${B.bigTabletFontSizeMicro}rem;
+    }
+    @media (min-width: ${B.mobile}px) and (max-width: ${B.smallTablet - 1}px) {
+        font-size: ${B.smallTabletFontSizeMicro}rem;
+    }
+    @media (max-width: ${B.mobile - 1}px) {
+        font-size: ${B.mobileFontSizeMicro}rem;
     }
 `
 
@@ -54,72 +74,55 @@ export const RowBox = styled.div`
     display: flex;
     justify-content: center;
     width: 100%;
+    font-weight: 500;
     span {
-        color: ${B.blackColor};
+        margin-right: 0.2rem;
+        font-size: ${B.deskTopFontSizeMicro}rem;
+        color: ${B.mainColor};
         @media (min-width: ${B.bigTablet}px) and (max-width: ${B.noteBook - 1}px) {
-            font-size: 0.26rem;
+            margin-right: 0.26rem;
+            font-size: ${B.noteBookFontSizeMicro}rem;
         }
         @media (min-width: ${B.smallTablet}px) and (max-width: ${B.bigTablet - 1}px) {
-            font-size: 0.32rem;
+            margin-right: 0.32rem;
+            font-size: ${B.bigTabletFontSizeMicro}rem;
         }
         @media (min-width: ${B.mobile}px) and (max-width: ${B.smallTablet - 1}px) {
-            font-size: 0.42rem;
+            margin-right: 0.42rem;
+            font-size: ${B.smallTabletFontSizeMicro}rem;
         }
         @media (max-width: ${B.mobile - 1}px) {
-            font-size: 0.55rem;
+            margin-right: 0.55rem;
+            font-size: ${B.mobileFontSizeMicro}rem;
         }
     }
     a {
-        color: ${B.blackColor};
+        font-size: ${B.deskTopFontSizeMicro}rem;
+        text-decoration: underline;
+        color: ${B.mainColor};
         @media (min-width: ${B.bigTablet}px) and (max-width: ${B.noteBook - 1}px) {
-            font-size: 0.26rem;
+            font-size: ${B.noteBookFontSizeMicro}rem;
         }
         @media (min-width: ${B.smallTablet}px) and (max-width: ${B.bigTablet - 1}px) {
-            font-size: 0.32rem;
+            font-size: ${B.bigTabletFontSizeMicro}rem;
         }
         @media (min-width: ${B.mobile}px) and (max-width: ${B.smallTablet - 1}px) {
-            font-size: 0.42rem;
+            font-size: ${B.smallTabletFontSizeMicro}rem;
         }
         @media (max-width: ${B.mobile - 1}px) {
-            font-size: 0.55rem;
+            font-size: ${B.mobileFontSizeMicro}rem;
         }
     };
     input {
         &:first-of-type{
-            margin-right: 1rem;
+            margin-right: 0.25rem;
         }
     }
     button{
         width: 20%;
+        font-weight: 400;
     }
 `
 
 export const HelpLink = styled(Link)`
-`
-export const ColLine = styled.div`
-    width: 0;
-    height: ${B.deskTopFontSizeMiddle}rem;
-    border: 1px solid ${B.blackColor};
-    margin-left: ${B.deskTopFontSizeMiddle}rem;
-    margin-right: ${B.deskTopFontSizeMiddle}rem;
-    @media (min-width: ${B.bigTablet}px) and (max-width: ${B.noteBook - 1}px) {
-        margin-left: ${B.noteBookFontSizeMiddle}rem;
-        margin-right: ${B.noteBookFontSizeMiddle}rem;
-        height: ${B.noteBookFontSizeMiddle}rem;
-    }
-    @media (min-width: ${B.smallTablet}px) and (max-width: ${B.bigTablet - 1}px) {
-        margin-left: ${B.bigTabletFontSizeMiddle}rem;
-        margin-right: ${B.bigTabletFontSizeMiddle}rem;
-        height: ${B.bigTabletFontSizeMiddle}rem;
-    }
-    @media (min-width: ${B.mobile}px) and (max-width: ${B.smallTablet - 1}px) {
-        margin-left: ${B.smallTabletFontSizeMiddle}rem;
-        margin-right: ${B.smallTabletFontSizeMiddle}rem;
-        height: ${B.smallTabletFontSizeMiddle}rem;
-    }
-    @media (max-width: ${B.mobile - 1}px) {
-        margin-left: ${B.mobileFontSizeMiddle}rem;
-        margin-right: ${B.mobileFontSizeMiddle}rem;
-        height: ${B.mobileFontSizeMiddle}rem;
-    }
 `
