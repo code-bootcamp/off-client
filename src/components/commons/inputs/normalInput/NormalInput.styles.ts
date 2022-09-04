@@ -6,14 +6,11 @@ export const NormalInput = styled.input`
     height: 5rem;
     border-radius: 20px;
     padding-left: 1rem;
-    border: 1px solid ${B.grayColor}!important;
     background-color: ${B.whiteColor};
     font-size: ${B.deskTopFontSizeMiddle}rem;
     outline: none;
     margin-bottom: 2.5rem;
-    &::placeholder {
-        color: ${B.grayColor}!important;
-    }
+    
     @media (min-width: ${B.bigTablet}px) and (max-width: ${B.noteBook - 1}px) {
         height: 1.5rem;
         padding-left: 0.26rem;

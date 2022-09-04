@@ -7,8 +7,10 @@ import
     MenuBox,
     MenuIcon,
     MenuItem,
+    LogoLink,
     MenuLink,
-    MenuWrapper
+    MenuWrapper,
+    LogoBox
 } 
 from "./LayoutHeader.styles";
 import { ILayoutHeaderUIProps } from "./LayoutHeader.types";
@@ -26,7 +28,11 @@ export default function LayoutHeaderUI(props: ILayoutHeaderUIProps) {
     return (
         <Header>
             <HeaderAlignBox>
-                <Logo>OFF</Logo>
+                <LogoBox>
+                    <LogoLink href = '/'>
+                        <Logo>OFF</Logo>
+                    </LogoLink>
+                </LogoBox>
                 <MenuBox>
                     <MenuIcon onClick = { props.onClickOpenMenu } />
                     <MenuDrawer visible = { props.menuVisible } placement = "right" onClose = { props.onClickCloseMenu }>

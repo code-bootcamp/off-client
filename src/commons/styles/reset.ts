@@ -4,29 +4,13 @@ import * as B from './basic'
 
 export const resetStyles = css`
     html {
-        font-size: 100%!important;
-        @media (min-width: ${B.bigTablet}px) and (max-width: ${B.noteBook - 1}px) {
-            font-size: 5vw!important;
-        }
-        @media (min-width: ${B.smallTablet}px) and (max-width: ${B.bigTablet - 1}px) {
-            font-size: 5vw!important;
-        }
-        @media (min-width: ${B.mobile}px) and (max-width: ${B.smallTablet - 1}px) {
-            font-size: 5vw!important;
-        }
-        @media (max-width: ${B.mobile - 1}px) {
-            font-size: 5vw!important;
-        }
+        font-size: 5vw!important;
     }
     @font-face {
-        font-family: "Binggrae";
-        src: url("/font/Binggrae.ttf") format("truetype");
-        font-weight: normal;
-    }
-    @font-face {
-        font-family: "Binggrae";
-        src: url("/font/Binggrae-Bold.ttf") format("truetype");
-        font-weight: bold;
+        font-family: 'Pretendard-Regular';
+        src: url('https://cdn.jsdelivr.net/gh/Project-Noonnu/noonfonts_2107@1.1/Pretendard-Regular.woff') format('woff');
+        font-weight: 400;
+        font-style: normal;
     }
     html, body, div, span, applet, object, iframe,
     h1, h2, h3, h4, h5, h6, p, blockquote, pre,
@@ -46,7 +30,7 @@ export const resetStyles = css`
 	    border: 0;
 	    font-size: 100%;
 	    font: inherit;
-        font-family: -apple-system, Binggrae, sans-serif!important;
+        font-family: -apple-system, Pretendard-Regular, sans-serif!important;
 	    vertical-align: baseline;
     }
     article, aside, details, figcaption, figure,
