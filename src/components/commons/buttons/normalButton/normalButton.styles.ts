@@ -5,12 +5,12 @@ export const NormalButton = styled.button`
     width: 100%;
     border: 1px solid ${B.mainColor};
     border-radius: 8px;
-    background-color: ${B.mainColor};
+    background-color: ${(props)=>(props.disabled ? `${B.lightGrayColor}` : `${B.mainColor}`)};
     padding: 0.2rem 0;
     font-weight: bold;
     font-size: ${B.deskTopFontSizeMicro}rem;
     margin-bottom: 0.3rem;
-    color: ${B.whiteColor};
+    color: ${(props)=>(props.disabled ? `${B.mainColor}` : `${B.whiteColor}` )};
     cursor: pointer;
     &:hover{
         color: ${B.mainColor};
