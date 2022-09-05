@@ -6,6 +6,7 @@ export default function NormalInputUI(props: INormalInputUIProps) {
         <NormalInput
         type={ props.type }
         placeholder = { props.placeholder }
+        { ...props.register }
         />
     )
 }
