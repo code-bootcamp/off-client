@@ -1,21 +1,21 @@
-import styled from "@emotion/styled";
-import Link from "next/link";
-import * as B from "../../../../commons/styles/basic";
+import styled from "@emotion/styled"
+import { Col, Row } from "antd"
+import * as B from "../../../../commons/styles/basic"
 
 export const Wrapper = styled.div`
-    width: 45%;
+    width: 80%;
     margin: 0 auto;
     @media (min-width: ${B.bigTablet}px) and (max-width: ${B.noteBook - 1}px) {
-        width: 50%;
+        width: 58%;
     }
     @media (min-width: ${B.smallTablet}px) and (max-width: ${B.bigTablet - 1}px) {
         width: 70%;
     }
     @media (min-width: ${B.mobile}px) and (max-width: ${B.smallTablet - 1}px) {
-        width: 70%;
+        width: 90%;
     }
     @media (max-width: ${B.mobile - 1}px) {
-        width: 70%;
+        width: 91%;
     }
 `
 
@@ -69,44 +69,7 @@ export const Form = styled.form`
     flex-direction: column;
     align-items: center;
 `
-
-export const RowBox = styled.div`
-    display: flex;
-    align-self: flex-start;
-    a{
-        font-weight: bold;
-        font-size: ${B.deskTopFontSizeMicro}rem;
-        text-decoration: underline;
-        color: ${B.mainColor};
-        &:first-of-type{
-            margin-right: 0.25rem;
-        }
-        @media (min-width: ${B.bigTablet}px) and (max-width: ${B.noteBook - 1}px) {
-            font-size: ${B.noteBookFontSizeMicro}rem;
-            &:first-of-type{
-            margin-right: 0.33rem;
-        }
-        }
-        @media (min-width: ${B.smallTablet}px) and (max-width: ${B.bigTablet - 1}px) {
-            font-size: ${B.bigTabletFontSizeMicro}rem;
-            &:first-of-type{
-            margin-right: 0.4rem;
-        }
-        }
-        @media (min-width: ${B.mobile}px) and (max-width: ${B.smallTablet - 1}px) {
-            font-size: ${B.smallTabletFontSizeMicro}rem;
-            &:first-of-type{
-            margin-right: 0.52rem;
-        }
-        }
-        @media (max-width: ${B.mobile - 1}px) {
-            font-size: ${B.mobileFontSizeMicro}rem;
-            &:first-of-type{
-            margin-right: 0.69rem;
-        }
-        }
-    }
+export const ListWrapper = styled(Row)`
 `
-
-export const HelpLink = styled(Link)`
+export const ItemWrapper = styled(Col)`
 `

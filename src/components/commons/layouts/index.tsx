@@ -14,7 +14,7 @@ const LayoutWrapper = styled.div`
 
 const LayoutBody = styled.div`
     width: 100%;
-    padding-top: 7rem;
+    padding-top: 1.12rem;
     @media (min-width: ${B.bigTablet}px) and (max-width: ${B.noteBook - 1}px) {
         padding-top: 1.5rem;
     }
