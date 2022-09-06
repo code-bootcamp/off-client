@@ -25,9 +25,7 @@ export default function JoinContainer() {
     mode: "onChange",
   });
   const onClickSubmit = async (data: any) => {
-    console.log(data)
     try {
-        console.log("클릭")
         const result = await createUser({
             variables: {
                 createUserInput: {
@@ -40,9 +38,9 @@ export default function JoinContainer() {
             },
         });
         Modal.success({
-            content: `${result.data?.createUser.name}님 환영합니다.`,
+            content: '회원가입 완료되었습니다 로그인 화면으로 이동합니다.',
         });
-        router.push("/");
+        router.push("/info/login");
     } catch (error) {
         if (error instanceof Error) Modal.error({ content: error.message });
     }

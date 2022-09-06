@@ -4,7 +4,7 @@ import { createUploadLink } from "apollo-upload-client";
 import { ReactNode, useEffect } from "react";
 import { useRecoilState } from "recoil";
 import { getAccessToken } from "../../../commons/libraries/getAccessToken";
-import { accessTokenState, userInfoState } from "../../../commons/store";
+import { accessTokenState, isLoadedState, isLogoutState, userInfoState } from "../../../commons/store";
 
 interface IApolloSettingProps {
     children: ReactNode
@@ -14,13 +14,18 @@ const APOLLO_CACHE = new InMemoryCache
 export default function ApolloSetting(props: IApolloSettingProps) {
     const [accessToken, setAccessToken] = useRecoilState(accessTokenState)
     const [userInfo, setUserInfo] = useRecoilState(userInfoState)
+    const [isLoaded, setIsLoaded] = useRecoilState(isLoadedState);
+    const [isLogout, setIsLogout] = useRecoilState(isLogoutState)
 
     useEffect(() => {
         getAccessToken().then((newAccessToken) => {
             setAccessToken(newAccessToken)
+            setIsLoaded(true)
+            if(newAccessToken){
+                setIsLogout("로그인")
+            }
         })
     },[])
-
 
     const errorLink = onError(({ graphQLErrors, operation, forward }) => {
         if (graphQLErrors) {

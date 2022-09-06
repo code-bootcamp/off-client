@@ -14,12 +14,12 @@ export default function JoinUI(props:any) {
                 <NormalInput type="text" placeholder = '이름' register={props.register("name")} />
                 <NormalInput type="text" placeholder = '닉네임' register={props.register("nickname")} />
                 <RowBox>
-                    <NormalInput type="text" placeholder = '" - " 을 제외한 전화번호' register={props.register("phone")} />
-                    {/* <NormalButton type="button" title="전송"/> */}
+                    <NormalInput type="text" placeholder = '" - " 을 제외한 전화번호'/>
+                    <NormalButton type="button" title="전송" isActive/>
                 </RowBox>
                 <RowBox>
-                    {/* <NormalInput type="text" placeholder = '인증번호' />
-                    <NormalButton type="button" title="확인"/> */}
+                    <NormalInput type="text" placeholder = '인증번호'/>
+                    <NormalButton type="button" title="확인" isActive/>
                 </RowBox>
                 <NormalButton type="submit" title="회원가입하기" isActive={props.formState.isValid} />
                 <RowBox><span>이미 회원이신가요?</span><HelpLink href={"/info/login"}><a>로그인하기</a></HelpLink></RowBox>

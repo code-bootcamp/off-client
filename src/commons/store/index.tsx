@@ -14,4 +14,14 @@ export const userInfoState = atom({
         nickname: "",
         phone: ""
     }
+});
+
+export const isLoadedState = atom({
+    key: "isLoadedState",
+    default: false,
+});
+
+export const isLogoutState = atom({
+    key: "isLogoutState",
+    default: "로그아웃",
 })

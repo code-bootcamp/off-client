@@ -1,5 +1,5 @@
 export interface ILayoutHeaderUIProps {
     menuVisible: boolean
     onClickOpenMenu: () => void
-    onClickCloseMenu: () => void
+    onClickCloseMenu: (event: any) => Promise<void>
 }
