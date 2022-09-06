@@ -1,8 +1,6 @@
 import NormalSelectBoxUI from "./NormalSelectBox.presenter";
+import { INormalSelectBoxProps } from "./NormalSelectBox.types";
 
-export default function NormalSelectBox(props:any) {
-    const handleChange = (value: string) => {
-        console.log(`selected ${value}`);
-      };
-    return<NormalSelectBoxUI handleChange={props.handleChange} category={props.category}/>
+export default function NormalSelectBox(props: INormalSelectBoxProps) {
+    return<NormalSelectBoxUI category={props.category}/>
 }

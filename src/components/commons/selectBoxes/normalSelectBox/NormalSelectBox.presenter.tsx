@@ -1,13 +1,16 @@
-import { NormalSelectBox } from "./NormalSelectBox.styles";
+import { INormalSelectBoxUIProps } from "./NormalSelectBox.types";
+import { Select } from "antd";
 
 
-export default function NormalSelectBoxUI(props:any) {
-    const { Option }:any = NormalSelectBox
+
+export default function NormalSelectBoxUI(props: INormalSelectBoxUIProps) {
+    const { Option } = Select
+
     return(
-        <NormalSelectBox defaultValue={props.defaultValue} onChange={props.handleChange}>
-            {props.category.map((el:string)=>{
-                <Option value={`${el}`}>{el}</Option>
-            })}
-        </NormalSelectBox>
+        <Select style = {{ width: "100%" }}>
+            { props.category && props.category.map((el) => (
+                <Option key = { el.value } value = { el.value }>{ el.name }</Option>
+            )) }
+        </Select>
     )
 }
