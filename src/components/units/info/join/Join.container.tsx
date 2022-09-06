@@ -14,7 +14,8 @@ const schema = yup.object().shape({
     password2: yup.string().oneOf([yup.ref('password'),null],"비밀번호가 일치하지 않습니다."),
     name: yup.string().required("이름을 입력해주세요."),
     nickname: yup.string().required("닉네임을 입력해주세요"),
-    phone: yup.string().matches(/^\d{3}\d{3,4}\d{4}$/,"올바른 전화번호 형식이 아닙니다.").required("전화번호를 입력해주세요")
+    phone: yup.string().matches(/^\d{3}\d{3,4}\d{4}$/,"올바른 전화번호 형식이 아닙니다.").required("전화번호를 입력해주세요"),
+    token: yup.string().required("인증을받아주세요")
   });
 
 export default function JoinContainer() {
