@@ -1,6 +1,6 @@
 import { useApolloClient, useMutation } from "@apollo/client";
 import { useRouter } from "next/router";
-import { useForm } from "react-hook-form";
+import { useForm, Controller } from "react-hook-form";
 import { useRecoilState } from "recoil";
 import { accessTokenState, userInfoState, isLogoutState } from "../../../../commons/store";
 import { IMutation, IMutationLoginArgs } from "../../../../commons/types/generated/types";
@@ -27,6 +27,7 @@ export default function Login() {
     resolver: yupResolver(schema),
     mode: "onChange"
   })
+  console.log(formState.errors)
   const onClickLogin = async (data:any) => {
     try {
         const result = await login({
