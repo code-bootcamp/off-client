@@ -1,11 +1,11 @@
 export interface INormalSelectBoxProps {
-    // placeholder: string
+    placeholder: string
     register?: any
     category: Array<any>
 }
 
 export interface INormalSelectBoxUIProps {
-    // placeholder: string
+    placeholder: string
     register?: any
     category: Array<any>
 }
