@@ -1,8 +1,11 @@
 import styled from '@emotion/styled'
 import { useEffect, useState } from 'react'
 import { DragDropContext, Droppable, Draggable } from 'react-beautiful-dnd'
-import { Row, Col } from 'antd';
+import { Row, Col, Modal } from 'antd';
 import * as B from '../../src/commons/styles/basic'
+import NormalInput from '../../src/components/commons/inputs/normalInput/NormalInput.container';
+import NormalDatePicker from '../../src/components/commons/datepickers/normalDatePicker/NormalDatePicker.container';
+import NormalSelectBox from '../../src/components/commons/selectBoxes/normalSelectBox/NormalSelectBox.container';
 
 
 const Wrapper = styled.div`
@@ -12,13 +15,13 @@ const Wrapper = styled.div`
         width: 90%;
     }
     @media (min-width: ${B.smallTablet}px) and (max-width: ${B.bigTablet - 1}px) {
-       
+        width: 90%;
     }
     @media (min-width: ${B.mobile}px) and (max-width: ${B.smallTablet - 1}px) {
-        
+        width: 90%;
     }
     @media (max-width: ${B.mobile - 1}px) {
-        
+        width: 90%;
     }
 `
 
@@ -104,31 +107,118 @@ const ListAddBtn = styled.button`
     cursor: pointer;
     @media (min-width: ${B.bigTablet}px) and (max-width: ${B.noteBook - 1}px) {
         font-size: ${B.noteBookFontSizeMicro}rem;
+        height: 2.5rem;
     }
     @media (min-width: ${B.smallTablet}px) and (max-width: ${B.bigTablet - 1}px) {
         font-size: ${B.bigTabletFontSizeMicro}rem;
+        height: 4rem;
+        margin-bottom: 2rem;
     }
     @media (min-width: ${B.mobile}px) and (max-width: ${B.smallTablet - 1}px) {
         font-size: ${B.smallTabletFontSizeMicro}rem;
+        height: 4.5rem;
+        margin-bottom: 2rem;
     }
     @media (max-width: ${B.mobile - 1}px) {
         font-size: ${B.mobileFontSizeMicro}rem;
+        height: 4.5rem;
+        margin-bottom: 2rem;
     }
 `
+
+const WriteModal = styled(Modal)`
+    width: 80%!important;
+    top: 50%!important;
+    transform: translateY(-50%)!important;
+    padding-bottom: 0!important;
+    div.ant-modal-content {
+        box-shadow: 0px 21px 22px #00000026!important;
+        border-radius: 20px!important;
+        button.ant-modal-close {
+            display: none!important;
+        }
+        div.ant-modal-header {
+            border-radius: 20px!important;
+            border-bottom: none!important;
+            padding: 0.5rem!important;
+            div.ant-modal-title {
+                font-size: ${B.deskTopFontSizeSmall}rem!important;
+                color: ${B.blackColor}!important;
+                font-weight: bold!important;
+                @media (min-width: ${B.bigTablet}px) and (max-width: ${B.noteBook - 1}px) {
+                    font-size: ${B.noteBookFontSizeSmall}rem!important;
+                }
+                @media (min-width: ${B.smallTablet}px) and (max-width: ${B.bigTablet - 1}px) {
+                    font-size: ${B.bigTabletFontSizeSmall}rem!important;
+                }
+                @media (min-width: ${B.mobile}px) and (max-width: ${B.smallTablet - 1}px) {
+                    font-size: ${B.smallTabletFontSizeSmall}rem!important;
+                }
+                @media (max-width: ${B.mobile - 1}px) {
+                    font-size: ${B.mobileFontSizeSmall}rem!important;
+                }
+            }
+        }
+        div.ant-modal-body {
+            padding: 0.5rem!important;
+        }
+    }
+`
+
+const CATEGORY = [
+    { name: "테스트1", value: "test1" },
+    { name: "테스트2", value: "test2" },
+    { name: "테스트3", value: "test3" },
+    { name: "테스트4", value: "test4" },
+]
 
 export default function myFridgePage() {
 
     const [productList, setProductList] = useState([])
     const [isChange, setIsChange] = useState(false)
+    const [isWriteModalOpen, setIsWriteModalOpen] = useState(false)
 
     useEffect(() => {
         setProductList(JSON.parse(localStorage.getItem("productList") || "[]"))
     }, [isChange])
 
+    const onClickShowWriteModal = () => {
+        setIsWriteModalOpen(true)
+    }
+
+    const onClickCancelWriteModal = () => {
+        setIsWriteModalOpen(false)
+    }
+
     
 
     return (
         <Wrapper>
+            <WriteModal title = "상품 등록하기" visible = { isWriteModalOpen } onCancel = { onClickCancelWriteModal } footer = { null }>
+                <form>
+                    <Row gutter={20}>
+                        <Col xs = { 24 } sm = { 24 } md = { 12 } lg = { 12 } xl = { 12 }>
+                            <NormalInput type = 'text' placeholder = '상품명을 입력해주세요' />
+                        </Col>
+                        <Col xs = { 24 } sm = { 24 } md = { 12 } lg = { 12 } xl = { 12 }>
+                            <NormalInput type = 'text' placeholder = '가격을 입력해주세요' />
+                        </Col>
+                    </Row>
+                    <Row gutter={20}>
+                        <Col xs = { 24 } sm = { 24 } md = { 24 } lg = { 24 } xl = { 24 }>
+                            <NormalSelectBox category = { CATEGORY } />
+                        </Col>
+                    </Row>
+                    <Row gutter={20}>
+                        <Col xs = { 24 } sm = { 24 } md = { 12 } lg = { 12 } xl = { 12 }>
+                            <NormalDatePicker placeholder = '유효기간을 설정해주세요' />
+                        </Col>
+                        <Col xs = { 24 } sm = { 24 } md = { 12 } lg = { 12 } xl = { 12 }>
+                            <NormalDatePicker placeholder = '유효기간 임박일을 설정해주세요' />
+                        </Col>
+                    </Row>
+                </form>
+            </WriteModal>
             <Row gutter={30}>
                 <Col xs = { 24 } sm = { 24 } md = { 24 } lg = { 12 } xl = { 12 }>
                     <ListWrapper>
@@ -175,7 +265,7 @@ export default function myFridgePage() {
                                 </Row>
                             </ListItem>
                         </ListBody>
-                        <ListAddBtn>클릭하여 상품 추가하기 +</ListAddBtn>
+                        <ListAddBtn onClick = { onClickShowWriteModal }>클릭하여 상품 추가하기 +</ListAddBtn>
                     </ListWrapper>
                 </Col>
                 <Col xs = { 24 } sm = { 24 } md = { 24 } lg = { 12 } xl = { 12 }>
