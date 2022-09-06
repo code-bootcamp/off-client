@@ -3,6 +3,7 @@ import NormalInput from "../../../commons/inputs/normalInput/NormalInput.contain
 import { Form, HelpLink, RowBox, Title, TitleInfo, Wrapper } from "./Join.styles";
 
 export default function JoinUI(props:any) {
+    console.log(props.formState.isValid)
     return(
         <Wrapper>
             <Title>회원가입</Title>
@@ -14,14 +15,14 @@ export default function JoinUI(props:any) {
                 <NormalInput type="text" placeholder = '이름' register={props.register("name")} />
                 <NormalInput type="text" placeholder = '닉네임' register={props.register("nickname")} />
                 <RowBox>
-                    <NormalInput type="text" placeholder = '" - " 을 제외한 전화번호'/>
-                    <NormalButton type="button" title="전송" isActive/>
+                    <NormalInput type="text" placeholder = '" - " 을 제외한 전화번호' register={props.register("phone")}/>
+                    <NormalButton type="button" title="전송" isActive={props.formState.error?.phone ? false : true} color={"red"}/>
                 </RowBox>
                 <RowBox>
-                    <NormalInput type="text" placeholder = '인증번호'/>
-                    <NormalButton type="button" title="확인" isActive/>
+                    <NormalInput type="text" placeholder = '인증번호' register={props.register("token")}/>
+                    <NormalButton type="button" title="확인" isActive={props.formState.error?.phone ? false : true} color={"blue"}/>
                 </RowBox>
-                <NormalButton type="submit" title="회원가입하기" isActive={props.formState.isValid} />
+                <NormalButton  title="회원가입하기" isActive={props.formState.isValid} color={"blue"}/>
                 <RowBox><span>이미 회원이신가요?</span><HelpLink href={"/info/login"}><a>로그인하기</a></HelpLink></RowBox>
             </Form>
         </Wrapper>

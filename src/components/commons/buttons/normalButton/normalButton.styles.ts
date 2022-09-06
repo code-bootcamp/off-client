@@ -1,21 +1,48 @@
 import styled from "@emotion/styled";
 import * as B from "../../../../commons/styles/basic"
+import { INormalButtonStylesProps } from "./normalButton.types";
 
 export const NormalButton = styled.button`
     width: 100%;
-    border: 1px solid ${B.mainColor};
+    border: 1px solid
+        ${(props:INormalButtonStylesProps)=>{
+        if(props.color==="blue"){
+            return B.mainColor
+        } else if(props.color==="red"){
+            return B.redColor
+        } else if(props.color==="gray"){
+            return B.strongGrayColor
+        }
+    }};
     border-radius: 8px;
-    background-color: ${(props)=>(props.disabled ? `${B.lightGrayColor}` : `${B.mainColor}`)};
+    background-color: ${(props:INormalButtonStylesProps)=>{
+        if(props.color==="blue"){
+            return B.mainColor
+        } else if(props.color==="red"){
+            return B.redColor
+        } else if(props.color==="gray"){
+            return B.whiteColor
+        }
+    }};
     padding: 0.2rem 0;
     font-weight: bold;
     font-size: ${B.deskTopFontSizeMicro}rem;
-    color: ${(props)=>(props.disabled ? `${B.mainColor}` : `${B.whiteColor}` )};
+    color: ${(props:INormalButtonStylesProps)=>{
+        if(props.color==="blue"){
+            return B.whiteColor
+        } else if(props.color==="red"){
+            return B.whiteColor
+        } else if(props.color==="gray"){
+            return B.strongGrayColor
+        }
+    }};
     cursor: pointer;
-    &:hover{
-        color: ${B.mainColor};
-        background-color: ${B.whiteColor} ;
-        transition: 290ms;
+
+    &:active{
+        opacity: 70%;
+        transition: 250ms;
     }
+
     @media (min-width: ${B.bigTablet}px) and (max-width: ${B.noteBook - 1}px) {
         padding: 0.26rem 0;
         font-size: ${B.noteBookFontSizeMicro}rem;
