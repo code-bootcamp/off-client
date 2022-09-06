@@ -7,16 +7,12 @@ const RESTORE_ACCESS_TOKEN = gql`
 `
 export async function getAccessToken(){
     try{
-        console.log("getAccessToken??")
         const graphQLClient = new GraphQLClient(
-            "http://freshfridge.shop:3000/graphql",
+            "https://freshfridge.shop/graphql",
             { credentials: "include" }
         )
-        console.log("dddd", graphQLClient)
         const result = await graphQLClient.request(RESTORE_ACCESS_TOKEN)
-        console.log("1")
-        const newAccessToken = result.data.restoreAccessToken
-        console.log("2")
+        const newAccessToken = result.restoreAccessToken
         return newAccessToken
     }catch(error){
         if(error instanceof Error)
