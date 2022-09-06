@@ -66,6 +66,9 @@ export const Logo = styled.a`
     @media (max-width: ${B.mobile - 1}px) {
         font-size: ${B.mobileFontSizeLg}rem;
     }
+    &:hover {
+        color: ${B.mainColor};
+    }
 `
 
 export const MenuBox = styled.div`
@@ -74,7 +77,7 @@ export const MenuBox = styled.div`
 
 export const MenuIcon = styled(MenuOutlined)`
     display: block;
-    font-size: ${B.deskTopFontSizeMiddle}rem;
+    font-size: ${B.deskTopFontSizeSmall}rem;
     @media (min-width: ${B.bigTablet}px) and (max-width: ${B.noteBook - 1}px) {
         font-size: ${B.noteBookFontSizeMiddle}rem;
     }
@@ -94,9 +97,9 @@ export const MenuWrapper = styled.ul`
 `
 
 export const MenuItem = styled.li`
-    font-size: ${B.deskTopFontSizeMiddle}rem;
+    font-size: ${B.deskTopFontSizeSmall}rem;
     font-weight: bold;
-    margin-bottom: 0.7rem;
+    margin-bottom: 0.5rem;
     @media (min-width: ${B.bigTablet}px) and (max-width: ${B.noteBook - 1}px) {
         font-size: ${B.noteBookFontSizeMiddle}rem;
         margin-bottom: 0.7rem;
