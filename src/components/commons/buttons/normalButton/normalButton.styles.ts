@@ -3,6 +3,7 @@ import * as B from "../../../../commons/styles/basic"
 import { INormalButtonStylesProps } from "./normalButton.types";
 
 export const NormalButton = styled.button`
+    display: block!important;;
     width: 100%;
     border: 1px solid
         ${(props:INormalButtonStylesProps)=>{
