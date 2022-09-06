@@ -21,6 +21,7 @@ export default function ApolloSetting(props: IApolloSettingProps) {
         })
     },[])
 
+
     const errorLink = onError(({ graphQLErrors, operation, forward }) => {
         if (graphQLErrors) {
             for (const err of graphQLErrors) {
@@ -43,7 +44,7 @@ export default function ApolloSetting(props: IApolloSettingProps) {
     })
 
     const uploadLink = createUploadLink({
-        uri: "http://freshfridge.shop:3000/graphql",
+        uri: "https://freshfridge.shop/graphql",
         headers: { Authorization: `Bearer ${accessToken}` },
         credentials: "include",
     })
