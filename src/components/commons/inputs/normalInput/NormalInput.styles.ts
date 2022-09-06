@@ -4,6 +4,7 @@ import { Input } from "antd";
 
 
 export const NormalInput = styled(Input)`
+    display: block!important;
     width: 100%!important;
     height: 0.7rem!important;
     background-color: ${B.whiteColor}!important;
