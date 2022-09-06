@@ -1,11 +1,14 @@
 import styled from '@emotion/styled'
 import { useEffect, useState } from 'react'
-import { DragDropContext, Droppable, Draggable } from 'react-beautiful-dnd'
+// import { DragDropContext, Droppable, Draggable } from 'react-beautiful-dnd'
 import { Row, Col, Modal } from 'antd';
 import * as B from '../../src/commons/styles/basic'
 import NormalInput from '../../src/components/commons/inputs/normalInput/NormalInput.container';
 import NormalDatePicker from '../../src/components/commons/datepickers/normalDatePicker/NormalDatePicker.container';
 import NormalSelectBox from '../../src/components/commons/selectBoxes/normalSelectBox/NormalSelectBox.container';
+import { gql, useApolloClient } from '@apollo/client';
+import { useRecoilState } from 'recoil';
+import { accessTokenState, userInfoState } from '../../src/commons/store';
 
 
 const Wrapper = styled.div`
@@ -25,6 +28,24 @@ const Wrapper = styled.div`
     }
 `
 
+const Title = styled.h1`
+    font-weight: bold;
+    font-size: ${B.deskTopFontSizeMiddle};
+    margin-bottom: 0.5rem;
+    @media (min-width: ${B.bigTablet}px) and (max-width: ${B.noteBook - 1}px) {
+        font-size: ${B.noteBookFontSizeMiddle}rem;
+    }
+    @media (min-width: ${B.smallTablet}px) and (max-width: ${B.bigTablet - 1}px) {
+        font-size: ${B.bigTabletFontSizeMiddle}rem;
+    }
+    @media (min-width: ${B.mobile}px) and (max-width: ${B.smallTablet - 1}px) {
+        font-size: ${B.smallTabletFontSizeMiddle}rem;
+    }
+    @media (max-width: ${B.mobile - 1}px) {
+        font-size: ${B.mobileFontSizeMiddle}rem;
+    }
+`
+
 const ListWrapper = styled.div`
     width: 100%;
 `
@@ -33,7 +54,7 @@ const ListBody = styled.ul`
     width: 100%;
 `
 
-const Title = styled.h1`
+const SubTitle = styled.h2`
     font-size: ${B.deskTopFontSizeSmall}rem;
     font-weight: bold;
     margin-bottom: 0.5rem;
@@ -191,11 +212,32 @@ const CATEGORY = [
     { name: "테스트4", value: "test4" },
 ]
 
+const FETCH_USER_LOGGED_IN = gql`
+    query fetchUserLoggedIn {
+        fetchUserLoggedIn {
+            nickname
+        }
+    }
+`
+
 export default function myFridgePage() {
 
     const [productList, setProductList] = useState([])
     const [isChange, setIsChange] = useState(false)
     const [isWriteModalOpen, setIsWriteModalOpen] = useState(false)
+    const [accessToken] = useRecoilState(accessTokenState)
+    // const [userInfo, setUserInfo] = useRecoilState(userInfoState)
+    const client = useApolloClient()
+
+    const resultUserInfo = client.query({
+        query: FETCH_USER_LOGGED_IN,
+        context: {
+          headers: {
+            Authorization: `Bearer ${accessToken}`,
+          },
+        },
+      });
+      console.log(resultUserInfo)
 
     useEffect(() => {
         setProductList(JSON.parse(localStorage.getItem("productList") || "[]"))
@@ -211,10 +253,10 @@ export default function myFridgePage() {
 
     return (
         <Wrapper>
-            <WriteModal title = "상품 등록하기" 
-            visible = { isWriteModalOpen } 
-            onCancel = { onClickCancelWriteModal } 
-            footer = { null } 
+            <WriteModal title = "상품 등록하기"
+            visible = { isWriteModalOpen }
+            onCancel = { onClickCancelWriteModal }
+            footer = { null }
             maskClosable = { false }>
                 <form>
                     <FormRow gutter={20}>
@@ -240,10 +282,11 @@ export default function myFridgePage() {
                     </FormRow>
                 </form>
             </WriteModal>
+            <Row gutter={30}><Col xs = { 24 } sm = { 24 } md = { 24 } lg = { 24 } xl = { 24 }><Title>{"냉장고"}</Title></Col></Row>
             <Row gutter={30}>
                 <Col xs = { 24 } sm = { 24 } md = { 24 } lg = { 12 } xl = { 12 }>
                     <ListWrapper>
-                        <Title>목록</Title>
+                        <SubTitle>목록</SubTitle>
                         <ListBody>
                             <ListItem>
                                 <Row gutter={20}>
@@ -291,7 +334,7 @@ export default function myFridgePage() {
                 </Col>
                 <Col xs = { 24 } sm = { 24 } md = { 24 } lg = { 12 } xl = { 12 }>
                     <ListWrapper>
-                        <Title>냉동</Title>
+                        <SubTitle>냉동</SubTitle>
                         <ListBody>
                             <ListItem>
                                 <Row gutter={20}>
@@ -316,7 +359,7 @@ export default function myFridgePage() {
                         </ListBody>
                     </ListWrapper>
                     <ListWrapper>
-                        <Title>냉장</Title>
+                        <SubTitle>냉장</SubTitle>
                         <ListBody>
                             <ListItem>
                                 <Row gutter={20}>
