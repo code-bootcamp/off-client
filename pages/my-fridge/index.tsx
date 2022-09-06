@@ -165,6 +165,25 @@ const WriteModal = styled(Modal)`
     }
 `
 
+const FormRow = styled(Row)`
+    margin-bottom: 0.5rem;
+    @media (min-width: ${B.mobile}px) and (max-width: ${B.smallTablet - 1}px) {
+        margin-bottom: 0;
+    }
+    @media (max-width: ${B.mobile - 1}px) {
+        margin-bottom: 0;
+    }
+`
+
+const FormCol = styled(Col)`
+    @media (min-width: ${B.mobile}px) and (max-width: ${B.smallTablet - 1}px) {
+        margin-bottom: 0.6rem;
+    }
+    @media (max-width: ${B.mobile - 1}px) {
+        margin-bottom: 0.6rem;
+    }
+`
+
 const CATEGORY = [
     { name: "테스트1", value: "test1" },
     { name: "테스트2", value: "test2" },
@@ -190,33 +209,35 @@ export default function myFridgePage() {
         setIsWriteModalOpen(false)
     }
 
-    
-
     return (
         <Wrapper>
-            <WriteModal title = "상품 등록하기" visible = { isWriteModalOpen } onCancel = { onClickCancelWriteModal } footer = { null }>
+            <WriteModal title = "상품 등록하기" 
+            visible = { isWriteModalOpen } 
+            onCancel = { onClickCancelWriteModal } 
+            footer = { null } 
+            maskClosable = { false }>
                 <form>
-                    <Row gutter={20}>
-                        <Col xs = { 24 } sm = { 24 } md = { 12 } lg = { 12 } xl = { 12 }>
+                    <FormRow gutter={20}>
+                        <FormCol xs = { 24 } sm = { 24 } md = { 12 } lg = { 12 } xl = { 12 }>
                             <NormalInput type = 'text' placeholder = '상품명을 입력해주세요' />
-                        </Col>
-                        <Col xs = { 24 } sm = { 24 } md = { 12 } lg = { 12 } xl = { 12 }>
+                        </FormCol>
+                        <FormCol xs = { 24 } sm = { 24 } md = { 12 } lg = { 12 } xl = { 12 }>
                             <NormalInput type = 'text' placeholder = '가격을 입력해주세요' />
-                        </Col>
-                    </Row>
-                    <Row gutter={20}>
-                        <Col xs = { 24 } sm = { 24 } md = { 24 } lg = { 24 } xl = { 24 }>
-                            <NormalSelectBox category = { CATEGORY } />
-                        </Col>
-                    </Row>
-                    <Row gutter={20}>
-                        <Col xs = { 24 } sm = { 24 } md = { 12 } lg = { 12 } xl = { 12 }>
+                        </FormCol>
+                    </FormRow>
+                    <FormRow gutter={20}>
+                        <FormCol xs = { 24 } sm = { 24 } md = { 24 } lg = { 24 } xl = { 24 }>
+                            <NormalSelectBox placeholder = '카테고리를 선택해주세요' category = { CATEGORY } />
+                        </FormCol>
+                    </FormRow>
+                    <FormRow gutter={20}>
+                        <FormCol xs = { 24 } sm = { 24 } md = { 12 } lg = { 12 } xl = { 12 }>
                             <NormalDatePicker placeholder = '유효기간을 설정해주세요' />
-                        </Col>
-                        <Col xs = { 24 } sm = { 24 } md = { 12 } lg = { 12 } xl = { 12 }>
+                        </FormCol>
+                        <FormCol xs = { 24 } sm = { 24 } md = { 12 } lg = { 12 } xl = { 12 }>
                             <NormalDatePicker placeholder = '유효기간 임박일을 설정해주세요' />
-                        </Col>
-                    </Row>
+                        </FormCol>
+                    </FormRow>
                 </form>
             </WriteModal>
             <Row gutter={30}>
