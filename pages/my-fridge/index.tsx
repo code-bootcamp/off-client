@@ -11,6 +11,7 @@ import NormalDatePicker from '../../src/components/commons/datepickers/normalDat
 import NormalSelectBox from '../../src/components/commons/selectBoxes/normalSelectBox/NormalSelectBox.container';
 import NormalButton from '../../src/components/commons/buttons/normalButton/normalButton.container';
 import Error from '../../src/components/commons/error';
+import { getDate } from '../../src/commons/libraries/utils';
 
 const Wrapper = styled.div`
     width: 80%;
@@ -218,9 +219,9 @@ const CATEGORY = [
 
 const schema = yup.object({
     name: yup.string().required("상품명은 필수입니다"),
-    price: yup.number().required("가격은 필수입니다"),
-    expDate: yup.string().required("유효기간 설정은 필수입니다"),
-    alarm: yup.string().required("유효기간임박 설정은 필수입니다"),
+    price: yup.number().typeError("숫자를 입력해주세요").required("가격은 필수입니다"),
+    expDate: yup.string().nullable(true).required("유효기간 설정은 필수입니다"),
+    alarm: yup.string().nullable(true).required("유효기간임박 설정은 필수입니다"),
     category: yup.string().required("카테고리는 필수입니다")
 })
 
@@ -248,6 +249,9 @@ export default function myFridgePage() {
     }
 
     const onClickCreateProduct = (data: any) => {
+        const alarm = getDate(data.alarm)
+        const expDate = getDate(data.expDate)
+        data = {...data, alarm, expDate,}
         console.log(data)
     }
 

@@ -38,7 +38,15 @@ export const NormalButton = styled.button`
     padding: 0;
     font-weight: bold;
     font-size: ${B.deskTopFontSizeMicro}rem;
+    user-select: none;
     cursor: pointer;
+    &:active{
+        box-shadow: 10px 10px 10px  #001cff inset, -10px -10px 5px  #001cff inset;
+    }
+    &:disabled{
+        opacity: 50%;
+        pointer-events: none;
+    }
     @media (min-width: ${B.bigTablet}px) and (max-width: ${B.noteBook - 1}px) {
         height: 1.1rem!important;
         font-size: ${B.noteBookFontSizeMicro}rem;

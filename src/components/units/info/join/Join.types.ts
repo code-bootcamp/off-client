@@ -6,4 +6,7 @@ export interface IJoinUIProps{
     formState: FormState<FieldValues>
     onClickSubmit: (data:any) => Promise<void>
     onClickGetToken: () => void
+    onClickCheckValidToken: () => void
+    isGetToken: boolean
+    isCheckToken: boolean
 }
