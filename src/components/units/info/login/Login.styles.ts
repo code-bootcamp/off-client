@@ -3,40 +3,24 @@ import { Row, Col } from "antd";
 import Link from "next/link";
 import * as B from "../../../../commons/styles/basic";
 
-export const LoginWrapper = styled.div`
-    width: 100%;
-    height: calc(100vh - 1.3rem);
-    @media (min-width: ${B.bigTablet}px) and (max-width: ${B.noteBook - 1}px) {
-        height: calc(100vh - 1.6rem);
-    }
-    @media (min-width: ${B.smallTablet}px) and (max-width: ${B.bigTablet - 1}px) {
-        height: calc(100vh - 1.8rem);
-    }
-    @media (min-width: ${B.mobile}px) and (max-width: ${B.smallTablet - 1}px) {
-        height: calc(100vh - 2.1rem);
-    }
-    @media (max-width: ${B.mobile - 1}px) {
-        height: calc(100vh - 2.5rem);
-    }
-`
-
 export const Wrapper = styled.div`
-    position: relative;
-    width: 45%;
-    margin: 0 auto;
-    top: 50%;
-    transform: translateY(-50%);
+    width: 50%;
+    margin: 2rem auto;
     @media (min-width: ${B.bigTablet}px) and (max-width: ${B.noteBook - 1}px) {
         width: 55%;
+        margin: 3.5rem auto;
     }
     @media (min-width: ${B.smallTablet}px) and (max-width: ${B.bigTablet - 1}px) {
         width: 70%;
+        margin: 5rem auto;
     }
     @media (min-width: ${B.mobile}px) and (max-width: ${B.smallTablet - 1}px) {
-        width: 70%;
+        width: 80%;
+        margin: 7rem auto;
     }
     @media (max-width: ${B.mobile - 1}px) {
-        width: 70%;
+        width: 80%;
+        margin: 9.5rem auto;
     }
 `
 

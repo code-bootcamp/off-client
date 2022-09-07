@@ -5,9 +5,8 @@ export default function NormalButton(props:INormalButtonContainerProps) {
     return (
         <NormalButtonUI 
         title = { props.title } 
-        type = { props.type } 
-        isActive = { props.isActive } 
         color = { props.color } 
+        onClick = { props.onClick }
         />
     )
 }

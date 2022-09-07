@@ -14,18 +14,18 @@ const LayoutWrapper = styled.div`
 
 const LayoutBody = styled.div`
     width: 100%;
-    padding-top: 1.12rem;
+    padding-top: 1.3rem;
     @media (min-width: ${B.bigTablet}px) and (max-width: ${B.noteBook - 1}px) {
-        padding-top: 1.5rem;
+        padding-top: 1.6rem;
     }
     @media (min-width: ${B.smallTablet}px) and (max-width: ${B.bigTablet - 1}px) {
-        padding-top: 1.7rem;
+        padding-top: 1.8rem;
     }
     @media (min-width: ${B.mobile}px) and (max-width: ${B.smallTablet - 1}px) {
-        padding-top: 2.2rem;
+        padding-top: 2.1rem;
     }
     @media (max-width: ${B.mobile - 1}px) {
-        padding-top: 3rem;
+        padding-top: 2.5rem;
     }
 `
 

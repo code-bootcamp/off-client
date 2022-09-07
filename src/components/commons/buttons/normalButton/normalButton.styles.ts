@@ -40,19 +40,19 @@ export const NormalButton = styled.button`
     font-size: ${B.deskTopFontSizeMicro}rem;
     cursor: pointer;
     @media (min-width: ${B.bigTablet}px) and (max-width: ${B.noteBook - 1}px) {
-        height: 0.9rem!important;
+        height: 1.1rem!important;
         font-size: ${B.noteBookFontSizeMicro}rem;
     }
     @media (min-width: ${B.smallTablet}px) and (max-width: ${B.bigTablet - 1}px) {
-        height: 1.1rem!important;
+        height: 1.4rem!important;
         font-size: ${B.bigTabletFontSizeMicro}rem;
     }
     @media (min-width: ${B.mobile}px) and (max-width: ${B.smallTablet - 1}px) {
-        height: 1.3rem!important;
+        height: 1.7rem!important;
         font-size: ${B.smallTabletFontSizeMicro}rem;
     }
     @media (max-width: ${B.mobile - 1}px) {
-        height: 1.5rem!important;
+        height: 2.2rem!important;
         font-size: ${B.mobileFontSizeMicro}rem;
     }
 `

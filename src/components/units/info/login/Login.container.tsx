@@ -1,6 +1,6 @@
 import { useApolloClient, useMutation } from "@apollo/client";
 import { useRouter } from "next/router";
-import { useForm, Controller } from "react-hook-form";
+import { useForm } from "react-hook-form";
 import { useRecoilState } from "recoil";
 import { accessTokenState, userInfoState, isLogoutState } from "../../../../commons/store";
 import { IMutation, IMutationLoginArgs } from "../../../../commons/types/generated/types";
@@ -12,8 +12,8 @@ import { Modal } from "antd";
 
 
 const schema = yup.object({
-  email: yup.string().email("이메일 아이디를 @까지 정확하게 입력해주세요.").required("이메일 아이디를 @까지 정확하게 입력해주세요."),
-  password: yup.string().matches(/^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,16}$/,"영문+숫자 조합 8~16자리의 비밀번호를 입력해주세요.").required("영문+숫자 조합 8~16자리의 비밀번호를 입력해주세요."),
+  email: yup.string().email("이메일 형식으로 작성해주세요").required("아이디는 필수입니다"),
+  password: yup.string().matches(/^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,16}$/,"영문+숫자 조합 8~16자리의 비밀번호를 입력해주세요.").required("비밀번호는 필수입니다"),
 });
 
 export default function Login() {
@@ -24,46 +24,48 @@ export default function Login() {
   const [isLogout, setIsLogout] = useRecoilState(isLogoutState)
   const [login] = useMutation<Pick<IMutation,"login">,IMutationLoginArgs>(LOGIN);
   const { control, handleSubmit, formState } = useForm({
-    // resolver: yupResolver(schema),
+    resolver: yupResolver(schema),
     mode: "onChange"
   })
 
-  const onClickLogin = (data:any) => {
-    console.log(data)
-    // try {
-    //     const result = await login({
-    //         variables: {...data},
-    //     });
-    //     const accessToken = result.data?.login;
-    //     if (!accessToken) {
-    //         Modal.error({
-    //             content: "로그인에 실패하였습니다. 다시 시도해주세요.",
-    //         });
-    //         return;
-    //     }
-    //     const resultUserInfo = await client.query({
-    //         query: FETCH_USER_LOGGED_IN,
-    //         context: {
-    //             headers: {
-    //                 Authorization: `Bearer ${accessToken}`,
-    //             },
-    //         },
-    //     });
-    //     const userInfo = resultUserInfo.data?.fetchUserLoggedIn;
-    //     setAccessToken(accessToken || "");
-    //     setUserInfo(userInfo || {});
-    //     setIsLogout("로그인")
+  const onClickLogin = async (data:any) => {
+    try {
+        const result = await login({
+            variables: {
+              email: data.email,
+              password: data.password
+            }
+        })
+        const accessToken = result.data?.login;
+        console.log(accessToken)
+        if (!accessToken) {
+            Modal.error({
+                content: "로그인에 실패하였습니다. 다시 시도해주세요.",
+            });
+            return;
+        }
+        const resultUserInfo = await client.query({
+            query: FETCH_USER_LOGGED_IN,
+            context: {
+                headers: {
+                    Authorization: `Bearer ${accessToken}`,
+                },
+            },
+        });
+        const userInfo = resultUserInfo.data?.fetchUserLoggedIn;
+        setAccessToken(accessToken || "");
+        setUserInfo(userInfo || {});
+        setIsLogout("로그인")
 
-    //     Modal.success({ content: `${userInfo.nickname}님 환영합니다.` });
-    //     router.push("/");
-    // } catch (error) {
-    //     if (error instanceof Error) Modal.error({ content: Error });
-    //     console.log(error)
-    // }
+        Modal.success({ content: `${userInfo.nickname}님 환영합니다.` });
+        router.push("/");
+    } catch (error) {
+        if (error instanceof Error) Modal.error({ content: error });
+        console.log(error)
+    }
 };
   return (
     <LoginUI 
-    Controller = { Controller }
     control = { control } 
     onClickLogin = { onClickLogin } 
     handleSubmit = { handleSubmit } 

@@ -3,18 +3,15 @@ import { ButtonHTMLAttributes } from "react"
 
 export interface INormalButtonContainerProps {
     title: string
-    type?: "button" | "submit" | "reset" | undefined
-    isActive: boolean
     color: string
+    onClick: () => void
 }
 export interface INormalButtonUIProps {
     title: string
-    type?: "button" | "submit" | "reset" | undefined
-    isActive: boolean
     color: string
+    onClick: () => void
 }
 
 export interface INormalButtonStylesProps {
-    isActive: boolean
     color: string
 }
