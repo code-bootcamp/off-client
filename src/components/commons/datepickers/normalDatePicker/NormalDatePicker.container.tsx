@@ -10,6 +10,11 @@ export default function NormalDatePicker(props: INormalDatePickerProps) {
       };
 
     return (
-        <NormalDatePickerUI placeholder = { props.placeholder } disabledDate = { disabledDate } />
+        <NormalDatePickerUI 
+        name = { props.name }
+        control = { props.control }
+        placeholder = { props.placeholder } 
+        disabledDate = { disabledDate } 
+        />
     )
 }

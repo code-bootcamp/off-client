@@ -19,10 +19,13 @@ const schema = yup.object({
 export default function Login() {
   const router = useRouter();
   const client = useApolloClient();
+
   const [accessToken, setAccessToken] = useRecoilState(accessTokenState);
   const [userInfo, setUserInfo] = useRecoilState(userInfoState);
   const [isLogout, setIsLogout] = useRecoilState(isLogoutState)
+
   const [login] = useMutation<Pick<IMutation,"login">,IMutationLoginArgs>(LOGIN);
+  
   const { control, handleSubmit, formState } = useForm({
     resolver: yupResolver(schema),
     mode: "onChange"
