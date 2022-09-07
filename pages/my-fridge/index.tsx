@@ -229,15 +229,15 @@ export default function myFridgePage() {
     // const [userInfo, setUserInfo] = useRecoilState(userInfoState)
     const client = useApolloClient()
 
-    const resultUserInfo = client.query({
-        query: FETCH_USER_LOGGED_IN,
-        context: {
-          headers: {
-            Authorization: `Bearer ${accessToken}`,
-          },
-        },
-      });
-      console.log(resultUserInfo)
+    // const resultUserInfo = client.query({
+    //     query: FETCH_USER_LOGGED_IN,
+    //     context: {
+    //       headers: {
+    //         Authorization: `Bearer ${accessToken}`,
+    //       },
+    //     },
+    //   });
+    //   console.log(resultUserInfo)
 
     useEffect(() => {
         setProductList(JSON.parse(localStorage.getItem("productList") || "[]"))
