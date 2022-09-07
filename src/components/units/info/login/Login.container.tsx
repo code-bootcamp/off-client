@@ -23,12 +23,13 @@ export default function Login() {
   const [userInfo, setUserInfo] = useRecoilState(userInfoState);
   const [isLogout, setIsLogout] = useRecoilState(isLogoutState)
   const [login] = useMutation<Pick<IMutation,"login">,IMutationLoginArgs>(LOGIN);
-  const { register, handleSubmit, formState } = useForm({
+  const { control, handleSubmit, formState } = useForm({
     resolver: yupResolver(schema),
     mode: "onChange"
   })
-  console.log(formState.errors)
+  console.log(formState.isValid)
   const onClickLogin = async (data:any) => {
+      console.log("control",data)
     try {
         const result = await login({
             variables: {...data},
@@ -60,5 +61,5 @@ export default function Login() {
         console.log(error)
     }
 };
-  return <LoginUI register={register} onClickLogin={onClickLogin} handleSubmit={handleSubmit} formState={formState}/>;
+  return <LoginUI control={control} onClickLogin={onClickLogin} handleSubmit={handleSubmit} formState={formState}/>;
 }

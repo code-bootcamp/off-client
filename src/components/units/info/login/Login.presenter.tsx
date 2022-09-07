@@ -2,6 +2,7 @@ import NormalButton from "../../../commons/buttons/normalButton/normalButton.con
 import NormalInput from "../../../commons/inputs/normalInput/NormalInput.container";
 import { Title, Wrapper, Form, RowBox, HelpLink, TitleInfo, FormRow, FormCol, LoginWrapper } from "./Login.styles";
 import { ILoginUIProps } from "./Login.types";
+import { Controller } from "react-hook-form";
 
 export default function LoginUI(props: ILoginUIProps) {
   return(
@@ -12,17 +13,17 @@ export default function LoginUI(props: ILoginUIProps) {
         <Form onSubmit={props.handleSubmit(props.onClickLogin)}>
           <FormRow>
             <FormCol xs = { 24 } sm = { 24 } md = { 24 } lg = { 24 } xl = { 24 }>
-              <NormalInput type="text" placeholder = '아이디' register={props.register("email")}/>
+              <NormalInput  control={props.control} type="text" placeholder="아이디"/>
             </FormCol>
           </FormRow>
           <FormRow>
             <FormCol xs = { 24 } sm = { 24 } md = { 24 } lg = { 24 } xl = { 24 }>
-              <NormalInput type="password" placeholder = '비밀번호' register={props.register("password")}/>
+              <NormalInput control={props.control} type="password" placeholder = '비밀번호'/>
             </FormCol>
           </FormRow>
           <FormRow>
             <FormCol xs = { 24 } sm = { 24 } md = { 24 } lg = { 24 } xl = { 24 }>
-              <NormalButton type="submit" isActive={props.formState.isValid} title="로그인"/>
+              <NormalButton type="submit" isActive={props.formState.isValid} title="로그인" color="blue"/>
             </FormCol>
           </FormRow>
         </Form>
