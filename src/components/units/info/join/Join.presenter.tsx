@@ -51,13 +51,13 @@ export default function JoinUI(props: IJoinUIProps) {
                     </FormRow>
                     <FormRow gutter={30}>
                         <FormCol xs = { 18 } sm = { 19 } md = { 19 } lg = { 19 } xl = { 20 }>
-                            <NormalInput name = "authNum" type="text" placeholder = '인증번호' control = { props.control } />
+                            <NormalInput name = "token" type="text" placeholder = '인증번호' control = { props.control } />
                         </FormCol>
                         <FormCol xs = { 6 } sm = { 5 } md = { 5 } lg = { 5 } xl = { 4 }>
-                            <NormalButton title = "확인" color = {"blue"} onClick = {() => {}} />
+                            <NormalButton title = "확인" color = {"blue"} onClick = { props.onClickCheckValidToken } disabled={!props.isGetToken}/>
                         </FormCol>
                     </FormRow>
-                    <NormalButton title = "회원가입하기" color = {"blue"} onClick = { props.handleSubmit(props.onClickSubmit) } />
+                    <NormalButton title = "회원가입하기" color = {"blue"} onClick = { props.handleSubmit(props.onClickSubmit) } disabled={ props.formState.isValid&&props.isCheckToken ? false : true }/>
             </Form>
         </Wrapper>
     )

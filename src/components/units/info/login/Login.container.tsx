@@ -2,7 +2,7 @@ import { useApolloClient, useMutation } from "@apollo/client";
 import { useRouter } from "next/router";
 import { useForm } from "react-hook-form";
 import { useRecoilState } from "recoil";
-import { accessTokenState, userInfoState, isLogoutState } from "../../../../commons/store";
+import { accessTokenState, userInfoState, isLogoutState, isLoadedState } from "../../../../commons/store";
 import { IMutation, IMutationLoginArgs } from "../../../../commons/types/generated/types";
 import LoginUI from "./Login.presenter";
 import { FETCH_USER_LOGGED_IN, LOGIN } from "./Login.queries";
@@ -23,9 +23,10 @@ export default function Login() {
   const [accessToken, setAccessToken] = useRecoilState(accessTokenState);
   const [userInfo, setUserInfo] = useRecoilState(userInfoState);
   const [isLogout, setIsLogout] = useRecoilState(isLogoutState)
+  const [isLoaded, setIsLoaded] = useRecoilState(isLoadedState)
 
   const [login] = useMutation<Pick<IMutation,"login">,IMutationLoginArgs>(LOGIN);
-  
+
   const { control, handleSubmit, formState } = useForm({
     resolver: yupResolver(schema),
     mode: "onChange"
@@ -58,6 +59,7 @@ export default function Login() {
         const userInfo = resultUserInfo.data?.fetchUserLoggedIn;
         setAccessToken(accessToken || "");
         setUserInfo(userInfo || {});
+        setIsLoaded(true)
         setIsLogout("로그인")
 
         Modal.success({ content: `${userInfo.nickname}님 환영합니다.` });
@@ -68,10 +70,10 @@ export default function Login() {
     }
 };
   return (
-    <LoginUI 
-    control = { control } 
-    onClickLogin = { onClickLogin } 
-    handleSubmit = { handleSubmit } 
+    <LoginUI
+    control = { control }
+    onClickLogin = { onClickLogin }
+    handleSubmit = { handleSubmit }
     formState = { formState } />
   )
 }
