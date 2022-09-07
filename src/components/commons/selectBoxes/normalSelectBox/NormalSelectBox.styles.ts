@@ -21,16 +21,16 @@ export const NormalSelectBox = styled(Select)`
         border-radius: 8px!important;
         height: 0.7rem!important;
         @media (min-width: ${B.bigTablet}px) and (max-width: ${B.noteBook - 1}px) {
-            height: 0.9rem!important;
-        }
-        @media (min-width: ${B.smallTablet}px) and (max-width: ${B.bigTablet - 1}px) {
             height: 1.1rem!important;
         }
+        @media (min-width: ${B.smallTablet}px) and (max-width: ${B.bigTablet - 1}px) {
+            height: 1.4rem!important;
+        }
         @media (min-width: ${B.mobile}px) and (max-width: ${B.smallTablet - 1}px) {
-            height: 1.3rem!important;
+            height: 1.7rem!important;
         }
         @media (max-width: ${B.mobile - 1}px) {
-            height: 1.5rem!important;
+            height: 2.2rem!important;
         }
         span {
             font-weight: bold!important;
@@ -38,48 +38,48 @@ export const NormalSelectBox = styled(Select)`
                 input {
                     height: 0.7rem!important;
                     @media (min-width: ${B.bigTablet}px) and (max-width: ${B.noteBook - 1}px) {
-                        height: 0.9rem!important;
-                    }
-                    @media (min-width: ${B.smallTablet}px) and (max-width: ${B.bigTablet - 1}px) {
                         height: 1.1rem!important;
                     }
+                    @media (min-width: ${B.smallTablet}px) and (max-width: ${B.bigTablet - 1}px) {
+                        height: 1.4rem!important;
+                    }
                     @media (min-width: ${B.mobile}px) and (max-width: ${B.smallTablet - 1}px) {
-                        height: 1.3rem!important;
+                        height: 1.7rem!important;
                     }
                     @media (max-width: ${B.mobile - 1}px) {
-                        height: 1.5rem!important;
+                        height: 2.2rem!important;
                     }
                 }
             }
             &.ant-select-selection-item {
                 line-height: 0.7rem!important;
                 @media (min-width: ${B.bigTablet}px) and (max-width: ${B.noteBook - 1}px) {
-                    line-height: 0.9rem!important;
-                }
-                @media (min-width: ${B.smallTablet}px) and (max-width: ${B.bigTablet - 1}px) {
                     line-height: 1.1rem!important;
                 }
+                @media (min-width: ${B.smallTablet}px) and (max-width: ${B.bigTablet - 1}px) {
+                    line-height: 1.4rem!important;
+                }
                 @media (min-width: ${B.mobile}px) and (max-width: ${B.smallTablet - 1}px) {
-                    line-height: 1.3rem!important;
+                    line-height: 1.7rem!important;
                 }
                 @media (max-width: ${B.mobile - 1}px) {
-                    line-height: 1.5rem!important;
+                    line-height: 2.2rem!important;
                 }
             }
             &.ant-select-selection-placeholder {
                 color: ${B.lightGrayColor}!important;
                 line-height: 0.7rem!important;
                 @media (min-width: ${B.bigTablet}px) and (max-width: ${B.noteBook - 1}px) {
-                    line-height: 0.9rem!important;
-                }
-                @media (min-width: ${B.smallTablet}px) and (max-width: ${B.bigTablet - 1}px) {
                     line-height: 1.1rem!important;
                 }
+                @media (min-width: ${B.smallTablet}px) and (max-width: ${B.bigTablet - 1}px) {
+                    line-height: 1.4rem!important;
+                }
                 @media (min-width: ${B.mobile}px) and (max-width: ${B.smallTablet - 1}px) {
-                    line-height: 1.3rem!important;
+                    line-height: 1.7rem!important;
                 }
                 @media (max-width: ${B.mobile - 1}px) {
-                    line-height: 1.5rem!important;
+                    line-height: 2.2rem!important;
                 }
             }
         }

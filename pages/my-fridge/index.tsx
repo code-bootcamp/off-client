@@ -1,15 +1,16 @@
 import styled from '@emotion/styled'
 import { useEffect, useState } from 'react'
-// import { DragDropContext, Droppable, Draggable } from 'react-beautiful-dnd'
+import { DragDropContext, Droppable, Draggable } from 'react-beautiful-dnd'
 import { Row, Col, Modal } from 'antd';
 import * as B from '../../src/commons/styles/basic'
+import { useForm } from "react-hook-form";
+import * as yup from "yup"
+import { yupResolver } from "@hookform/resolvers/yup"
 import NormalInput from '../../src/components/commons/inputs/normalInput/NormalInput.container';
 import NormalDatePicker from '../../src/components/commons/datepickers/normalDatePicker/NormalDatePicker.container';
 import NormalSelectBox from '../../src/components/commons/selectBoxes/normalSelectBox/NormalSelectBox.container';
-import { gql, useApolloClient } from '@apollo/client';
-import { useRecoilState } from 'recoil';
-import { accessTokenState, userInfoState } from '../../src/commons/store';
-
+import NormalButton from '../../src/components/commons/buttons/normalButton/normalButton.container';
+import Error from '../../src/components/commons/error';
 
 const Wrapper = styled.div`
     width: 80%;
@@ -161,7 +162,7 @@ const WriteModal = styled(Modal)`
         div.ant-modal-header {
             border-radius: 20px!important;
             border-bottom: none!important;
-            padding: 0.5rem!important;
+            padding: 0.5rem 0.5rem 0 0.5rem!important;
             div.ant-modal-title {
                 font-size: ${B.deskTopFontSizeSmall}rem!important;
                 color: ${B.blackColor}!important;
@@ -181,13 +182,16 @@ const WriteModal = styled(Modal)`
             }
         }
         div.ant-modal-body {
-            padding: 0.5rem!important;
+            padding: 0.5rem 0.5rem!important;
         }
     }
 `
 
 const FormRow = styled(Row)`
     margin-bottom: 0.5rem;
+    &.margin-reset {
+        margin-bottom: 0!important;
+    }
     @media (min-width: ${B.mobile}px) and (max-width: ${B.smallTablet - 1}px) {
         margin-bottom: 0;
     }
@@ -212,32 +216,24 @@ const CATEGORY = [
     { name: "테스트4", value: "test4" },
 ]
 
-const FETCH_USER_LOGGED_IN = gql`
-    query fetchUserLoggedIn {
-        fetchUserLoggedIn {
-            nickname
-        }
-    }
-`
+const schema = yup.object({
+    name: yup.string().required("상품명은 필수입니다"),
+    price: yup.number().required("가격은 필수입니다"),
+    expDate: yup.string().required("유효기간 설정은 필수입니다"),
+    alarm: yup.string().required("유효기간임박 설정은 필수입니다"),
+    category: yup.string().required("카테고리는 필수입니다")
+})
 
 export default function myFridgePage() {
 
     const [productList, setProductList] = useState([])
     const [isChange, setIsChange] = useState(false)
     const [isWriteModalOpen, setIsWriteModalOpen] = useState(false)
-    const [accessToken] = useRecoilState(accessTokenState)
-    // const [userInfo, setUserInfo] = useRecoilState(userInfoState)
-    const client = useApolloClient()
 
-    // const resultUserInfo = client.query({
-    //     query: FETCH_USER_LOGGED_IN,
-    //     context: {
-    //       headers: {
-    //         Authorization: `Bearer ${accessToken}`,
-    //       },
-    //     },
-    //   });
-    //   console.log(resultUserInfo)
+    const { control, handleSubmit, formState } = useForm({
+        resolver: yupResolver(schema),
+        mode: "onChange"
+    })
 
     useEffect(() => {
         setProductList(JSON.parse(localStorage.getItem("productList") || "[]"))
@@ -251,38 +247,53 @@ export default function myFridgePage() {
         setIsWriteModalOpen(false)
     }
 
+    const onClickCreateProduct = (data: any) => {
+        console.log(data)
+    }
+
     return (
         <Wrapper>
             <WriteModal title = "상품 등록하기"
             visible = { isWriteModalOpen }
-            onCancel = { onClickCancelWriteModal }
             footer = { null }
             maskClosable = { false }>
                 <form>
                     <FormRow gutter={20}>
                         <FormCol xs = { 24 } sm = { 24 } md = { 12 } lg = { 12 } xl = { 12 }>
-                            <NormalInput type = 'text' placeholder = '상품명을 입력해주세요' />
+                            <NormalInput name = "name" type = 'text' placeholder = '상품명을 입력해주세요' control = { control } />
+                            <Error message = { formState.errors.name?.message } />
                         </FormCol>
                         <FormCol xs = { 24 } sm = { 24 } md = { 12 } lg = { 12 } xl = { 12 }>
-                            <NormalInput type = 'text' placeholder = '가격을 입력해주세요' />
+                            <NormalInput name = "price" type = 'text' placeholder = '가격을 입력해주세요' control = { control } />
+                            <Error message = { formState.errors.price?.message } />
                         </FormCol>
                     </FormRow>
                     <FormRow gutter={20}>
                         <FormCol xs = { 24 } sm = { 24 } md = { 24 } lg = { 24 } xl = { 24 }>
-                            <NormalSelectBox placeholder = '카테고리를 선택해주세요' category = { CATEGORY } />
+                            <NormalSelectBox name = "category" placeholder = '카테고리를 선택해주세요' category = { CATEGORY } control = { control } />
+                            <Error message = { formState.errors.category?.message } />
                         </FormCol>
                     </FormRow>
                     <FormRow gutter={20}>
                         <FormCol xs = { 24 } sm = { 24 } md = { 12 } lg = { 12 } xl = { 12 }>
-                            <NormalDatePicker placeholder = '유효기간을 설정해주세요' />
+                            <NormalDatePicker name = "expDate" placeholder = '유효기간을 설정해주세요' control = { control } />
+                            <Error message = { formState.errors.expDate?.message } />
                         </FormCol>
                         <FormCol xs = { 24 } sm = { 24 } md = { 12 } lg = { 12 } xl = { 12 }>
-                            <NormalDatePicker placeholder = '유효기간 임박일을 설정해주세요' />
+                            <NormalDatePicker name = "alarm" placeholder = '유효기간 임박일을 설정해주세요' control = { control } />
+                            <Error message = { formState.errors.alarm?.message } />
+                        </FormCol>
+                    </FormRow>
+                    <FormRow gutter={20} className = "margin-reset">
+                        <FormCol xs = { 24 } sm = { 24 } md = { 12 } lg = { 12 } xl = { 12 }>
+                            <NormalButton title = '등록' color = 'blue' onClick = { handleSubmit(onClickCreateProduct) } />
+                        </FormCol>
+                        <FormCol xs = { 24 } sm = { 24 } md = { 12 } lg = { 12 } xl = { 12 }>
+                            <NormalButton title = '취소' color = 'red' onClick = { onClickCancelWriteModal } />
                         </FormCol>
                     </FormRow>
                 </form>
             </WriteModal>
-            <Row gutter={30}><Col xs = { 24 } sm = { 24 } md = { 24 } lg = { 24 } xl = { 24 }><Title>{"냉장고"}</Title></Col></Row>
             <Row gutter={30}>
                 <Col xs = { 24 } sm = { 24 } md = { 24 } lg = { 12 } xl = { 12 }>
                     <ListWrapper>
