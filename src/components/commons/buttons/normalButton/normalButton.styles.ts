@@ -3,8 +3,9 @@ import * as B from "../../../../commons/styles/basic"
 import { INormalButtonStylesProps } from "./normalButton.types";
 
 export const NormalButton = styled.button`
-    display: block!important;;
+    display: block!important;
     width: 100%;
+    height: 0.7rem!important;
     border: 1px solid
         ${(props:INormalButtonStylesProps)=>{
         if(props.color==="blue"){
@@ -15,7 +16,6 @@ export const NormalButton = styled.button`
             return B.strongGrayColor
         }
     }};
-    border-radius: 8px;
     background-color: ${(props:INormalButtonStylesProps)=>{
         if(props.color==="blue"){
             return B.mainColor
@@ -25,9 +25,6 @@ export const NormalButton = styled.button`
             return B.whiteColor
         }
     }};
-    padding: 0.2rem 0;
-    font-weight: bold;
-    font-size: ${B.deskTopFontSizeMicro}rem;
     color: ${(props:INormalButtonStylesProps)=>{
         if(props.color==="blue"){
             return B.whiteColor
@@ -37,27 +34,25 @@ export const NormalButton = styled.button`
             return B.strongGrayColor
         }
     }};
+    border-radius: 8px;
+    padding: 0;
+    font-weight: bold;
+    font-size: ${B.deskTopFontSizeMicro}rem;
     cursor: pointer;
-
-    &:active{
-        opacity: 70%;
-        transition: 250ms;
-    }
-
     @media (min-width: ${B.bigTablet}px) and (max-width: ${B.noteBook - 1}px) {
-        padding: 0.26rem 0;
+        height: 0.9rem!important;
         font-size: ${B.noteBookFontSizeMicro}rem;
     }
     @media (min-width: ${B.smallTablet}px) and (max-width: ${B.bigTablet - 1}px) {
-        padding: 0.32rem 0;
+        height: 1.1rem!important;
         font-size: ${B.bigTabletFontSizeMicro}rem;
     }
     @media (min-width: ${B.mobile}px) and (max-width: ${B.smallTablet - 1}px) {
-        padding: 0.42rem 0;
+        height: 1.3rem!important;
         font-size: ${B.smallTabletFontSizeMicro}rem;
     }
     @media (max-width: ${B.mobile - 1}px) {
-        padding: 0.55rem 0;
+        height: 1.5rem!important;
         font-size: ${B.mobileFontSizeMicro}rem;
     }
 `

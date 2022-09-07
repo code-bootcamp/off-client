@@ -7,6 +7,7 @@ import * as B from "../../../../commons/styles/basic"
 export const Wrapper = styled.div`
     width: 50%;
     margin: 0 auto;
+    padding: 1rem 0;
     @media (min-width: ${B.bigTablet}px) and (max-width: ${B.noteBook - 1}px) {
         width: 58%;
     }
@@ -71,60 +72,6 @@ export const TitleInfo = styled.p`
 
 export const Form = styled.form`
     width: 100%;
-`
-
-export const RowBox = styled.div`
-    display: flex;
-    justify-content: center;
-    width: 100%;
-    font-weight: 500;
-    span {
-        margin-right: 0.2rem;
-        font-size: ${B.deskTopFontSizeMicro}rem;
-        color: ${B.mainColor};
-        @media (min-width: ${B.bigTablet}px) and (max-width: ${B.noteBook - 1}px) {
-            margin-right: 0.26rem;
-            font-size: ${B.noteBookFontSizeMicro}rem;
-        }
-        @media (min-width: ${B.smallTablet}px) and (max-width: ${B.bigTablet - 1}px) {
-            margin-right: 0.32rem;
-            font-size: ${B.bigTabletFontSizeMicro}rem;
-        }
-        @media (min-width: ${B.mobile}px) and (max-width: ${B.smallTablet - 1}px) {
-            margin-right: 0.42rem;
-            font-size: ${B.smallTabletFontSizeMicro}rem;
-        }
-        @media (max-width: ${B.mobile - 1}px) {
-            margin-right: 0.55rem;
-            font-size: ${B.mobileFontSizeMicro}rem;
-        }
-    }
-    a {
-        font-size: ${B.deskTopFontSizeMicro}rem;
-        text-decoration: underline;
-        color: ${B.mainColor};
-        @media (min-width: ${B.bigTablet}px) and (max-width: ${B.noteBook - 1}px) {
-            font-size: ${B.noteBookFontSizeMicro}rem;
-        }
-        @media (min-width: ${B.smallTablet}px) and (max-width: ${B.bigTablet - 1}px) {
-            font-size: ${B.bigTabletFontSizeMicro}rem;
-        }
-        @media (min-width: ${B.mobile}px) and (max-width: ${B.smallTablet - 1}px) {
-            font-size: ${B.smallTabletFontSizeMicro}rem;
-        }
-        @media (max-width: ${B.mobile - 1}px) {
-            font-size: ${B.mobileFontSizeMicro}rem;
-        }
-    };
-    input {
-        &:first-of-type{
-            margin-right: 0.25rem;
-        }
-    }
-    button{
-        width: 20%;
-        font-weight: 400;
-    }
 `
 
 export const HelpLink = styled(Link)`
