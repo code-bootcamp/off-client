@@ -24,42 +24,49 @@ export default function Login() {
   const [isLogout, setIsLogout] = useRecoilState(isLogoutState)
   const [login] = useMutation<Pick<IMutation,"login">,IMutationLoginArgs>(LOGIN);
   const { control, handleSubmit, formState } = useForm({
-    resolver: yupResolver(schema),
+    // resolver: yupResolver(schema),
     mode: "onChange"
   })
-  console.log(formState.isValid)
-  const onClickLogin = async (data:any) => {
-      console.log("control",data)
-    try {
-        const result = await login({
-            variables: {...data},
-        });
-        const accessToken = result.data?.login;
-        if (!accessToken) {
-            Modal.error({
-                content: "로그인에 실패하였습니다. 다시 시도해주세요.",
-            });
-            return;
-        }
-        const resultUserInfo = await client.query({
-            query: FETCH_USER_LOGGED_IN,
-            context: {
-                headers: {
-                    Authorization: `Bearer ${accessToken}`,
-                },
-            },
-        });
-        const userInfo = resultUserInfo.data?.fetchUserLoggedIn;
-        setAccessToken(accessToken || "");
-        setUserInfo(userInfo || {});
-        setIsLogout("로그인")
 
-        Modal.success({ content: `${userInfo.nickname}님 환영합니다.` });
-        router.push("/");
-    } catch (error) {
-        if (error instanceof Error) Modal.error({ content: Error });
-        console.log(error)
-    }
+  const onClickLogin = (data:any) => {
+    console.log(data)
+    // try {
+    //     const result = await login({
+    //         variables: {...data},
+    //     });
+    //     const accessToken = result.data?.login;
+    //     if (!accessToken) {
+    //         Modal.error({
+    //             content: "로그인에 실패하였습니다. 다시 시도해주세요.",
+    //         });
+    //         return;
+    //     }
+    //     const resultUserInfo = await client.query({
+    //         query: FETCH_USER_LOGGED_IN,
+    //         context: {
+    //             headers: {
+    //                 Authorization: `Bearer ${accessToken}`,
+    //             },
+    //         },
+    //     });
+    //     const userInfo = resultUserInfo.data?.fetchUserLoggedIn;
+    //     setAccessToken(accessToken || "");
+    //     setUserInfo(userInfo || {});
+    //     setIsLogout("로그인")
+
+    //     Modal.success({ content: `${userInfo.nickname}님 환영합니다.` });
+    //     router.push("/");
+    // } catch (error) {
+    //     if (error instanceof Error) Modal.error({ content: Error });
+    //     console.log(error)
+    // }
 };
-  return <LoginUI control={control} onClickLogin={onClickLogin} handleSubmit={handleSubmit} formState={formState}/>;
+  return (
+    <LoginUI 
+    Controller = { Controller }
+    control = { control } 
+    onClickLogin = { onClickLogin } 
+    handleSubmit = { handleSubmit } 
+    formState = { formState } />
+  )
 }

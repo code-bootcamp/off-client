@@ -10,15 +10,26 @@ export default function LoginUI(props: ILoginUIProps) {
       <Wrapper>
         <Title>로그인</Title>
         <TitleInfo>다양한 서비스 이용을 위해 로그인이 필요합니다.</TitleInfo>
-        <Form onSubmit={props.handleSubmit(props.onClickLogin)}>
+        <Form onSubmit = { props.handleSubmit(props.onClickLogin) }>
           <FormRow>
             <FormCol xs = { 24 } sm = { 24 } md = { 24 } lg = { 24 } xl = { 24 }>
-              <NormalInput  control={props.control} type="text" placeholder="아이디"/>
+              <Controller 
+              name = "email"
+              control = { props.control }
+              render={({ field }) => (
+                <NormalInput />
+              )} />
             </FormCol>
           </FormRow>
           <FormRow>
             <FormCol xs = { 24 } sm = { 24 } md = { 24 } lg = { 24 } xl = { 24 }>
-              <NormalInput control={props.control} type="password" placeholder = '비밀번호'/>
+              {/* <Controller  
+              as = { <NormalInput /> } 
+              type = "password"
+              name = "password"
+              control = { props.control }
+              placeholder = "비밀번호를 입력해주세요"
+              /> */}
             </FormCol>
           </FormRow>
           <FormRow>
