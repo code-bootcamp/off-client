@@ -25,13 +25,14 @@ export default function LayoutHeader() {
     const onClickLogout = async () => {
         try {
             await logout()
-            setIsAccessToken("")
             setIsLogin(false)
+            setIsAccessToken("")
             setMenuVisible(false)
         } catch {
             message.error("로그아웃에 실패하셨습니다")
         }
     }
+    console.log("로그아웃후",isLogin,accessToken)
 
     return (
         <LayoutHeaderUI

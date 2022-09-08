@@ -12,7 +12,8 @@ export const withAuth = (Component:any) => (props:any) => {
 
 
     useEffect(() => {
-        if (isLogin && !accessToken) {
+        console.log(isLogin,accessToken)
+        if (!isLogin && !accessToken) {
             message.error("로그인 후 이용 가능합니다!");
             router.push("/info/login");
         }
