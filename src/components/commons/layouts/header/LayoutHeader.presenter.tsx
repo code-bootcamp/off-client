@@ -20,13 +20,13 @@ import { useRecoilState } from "recoil";
 
 
 const HEADER_MENUS_NO_LOGIN = [
-    { name: "마이 냉장고", page: "/" },
+    { name: "마이 냉장고", page: "/my-fridge" },
     { name: "나눔 마켓", page: "/market" },
     { name: "로그인", page: "/info/login" },
     { name: "회원가입", page: "/info/join" },
 ]
 const HEADER_MENUS_LOGIN = [
-    { name: "마이 냉장고", page: "/" },
+    { name: "마이 냉장고", page: "/my-fridge" },
     { name: "나눔 마켓", page: "/market" },
     { name: "로그아웃", page: "/", },
 
