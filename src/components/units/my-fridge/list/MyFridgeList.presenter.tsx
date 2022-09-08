@@ -8,6 +8,8 @@ import { FormCol, FormRow, ListAddBtn, ListBody, ListImgBox, ListInfoBox, ListIt
 import { IMyFridgeListUIProps } from "./MyFridgeList.types"
 import { DragDropContext, Droppable, Draggable } from 'react-beautiful-dnd'
 import { CATEGORY } from "../../../../commons/libraries/siteConfig"
+import { v4 as uuidv4 } from 'uuid'
+
 
 
 export default function MyFridgeListUI(props: IMyFridgeListUIProps) {
@@ -60,7 +62,7 @@ export default function MyFridgeListUI(props: IMyFridgeListUIProps) {
                         <SubTitle>목록</SubTitle>
                         <ListBody>
                             { props.productList.map((el: any) => (
-                                <ListItem>
+                                <ListItem key = { uuidv4() }>
                                     <Row gutter={20}>
                                         <Col span = { 10 }>
                                             <ListImgBox>

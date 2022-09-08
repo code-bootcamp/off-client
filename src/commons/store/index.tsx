@@ -7,21 +7,10 @@ export const accessTokenState = atom({
 
 export const userInfoState = atom({
     key: "userInfoState",
-    default: {
-        id: "",
-        email: "",
-        name: "",
-        nickname: "",
-        phone: ""
-    }
+    default: {}
 });
 
-export const isLoadedState = atom({
-    key: "isLoadedState",
+export const isLoginState = atom({
+    key: "isLoginState",
     default: false,
 });
-
-export const isLogoutState = atom({
-    key: "isLogoutState",
-    default: "로그아웃",
-})

@@ -6,7 +6,7 @@ const RESTORE_ACCESS_TOKEN = gql`
     }
 `
 export async function getAccessToken(){
-    try{
+    try {
         const graphQLClient = new GraphQLClient(
             "https://freshfridge.shop/graphql",
             { credentials: "include" }
@@ -14,8 +14,7 @@ export async function getAccessToken(){
         const result = await graphQLClient.request(RESTORE_ACCESS_TOKEN)
         const newAccessToken = result.restoreAccessToken
         return newAccessToken
-    }catch(error){
-        if(error instanceof Error)
-        console.log("에러",error.message)
+    } catch(error){
+        
     }
 }
