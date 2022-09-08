@@ -16,8 +16,8 @@ const schema = yup.object().shape({
     passwordRe: yup.string().oneOf([yup.ref('password'),null],"비밀번호가 일치하지 않습니다."),
     name: yup.string().required("이름을 입력해주세요."),
     nickname: yup.string().required("닉네임을 입력해주세요"),
-    phone: yup.string().matches(/^\d{3}\d{3,4}\d{4}$/,"올바른 전화번호 형식이 아닙니다.").required("전화번호를 입력해주세요"),
-    // token: yup.string().required("인증을받아주세요")
+    phone: yup.string().matches(/^\d{3}\d{4}\d{4}$/,"올바른 전화번호 형식이 아닙니다.").required("전화번호를 입력해주세요"),
+    token: yup.string().required("인증을받아주세요")
 });
 
 export default function JoinContainer() {
@@ -55,16 +55,15 @@ export default function JoinContainer() {
     }
 
     const onClickGetToken = async () => {
-        if(getValues("phone") && getValues("phone").match(/^\d{3}\d{3,4}\d{4}$/)) {
+        if(getValues("phone") && getValues("phone").match(/^\d{3}\d{4}\d{4}$/)) {
             try {
                 const result = await getToken({
                     variables: {
                         phone: getValues("phone")
                     }
                 })
-                console.log(result)
                 message.success(`${result.data?.getToken}`)
-                if(result.data?.getToken==="인증번호를 전송했습니다."){
+                if(result.data?.getToken === "인증번호를 전송했습니다."){
                     setIsGetToken(true)
                 }
             } catch(error) {
@@ -77,17 +76,14 @@ export default function JoinContainer() {
     }
 
     const onClickCheckValidToken = async () => {
-
-            console.log(getValues("token"))
             try {
-                console.log("인증번호 API 전")
                 const result = await checkValidToken({
                     variables: {
                         phone: getValues("phone"),
                         token: getValues("token")
                     }
                 })
-                if(result.data?.checkValidToken==="true"){
+                if(result.data?.checkValidToken === "true"){
                     setIsCheckToken(true)
                 }
             } catch(error) {
