@@ -2,13 +2,13 @@ import { useApolloClient, useMutation } from "@apollo/client";
 import { useRouter } from "next/router";
 import { useForm } from "react-hook-form";
 import { useRecoilState } from "recoil";
-import { accessTokenState, userInfoState, isLogoutState, isLoadedState } from "../../../../commons/store";
+import { accessTokenState, userInfoState, isLoginState } from "../../../../commons/store";
 import { IMutation, IMutationLoginArgs } from "../../../../commons/types/generated/types";
 import LoginUI from "./Login.presenter";
 import { FETCH_USER_LOGGED_IN, LOGIN } from "./Login.queries";
 import * as yup from "yup"
 import { yupResolver } from "@hookform/resolvers/yup"
-import { Modal } from "antd";
+import { message, Modal } from "antd";
 
 
 const schema = yup.object({
@@ -20,10 +20,9 @@ export default function Login() {
   const router = useRouter();
   const client = useApolloClient();
 
-  const [accessToken, setAccessToken] = useRecoilState(accessTokenState);
-  const [userInfo, setUserInfo] = useRecoilState(userInfoState);
-  const [isLogout, setIsLogout] = useRecoilState(isLogoutState)
-  const [isLoaded, setIsLoaded] = useRecoilState(isLoadedState)
+  const [accessToken1, setAccessToken] = useRecoilState(accessTokenState);
+  const [userInfo2, setUserInfo] = useRecoilState(userInfoState);
+  const [isLogin, setIsLogin] = useRecoilState(isLoginState)
 
   const [login] = useMutation<Pick<IMutation,"login">,IMutationLoginArgs>(LOGIN);
 
@@ -41,13 +40,6 @@ export default function Login() {
             }
         })
         const accessToken = result.data?.login;
-        console.log(accessToken)
-        if (!accessToken) {
-            Modal.error({
-                content: "로그인에 실패하였습니다. 다시 시도해주세요.",
-            });
-            return;
-        }
         const resultUserInfo = await client.query({
             query: FETCH_USER_LOGGED_IN,
             context: {
@@ -56,17 +48,15 @@ export default function Login() {
                 },
             },
         });
-        const userInfo = resultUserInfo.data?.fetchUserLoggedIn;
-        setAccessToken(accessToken || "");
-        setUserInfo(userInfo || {});
-        setIsLoaded(true)
-        setIsLogout("로그인")
-
-        Modal.success({ content: `${userInfo.nickname}님 환영합니다.` });
+        const userInfo = resultUserInfo.data?.fetchUserLoggedIn
+        // recoilState에 담을때 한번에 안담기는 모습나옴!!
+        setAccessToken(accessToken as string)
+        setUserInfo(userInfo)
+        setIsLogin(true)
+        message.success("로그인에 성공하셨습니다")
         router.push("/");
     } catch (error) {
-        if (error instanceof Error) Modal.error({ content: error });
-        console.log(error)
+        message.error("로그인에 실패하였습니다. 다시 시도해주세요")
     }
 };
   return (

@@ -15,7 +15,7 @@ import
 from "./LayoutHeader.styles";
 import { ILayoutHeaderUIProps } from "./LayoutHeader.types";
 import { v4 as uuidv4 } from 'uuid'
-import { accessTokenState, isLoadedState, isLogoutState } from "../../../../commons/store";
+import { accessTokenState, isLoginState } from "../../../../commons/store";
 import { useRecoilState } from "recoil";
 
 
@@ -34,9 +34,8 @@ const HEADER_MENUS_LOGIN = [
 
 export default function LayoutHeaderUI(props: ILayoutHeaderUIProps) {
     const [accessToken, setAccessToken] = useRecoilState(accessTokenState)
-    const [isLoaded, setIsLoaded] = useRecoilState(isLoadedState);
-    const [isLogout, setIsLogout] = useRecoilState(isLogoutState);
-    console.log("토큰상태: ",accessToken,"load상태: ",isLoaded,"logout상태: ",isLogout)
+    const [isLogin, setIsLogin] = useRecoilState(isLoginState);
+
     return (
         <Header>
             <HeaderAlignBox>
@@ -49,9 +48,9 @@ export default function LayoutHeaderUI(props: ILayoutHeaderUIProps) {
                     <MenuIcon onClick = { props.onClickOpenMenu } />
                     <MenuDrawer visible = { props.menuVisible } placement = "right" onClose = { props.onClickCloseMenu }>
                         <MenuWrapper>
-                            {isLoaded&&accessToken&&(isLogout==="로그인") ? (
+                            { isLogin && accessToken ? (
                                 HEADER_MENUS_LOGIN.map(el => (
-                                    <MenuItem key = { uuidv4() } onClick = { props.onClickCloseMenu }>
+                                    <MenuItem key = { uuidv4() } onClick = { el.name === "로그아웃" ? props.onClickLogout : props.onClickCloseMenu }>
                                         <MenuLink href = { el.page }>
                                             <a>{ el.name }</a>
                                         </MenuLink>

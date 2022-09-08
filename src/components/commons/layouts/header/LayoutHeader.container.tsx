@@ -1,44 +1,44 @@
 import { MouseEvent, SyntheticEvent, useState } from "react";
 import LayoutHeaderUI from "./LayoutHeader.presenter";
-import { accessTokenState, isLoadedState, isLogoutState } from "../../../../commons/store";
+import { accessTokenState, isLoginState } from "../../../../commons/store";
 import { useRecoilState, useResetRecoilState } from "recoil";
-import { useApolloClient } from "@apollo/client";
+import { useApolloClient, useMutation } from "@apollo/client";
 import { LOGOUT } from "./LayoutHeader.queries";
+import { IMutation } from "../../../../commons/types/generated/types";
+import { message } from "antd";
 
 export default function LayoutHeader() {
     const [menuVisible, setMenuVisible] = useState(false)
-    const [accessToken, setAccessToken] = useRecoilState(accessTokenState)
-    const [isLogout, setIsLogout] = useRecoilState(isLogoutState)
-    const resetIsLoaded = useResetRecoilState(isLoadedState)
-    const resetAccessToken = useResetRecoilState(accessTokenState)
-    const client = useApolloClient()
+    const [accessToken, setIsAccessToken] = useRecoilState(accessTokenState)
+    const [isLogin, setIsLogin] = useRecoilState(isLoginState)
+
+    const [logout] = useMutation<Pick<IMutation, "logout">>(LOGOUT)
 
     const onClickOpenMenu = () => {
         setMenuVisible(true)
     }
 
-    const onClickCloseMenu = async(event: {target: InnerHTML}) => {
+    const onClickCloseMenu = () => {
         setMenuVisible(false)
-        const name = (event.target.innerHTML)
-        if( name === "로그아웃" ){
-                const result = await client.mutate({
-                    mutation: LOGOUT,
-                    context: {
-                        headers: {
-                            Authorization: `Bearer ${accessToken}`
-                        }
-                    }
-            })
-            setIsLogout(result.data.logout)
-            resetAccessToken()
-            resetIsLoaded()
+    }
+
+    const onClickLogout = async () => {
+        try {
+            await logout()
+            setIsAccessToken("")
+            setIsLogin(false)
+            setMenuVisible(false)
+        } catch {
+            message.error("로그아웃에 실패하셨습니다")
         }
     }
+
     return (
         <LayoutHeaderUI
         menuVisible = { menuVisible }
         onClickOpenMenu = { onClickOpenMenu }
         onClickCloseMenu = { onClickCloseMenu }
+        onClickLogout = { onClickLogout }
         />
     )
 }
