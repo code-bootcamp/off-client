@@ -2,6 +2,10 @@
 import * as B from './basic'
 import styled from '@emotion/styled'
 import { Drawer } from 'antd';
+import Slider from 'react-slick';
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
+
 
 export const MenuDrawer = styled(Drawer)`
     div.ant-drawer-content-wrapper {
@@ -63,3 +67,7 @@ export const MenuDrawer = styled(Drawer)`
     }
 `
 
+export const SliderCol = styled(Slider)`
+    text-align: center;
+    width: 50%;
+`
