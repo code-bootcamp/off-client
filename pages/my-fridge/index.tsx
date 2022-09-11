@@ -1,10 +1,10 @@
 import { withAuth } from "../../src/components/commons/hocs/withAuth";
 import MyFridgeList from "../../src/components/units/my-fridge/list/MyFridgeList.container";
 
-function myFridgePage() {
+export default function myFridgePage() {
 
     return (
         <MyFridgeList />
     )
 }
-export default withAuth(myFridgePage)
+// export default withAuth(myFridgePage)

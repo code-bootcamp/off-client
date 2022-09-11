@@ -9,4 +9,7 @@ export interface IMyFridgeListUIProps{
     onClickShowWriteModal: () => void
     onClickCancelWriteModal: () => void
     onClickCreateProduct: (data: any) => void
+    onDragEnd: (result: any, columns: any, setColumns: any) => void
+    columns: any
+    setColumns: any
 }

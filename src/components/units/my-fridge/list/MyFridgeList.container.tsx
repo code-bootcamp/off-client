@@ -2,6 +2,7 @@ import MyFridgeListUI from "./MyFridgeList.presenter";
 import { useEffect, useState } from 'react'
 import { useForm } from "react-hook-form";
 import { message } from 'antd';
+import { v4 as uuidv4 } from 'uuid'
 import * as yup from "yup"
 import { yupResolver } from "@hookform/resolvers/yup"
 import { getDate } from '../../../../../src/commons/libraries/utils';
@@ -14,19 +15,114 @@ const schema = yup.object({
     category: yup.string().required("카테고리는 필수입니다")
 })
 
+const testData = [
+    {
+        id: "test1",
+        category: "test1",
+        price: 3000,
+        name: "물고기",
+        alarm: "2022-09-19",
+        expDate: "2022-09-21",
+    },
+    {
+        id: "test2",
+        category: "test2",
+        price: 5000,
+        name: "야채",
+        alarm: "2022-09-19",
+        expDate: "2022-09-21",
+    },
+    {
+        id: "test3",
+        category: "test3",
+        price: 7000,
+        name: "육류",
+        alarm: "2022-09-19",
+        expDate: "2022-09-21",
+    },
+    {
+        id: "test4",
+        category: "test4",
+        price: 9000,
+        name: "유제품",
+        alarm: "2022-09-19",
+        expDate: "2022-09-21",
+    },
+]
+
 export default function MyFridgeList() {
+
     const [productList, setProductList] = useState([])
     const [isCreate, setIsCreate] = useState(false)
     const [isWriteModalOpen, setIsWriteModalOpen] = useState(false)
+    const [winReady, setWinReady] = useState(false)
 
-    const { control, handleSubmit, formState, reset } = useForm({
-        resolver: yupResolver(schema),
-        mode: "onChange"
+    useEffect(() => {
+        setWinReady(true)
     })
 
     useEffect(() => {
         setProductList(JSON.parse(localStorage.getItem("productList") || "[]"))
     }, [isCreate])
+
+    const columnsList = {
+        [uuidv4()]: {
+            name: "목록",
+            items: testData
+        },
+        [uuidv4()]: {
+            name: "냉동",
+            items: []
+        },
+        [uuidv4()]: {
+            name: "냉장",
+            items: []
+        }
+    }
+
+    const [columns, setColumns] = useState(columnsList)
+
+    const onDragEnd = (result: any, columns: any, setColumns: any) => {
+        if(!result.destination) return
+        const { source, destination} = result
+
+        if(source.droppableId !== destination.droppableId) {
+            const sourceColumn = columns[source.droppableId]
+            const destColumn = columns[destination.droppableId];
+            const sourceItems = [...sourceColumn.items];
+            const destItems = [...destColumn.items];
+            const [removed] = sourceItems.splice(source.index, 1)
+            destItems.splice(destination.index, 0, removed)
+            setColumns({
+                ...columns,
+                [source.droppableId]: {
+                    ...sourceColumn,
+                    items: sourceItems
+                },
+                [destination.droppableId]: {
+                    ...destColumn,
+                    items: destItems
+                }
+            })
+        } else {
+            const column = columns[source.droppableId]
+            const copiedItems = [...column.items]
+            const [removed] = copiedItems.splice(source.index, 1)
+            copiedItems.splice(destination.index, 0, removed)
+            setColumns({
+                ...columns,
+                [source.droppableId]: {
+                    ...column,
+                    items: copiedItems
+                }
+            })
+        }
+    }
+
+    const { control, handleSubmit, formState, reset } = useForm({
+        resolver: yupResolver(schema),
+        mode: "onChange"
+    })
 
     const onClickShowWriteModal = () => {
         setIsWriteModalOpen(true)
@@ -51,6 +147,7 @@ export default function MyFridgeList() {
 
     return (
         <MyFridgeListUI 
+        winReady = { winReady }
         productList = { productList }
         isWriteModalOpen = { isWriteModalOpen } 
         formState = { formState }
@@ -59,6 +156,9 @@ export default function MyFridgeList() {
         onClickShowWriteModal = { onClickShowWriteModal }
         onClickCancelWriteModal = { onClickCancelWriteModal }
         onClickCreateProduct = { onClickCreateProduct }
+        onDragEnd = { onDragEnd }
+        columns = { columns }
+        setColumns = { setColumns }
         />
     )
 }

@@ -6,15 +6,20 @@ import NormalSelectBox from "../../../commons/selectBoxes/normalSelectBox/Normal
 import { Row, Col } from 'antd'
 import { FormCol, FormRow, ListAddBtn, ListBody, ListImgBox, ListInfoBox, ListItem, ListWrapper, SubTitle, Wrapper, WriteModal } from "./MyFridgeList.styles"
 import { IMyFridgeListUIProps } from "./MyFridgeList.types"
-import { DragDropContext, Droppable, Draggable } from 'react-beautiful-dnd'
 import { CATEGORY } from "../../../../commons/libraries/siteConfig"
 import { v4 as uuidv4 } from 'uuid'
+import { DragDropContext, Droppable, Draggable } from 'react-beautiful-dnd'
+
 
 
 
 export default function MyFridgeListUI(props: IMyFridgeListUIProps) {
+    console.log(props.columns)
+
     return (
-        <Wrapper>
+        <>
+            { props.winReady ? 
+            <Wrapper>
             <WriteModal title = "상품 등록하기"
             visible = { props.isWriteModalOpen }
             footer = { null }
@@ -57,89 +62,61 @@ export default function MyFridgeListUI(props: IMyFridgeListUIProps) {
                 </form>
             </WriteModal>
             <Row gutter={30}>
-                <Col xs = { 24 } sm = { 24 } md = { 24 } lg = { 12 } xl = { 12 }>
-                    <ListWrapper>
-                        <SubTitle>목록</SubTitle>
-                        <ListBody>
-                            { props.productList.map((el: any) => (
-                                <ListItem key = { uuidv4() }>
-                                    <Row gutter={20}>
-                                        <Col span = { 10 }>
-                                            <ListImgBox>
-                                                <img src='/images/food.jpeg' alt = "img" />
-                                            </ListImgBox>
-                                        </Col>
-                                        <Col span = { 14 }>
-                                            <ListInfoBox>
-                                                <div>
-                                                    <p className = 'category'>{ el.category }</p>
-                                                    <p className = 'name'>{ el.name }</p>
+                <DragDropContext onDragEnd = { result => props.onDragEnd(result, props.columns, props.setColumns) }>
+                    { Object.entries(props.columns).map(([ columnId, column]: any, index) => {
+                        return (
+                            <Col xs = { 24 } sm = { 24 } md = { 24 } lg = { 8 } xl = { 8 } key = { columnId }>
+                                <ListWrapper>
+                                    <SubTitle>{ column.name }</SubTitle>
+                                    <Droppable droppableId = { columnId } key = { columnId }>
+                                        {(provided, snapshot) => {
+                                            return (
+                                                <div {...provided.droppableProps} ref = {provided.innerRef}>
+                                                    { column.items.map((item: any, index: any) => {
+                                                        return (
+                                                            <Draggable key = { item.id } draggableId = { item.id } index = { index }>
+                                                                {(provided, snapshot) => {
+                                                                    return (
+                                                                        <ListItem ref = { provided.innerRef } { ...provided.draggableProps } { ...provided.dragHandleProps }>
+                                                                            <Row gutter={20}>
+                                                                                <Col span = { 10 }>
+                                                                                    <ListImgBox>
+                                                                                        <img src='/images/food.jpeg' alt = "img" />
+                                                                                    </ListImgBox>
+                                                                                </Col>
+                                                                                <Col span = { 14 }>
+                                                                                    <ListInfoBox>
+                                                                                        <div>
+                                                                                            <p className = 'category'>{ item.category }</p>
+                                                                                            <p className = 'name'>{ item.name }</p>
+                                                                                        </div>
+                                                                                        <div>
+                                                                                            <p className = 'expiryDate'>{ item.expDate }</p>
+                                                                                        </div>
+                                                                                    </ListInfoBox>
+                                                                                </Col>
+                                                                            </Row>
+                                                                        </ListItem>
+                                                                    )
+                                                                }}
+                                                            </Draggable>
+                                                        )
+                                                    }) }
+                                                    { provided.placeholder }
                                                 </div>
-                                                <div>
-                                                    <p className = 'expiryDate'>{ el.expDate }</p>
-                                                </div>
-                                            </ListInfoBox>
-                                        </Col>
-                                    </Row>
-                                </ListItem>
-                            )) }
-                        </ListBody>
-                        <ListAddBtn onClick = { props.onClickShowWriteModal }>클릭하여 상품 추가하기 +</ListAddBtn>
-                    </ListWrapper>
-                </Col>
-                <Col xs = { 24 } sm = { 24 } md = { 24 } lg = { 12 } xl = { 12 }>
-                    <ListWrapper>
-                        <SubTitle>냉동</SubTitle>
-                        <ListBody>
-                            <ListItem>
-                                <Row gutter={20}>
-                                    <Col span = { 10 }>
-                                        <ListImgBox>
-                                            <img src='/images/food.jpeg' alt = "img" />
-                                        </ListImgBox>
-                                    </Col>
-                                    <Col span = { 14 }>
-                                        <ListInfoBox>
-                                            <div>
-                                                <p className = 'category'>카테고리</p>
-                                                <p className = 'name'>이름</p>
-                                            </div>
-                                            <div>
-                                                <p className = 'expiryDate'>유통기한</p>
-                                            </div>
-                                        </ListInfoBox>
-                                    </Col>
-                                </Row>
-                            </ListItem>
-                        </ListBody>
-                    </ListWrapper>
-                    <ListWrapper>
-                        <SubTitle>냉장</SubTitle>
-                        <ListBody>
-                            <ListItem>
-                                <Row gutter={20}>
-                                    <Col span = { 10 }>
-                                        <ListImgBox>
-                                            <img src='/images/food.jpeg' alt = "img" />
-                                        </ListImgBox>
-                                    </Col>
-                                    <Col span = { 14 }>
-                                        <ListInfoBox>
-                                            <div>
-                                                <p className = 'category'>카테고리</p>
-                                                <p className = 'name'>이름</p>
-                                            </div>
-                                            <div>
-                                                <p className = 'expiryDate'>유통기한</p>
-                                            </div>
-                                        </ListInfoBox>
-                                    </Col>
-                                </Row>
-                            </ListItem>
-                        </ListBody>
-                    </ListWrapper>
-                </Col>
+                                            )
+                                        }}
+                                    </Droppable>
+                                </ListWrapper>
+                            </Col>
+                        )
+                    }) }
+                </DragDropContext>
             </Row>
         </Wrapper>
+             : 
+             null 
+             }
+        </>
     )
 }
