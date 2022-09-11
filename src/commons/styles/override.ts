@@ -2,9 +2,13 @@
 import * as B from './basic'
 import styled from '@emotion/styled'
 import { Drawer } from 'antd';
-import Slider from 'react-slick';
-import "slick-carousel/slick/slick.css";
-import "slick-carousel/slick/slick-theme.css";
+// import Slider from 'react-slick';
+// import "slick-carousel/slick/slick.css";
+// import "slick-carousel/slick/slick-theme.css";
+import {Swiper,SwiperSlide} from 'swiper/react';
+// import 'swiper/swiper-bundle.css'
+// import 'swiper/swiper.min.css'
+
 
 
 export const MenuDrawer = styled(Drawer)`
@@ -67,7 +71,51 @@ export const MenuDrawer = styled(Drawer)`
     }
 `
 
-export const SliderCol = styled(Slider)`
-    text-align: center;
-    width: 50%;
+export const ColSwiper = styled(Swiper)`
+    .swiper{
+        width:8,75rem;
+        height: 6.25rem;
+    }
 `
+export const Slide = styled(SwiperSlide)`
+    img{
+        width: 3.75rem;
+        height: 4.75rem;
+    }
+`
+
+// export const ColSlider = styled(Slider)`
+//     width: 8.75rem;
+//     height: 6.25rem;
+//     /* margin: 0.2rem; */
+//     overflow: hidden;
+//     div > img {
+//         width: 3.75rem;
+//         height: 4.75rem;
+//     }
+//     .slick-track{
+
+//     }
+//     .slick-list{
+//         top: 10%;
+//         /* width: fit-content; */
+//         height: 100%;
+//     }
+//     .slide{
+//         position: absolute;
+//         transform: scale(0.8);
+//         transition: transform  300ms;
+//         /* opacity: 0.5 ; */
+
+//     }
+//     .slide.activeSlide{
+//         position: absolute;
+//         transform:  scale(1);
+//         transition: transform 300ms;
+//         /* opacity: 1; */
+//         z-index: 10;
+//     }
+//     .slick-slide.slick-active.slick-current{
+
+//     }
+// `
