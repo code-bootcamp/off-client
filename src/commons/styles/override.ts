@@ -6,8 +6,9 @@ import { Drawer } from 'antd';
 // import "slick-carousel/slick/slick.css";
 // import "slick-carousel/slick/slick-theme.css";
 import {Swiper,SwiperSlide} from 'swiper/react';
+import 'swiper/swiper.min.css';
+import 'swiper/swiper-bundle.min.css'
 // import 'swiper/swiper-bundle.css'
-// import 'swiper/swiper.min.css'
 
 
 
@@ -71,16 +72,92 @@ export const MenuDrawer = styled(Drawer)`
     }
 `
 
-export const ColSwiper = styled(Swiper)`
-    .swiper{
-        width:8,75rem;
-        height: 6.25rem;
+export const RowSwiper = styled(Swiper)`
+    .swiper-container {
+        width: 100%;
+        /* padding-top: 50px;
+        padding-bottom: 50px; */
+    }
+    .swiper-slide {
+        background-position: center;
+        background-size: cover;
+        width: 3.4rem;
+        height: fit-content;
+    }
+
+    .swiper-slide img {
+        display: block;
+        width: 100%;
+        height: fit-content;
+    }
+    @media (min-width: ${B.bigTablet}px) and (max-width: ${B.noteBook - 1}px) {
+        .swiper-slide {
+            width: 4.53rem;
+        }
+    }
+    @media (min-width: ${B.smallTablet}px) and (max-width: ${B.bigTablet - 1}px) {
+        .swiper-slide {
+            width: 5.44rem;
+        }
+    }
+    @media (min-width: ${B.mobile}px) and (max-width: ${B.smallTablet - 1}px) {
+        .swiper-slide {
+            width: 7rem;
+        }
+    }
+    @media (max-width: ${B.mobile - 1}px) {
+        .swiper-slide {
+            width: 6rem;
+        }
     }
 `
-export const Slide = styled(SwiperSlide)`
-    img{
-        width: 3.75rem;
-        height: 4.75rem;
+export const ColSwiper = styled(Swiper)`
+    width: 6rem;
+    .swiper-container {
+        width: 100%;
+        /* padding-top: 50px;
+        padding-bottom: 50px; */
+    }
+
+    .swiper-slide {
+        background-position: left;
+        background-size: cover;
+        width: 5rem;
+        height: fit-content;
+    }
+
+    .swiper-slide img {
+        display: block;
+        width: 100%;
+        height: fit-content;
+    }
+    @media (min-width: ${B.bigTablet}px) and (max-width: ${B.noteBook - 1}px) {
+        width: 8rem;
+        .swiper-slide {
+            width: 6.66rem;
+            height: fit-content;
+        }
+    }
+    @media (min-width: ${B.smallTablet}px) and (max-width: ${B.bigTablet - 1}px) {
+        width: 9.8rem;
+        .swiper-slide {
+            width: 8rem;
+            height: fit-content;
+        }
+    }
+    @media (min-width: ${B.mobile}px) and (max-width: ${B.smallTablet - 1}px) {
+        width: 12.63rem;
+        .swiper-slide {
+            width: 10.52rem;
+            height: fit-content;
+        }
+    }
+    @media (max-width: ${B.mobile - 1}px) {
+        width: 16.55rem;
+        .swiper-slide {
+            width: 13.79rem;
+            height: fit-content;
+        }
     }
 `
 

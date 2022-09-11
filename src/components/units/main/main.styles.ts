@@ -184,6 +184,9 @@ export const Circle = styled.div`
 export const IntroRow = styled(Row)`
 `
 export const IntroCol = styled(Col)`
+    display: flex;
+    justify-content: start;
+    align-items: center;
     /* border: 1px solid red; */
     width: 5.7rem;
     &:last-of-type{
@@ -296,6 +299,7 @@ export const Introduce1 = styled.section`
 export const Introduce2 = styled.section`
     position: absolute;
     top: calc(100vh + 5.9rem);
+    padding: 2rem;
     background-color: ${B.whiteColor};
     /* border: 1px solid black; */
     @media (min-width: ${B.bigTablet}px) and (max-width: ${B.noteBook - 1}px) {
