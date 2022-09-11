@@ -29,7 +29,7 @@ export default function MainUI() {
                 </p>
             </Introduce1>
             <Introduce2>
-                <IntroRow>
+                <IntroRow align="middle">
                     <IntroCol xl={{span:12}} lg={{span:12}} md={{span:12}} sm={{span:24}} xs={{span:24}}>
                         <p>
                             <span>유통기한이 다가오면</span>

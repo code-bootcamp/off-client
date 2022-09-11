@@ -184,6 +184,7 @@ export const Circle = styled.div`
 export const IntroRow = styled(Row)`
 `
 export const IntroCol = styled(Col)`
+    /* border: 1px solid red; */
     width: 5.7rem;
     &:last-of-type{
         width: 6.6rem;

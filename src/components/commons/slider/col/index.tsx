@@ -1,22 +1,47 @@
-import { SliderCol } from "../../../../commons/styles/override";
+import { useState } from "react";
+import { Slide, ColSwiper } from "../../../../commons/styles/override";
+import SwiperCore, { EffectCoverflow, Pagination } from "swiper/core";
 
+SwiperCore.use([EffectCoverflow, Pagination]);
+const images = ['/images/R고등어.png', '/images/R모둠채소.png', '/images/R삼겹살.png']
 export default function SlideCol() {
-    const settings = {
-        infinite: true,
-        slidesToShow: 3,
-        centerPadding: 0,
-        autoplay: true,
-        autoplaySpeed: 300,
-        pauseOnHover: true,
-        arrow: false,
-        dots: false,
-      };
+    // const [imageIndex, setImageIndex] = useState(0)
+
+    // const settings = {
+    //     dots: false,
+    //     arrow: false,
+    //     infinite: true,
+    //     slidesToShow: 3,
+    //     slidesToScroll: 1,
+    //     centerMode: true,
+    //     autoplay: true,
+    //     speed: 2000,
+    //     autoplaySpeed: 2000,
+    //     useCSS: true,
+    //     swipe: true,
+    //     beforeChange: (current, next)=>setImageIndex(next)
+    //   };
+    //   console.log(imageIndex)
+
+
     return(
-        <SliderCol {...settings}>
-            <div>1</div>
-            <div>2</div>
-            <div>3</div>
-            <div>4</div>
-        </SliderCol>
+        <ColSwiper
+            effect={"coverflow"}
+            grabCursor={true}
+            centeredSlides={true}
+            slidesPerView={"auto"}
+            coverflowEffect={{
+            rotate: 0,
+            stretch: 0,
+            depth: 200,
+            modifier: 5,
+            slideShadows: true
+            }}
+            pagination={true}
+        >
+            {images.map((el,i)=>(
+                <Slide key={i}><img src={el}/></Slide>
+            ))}
+        </ColSwiper>
     )
 }
