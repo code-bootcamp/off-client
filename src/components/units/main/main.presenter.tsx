@@ -1,6 +1,7 @@
 
 import NormalButton from "../../commons/buttons/normalButton/normalButton.container";
 import SlideCol from "../../commons/slider/col";
+import SlideRow from "../../commons/slider/row";
 import { Circle, IntroCol, Introduce1, Introduce2, IntroRow, Main, MainCol, MainImgWrapper, MainRow, MainTitle, MainTitleWrapper, Phone, SubTitle } from "./main.styles";
 export default function MainUI() {
     return(
@@ -29,19 +30,21 @@ export default function MainUI() {
                 </p>
             </Introduce1>
             <Introduce2>
-                <IntroRow align="middle">
-                    <IntroCol xl={{span:12}} lg={{span:12}} md={{span:12}} sm={{span:24}} xs={{span:24}}>
+                <IntroRow align="middle" gutter={[20,20]}>
+                    <IntroCol xl={{span:12, order:1}} lg={{span:12, order:1}} md={{span:12, order:1}} sm={{span:24, order:1}} xs={{span:24, order:1}}>
                         <p>
                             <span>유통기한이 다가오면</span>
                             <span>OFF가 알려드릴게요</span>
                             <span>까먹기 쉬운 냉동, 냉장식품 유통기한<br/>입력해놓으시면 저희가 알려드려요.</span>
                         </p>
                     </IntroCol>
-                    <IntroCol xl={{span:12}} lg={{span:12}} md={{span:12}} sm={{span:24}} xs={{span:24}}>
+                    <IntroCol xl={{span:12, order:2}} lg={{span:12, order:2}} md={{span:12, order:2}} sm={{span:24, order:2}} xs={{span:24, order:2}}>
                         <SlideCol/>
                     </IntroCol>
-                    <IntroCol xl={{span:12}} lg={{span:12}} md={{span:12}} sm={{span:24}} xs={{span:24}}></IntroCol>
-                    <IntroCol xl={{span:12}} lg={{span:12}} md={{span:12}} sm={{span:24}} xs={{span:24}}>
+                    <IntroCol xl={{span:12, order:3}} lg={{span:12, order:3}} md={{span:12, order:3}} sm={{span:24, order:4}} xs={{span:24, order:4}}>
+                        <SlideRow/>
+                    </IntroCol>
+                    <IntroCol xl={{span:12, order:4}} lg={{span:12, order:4}} md={{span:12, order:4}} sm={{span:24, order:3}} xs={{span:24, order:3}}>
                         <p>
                             <span>안먹는 음식들</span>
                             <span>OFF에서 나눔해요.</span>
