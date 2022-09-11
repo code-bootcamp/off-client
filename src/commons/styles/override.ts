@@ -73,6 +73,7 @@ export const MenuDrawer = styled(Drawer)`
 `
 
 export const RowSwiper = styled(Swiper)`
+    width: 100%;
     .swiper-container {
         width: 100%;
         /* padding-top: 50px;
@@ -92,22 +93,22 @@ export const RowSwiper = styled(Swiper)`
     }
     @media (min-width: ${B.bigTablet}px) and (max-width: ${B.noteBook - 1}px) {
         .swiper-slide {
-            width: 4.53rem;
+            width: 3.4rem;
         }
     }
     @media (min-width: ${B.smallTablet}px) and (max-width: ${B.bigTablet - 1}px) {
         .swiper-slide {
-            width: 5.44rem;
+            width: 3.38rem;
         }
     }
     @media (min-width: ${B.mobile}px) and (max-width: ${B.smallTablet - 1}px) {
         .swiper-slide {
-            width: 7rem;
+            width: 5.4rem;
         }
     }
     @media (max-width: ${B.mobile - 1}px) {
         .swiper-slide {
-            width: 6rem;
+            width: 5.4rem;
         }
     }
 `
@@ -155,7 +156,7 @@ export const ColSwiper = styled(Swiper)`
     @media (max-width: ${B.mobile - 1}px) {
         width: 16.55rem;
         .swiper-slide {
-            width: 13.79rem;
+            width: 13rem;
             height: fit-content;
         }
     }
