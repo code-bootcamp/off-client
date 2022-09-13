@@ -6,6 +6,9 @@ import { v4 as uuidv4 } from 'uuid'
 import * as yup from "yup"
 import { yupResolver } from "@hookform/resolvers/yup"
 import { getDate } from '../../../../../src/commons/libraries/utils';
+import { useMutation, useQuery } from "@apollo/client"
+import { CREATE_FRIDGE_FOOD, FETCH_CATEGORY, FETCH_CREATED_FRIDGE_FOODS } from "./MyFridgeList.queries";
+import { IMutation, IMutationCreateFridgeFoodArgs } from "../../../../commons/types/generated/types";
 
 const schema = yup.object({
     name: yup.string().required("상품명은 필수입니다"),
@@ -52,42 +55,53 @@ const testData = [
 
 export default function MyFridgeList() {
 
-    const [productList, setProductList] = useState([])
-    const [isCreate, setIsCreate] = useState(false)
-    const [isWriteModalOpen, setIsWriteModalOpen] = useState(false)
-    const [winReady, setWinReady] = useState(false)
-
-    useEffect(() => {
-        setWinReady(true)
-    })
-
-    useEffect(() => {
-        setProductList(JSON.parse(localStorage.getItem("productList") || "[]"))
-    }, [isCreate])
-
-    const columnsList = {
-        [uuidv4()]: {
+    const columnData = {
+        ["createProductList"]: {
             isCreateBtn: true,
             name: "목록",
-            items: testData
+            items: []
         },
-        [uuidv4()]: {
+        ["frozenList"]: {
             isCreateBtn: false,
             name: "냉동",
             items: []
         },
-        [uuidv4()]: {
+        ["fridgeList"]: {
             isCreateBtn: false,
             name: "냉장",
             items: []
         }
     }
 
-    const [columns, setColumns] = useState(columnsList)
+    const [columns, setColumns] = useState(columnData)
+    const [productList, setProductList] = useState([])
+    const [isWriteModalOpen, setIsWriteModalOpen] = useState(false)
+    const [winReady, setWinReady] = useState(false)
+
+    const [createFridgeFood] = useMutation(CREATE_FRIDGE_FOOD)
+
+    const { data: dataFetchCreatedFridgeFood } = useQuery(FETCH_CREATED_FRIDGE_FOODS, { onCompleted(data) {
+        const _columns = {
+            ...columns,
+            ["createProductList"]: {
+                isCreateBtn: true,
+                name: "목록",
+                items: data.fetchCreatedFridgeFoods
+            }
+        }
+        setColumns(_columns)
+    }, })
+    const { data: dataCategory } = useQuery(FETCH_CATEGORY)
+
+    useEffect(() => {
+        setWinReady(true)
+    }, [])
+
+    console.log(columns)
 
     const onDragEnd = (result: any, columns: any, setColumns: any) => {
         if(!result.destination) return
-        const { source, destination} = result
+        const { source, destination } = result
 
         if(source.droppableId !== destination.droppableId) {
             const sourceColumn = columns[source.droppableId]
@@ -135,22 +149,36 @@ export default function MyFridgeList() {
         setIsWriteModalOpen(false)
     }
 
-    const onClickCreateProduct = (data: any) => {
-        const alarm = getDate(data.alarm)
-        const expDate = getDate(data.expDate)
-        const convertData = {...data, alarm, expDate}
-        
-        const productList = JSON.parse(localStorage.getItem("productList") || "[]")
-        setIsCreate((prev) => !prev)
-        productList.push(convertData)
-        localStorage.setItem("productList", JSON.stringify(productList))
-        setIsWriteModalOpen(false)
-        message.success("상품이 추가되었습니다")
+    const onClickCreateProduct = async (data: any) => {
+        const convertExpDate = getDate(data.expDate)
+        const convertAlarm = getDate(data.alarm)
+        try {
+            await createFridgeFood({
+                variables: {
+                    fridgeFoodInput: {
+                        name: data.name,
+                        price: data.price,
+                        expDate: convertExpDate,
+                        alarm: convertAlarm,
+                        category: data.category
+                    }
+                },
+                refetchQueries: [
+                    {
+                        query: FETCH_CREATED_FRIDGE_FOODS
+                    }
+                ]
+            })
+            setIsWriteModalOpen(false)
+        } catch(error) {
+            message.error("등록에 실패하셨습니다")
+        }
     }
 
     return (
         <MyFridgeListUI 
         winReady = { winReady }
+        category = { dataCategory }
         productList = { productList }
         isWriteModalOpen = { isWriteModalOpen } 
         formState = { formState }

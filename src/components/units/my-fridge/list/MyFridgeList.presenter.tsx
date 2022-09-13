@@ -6,12 +6,8 @@ import NormalSelectBox from "../../../commons/selectBoxes/normalSelectBox/Normal
 import { Row, Col } from 'antd'
 import { FormCol, FormRow, ListAddBtn, ListWrapper, SubTitle, Wrapper, WriteModal } from "./MyFridgeList.styles"
 import { IMyFridgeListUIProps } from "./MyFridgeList.types"
-import { CATEGORY } from "../../../../commons/libraries/siteConfig"
 import { DragDropContext } from 'react-beautiful-dnd'
 import MyFridgeListDroppable from "./MyFridgeListDroppable.presenter"
-
-
-
 
 export default function MyFridgeListUI(props: IMyFridgeListUIProps) {
     return (
@@ -35,7 +31,7 @@ export default function MyFridgeListUI(props: IMyFridgeListUIProps) {
                     </FormRow>
                     <FormRow gutter={20}>
                         <FormCol xs = { 24 } sm = { 24 } md = { 24 } lg = { 24 } xl = { 24 }>
-                            <NormalSelectBox name = "category" placeholder = '카테고리를 선택해주세요' category = { CATEGORY } control = { props.control } />
+                            <NormalSelectBox name = "category" placeholder = '카테고리를 선택해주세요' category = { props.category?.fetchCategory } control = { props.control } />
                             <Error message = { props.formState.errors.category?.message } />
                         </FormCol>
                     </FormRow>

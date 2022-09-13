@@ -2,6 +2,7 @@ import { FieldValues, FormState, UseFormHandleSubmit } from "react-hook-form";
 
 export interface IMyFridgeListUIProps {
     winReady: boolean
+    category: any
     productList: any
     isWriteModalOpen: boolean
     formState: FormState<FieldValues>
