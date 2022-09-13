@@ -39,16 +39,31 @@ export const Title = styled.h1`
 
 export const ListWrapper = styled.div`
     width: 100%;
+    box-shadow: 4px 10px 9px #00000030;
+    border-radius: 20px;
+    padding: 0.3rem;
+    ul, li {
+        list-style: none;
+    }
+    @media (min-width: ${B.mobile}px) and (max-width: ${B.smallTablet - 1}px) {
+        margin-bottom: 1rem;
+    }
+    @media (max-width: ${B.mobile - 1}px) {
+        margin-bottom: 1.5rem;
+    }
 `
 
 export const ListBody = styled.ul`
     width: 100%;
+    list-style: none;
 `
 
 export const SubTitle = styled.h2`
     font-size: ${B.deskTopFontSizeSmall}rem;
+    text-align: center;
     font-weight: bold;
     margin-bottom: 0.5rem;
+    color: ${B.mainColor};
     @media (min-width: ${B.bigTablet}px) and (max-width: ${B.noteBook - 1}px) {
         font-size: ${B.noteBookFontSizeSmall}rem;
     }
@@ -56,7 +71,7 @@ export const SubTitle = styled.h2`
         font-size: ${B.bigTabletFontSizeSmall}rem;
     }
     @media (min-width: ${B.mobile}px) and (max-width: ${B.smallTablet - 1}px) {
-        font-size: ${B.smallTabletFontSizeSmall}rem;
+        font-size: 1rem;
     }
     @media (max-width: ${B.mobile - 1}px) {
         font-size: ${B.mobileFontSizeSmall}rem;
@@ -64,51 +79,142 @@ export const SubTitle = styled.h2`
 `
 
 export const ListItem = styled.li`
-    display: flex;
+    list-style: none;
     box-shadow: 4px 10px 9px #00000014;
     border-radius: 20px;
     margin-bottom: 0.5rem;
-`
-
-export const ListImgBox = styled.div`
-    img {
-        border-radius: 20px 0 0 20px;
+    padding: 0.2rem;
+    @media (min-width: ${B.bigTablet}px) and (max-width: ${B.noteBook - 1}px) {
+        padding: 0.3rem;
+    }
+    @media (min-width: ${B.smallTablet}px) and (max-width: ${B.bigTablet - 1}px) {
+        padding: 0.35rem;
+    }
+    @media (min-width: ${B.mobile}px) and (max-width: ${B.smallTablet - 1}px) {
+        padding: 0.6rem;
+    }
+    @media (max-width: ${B.mobile - 1}px) {
+        padding: 0.75rem;
     }
 `
 
-export const ListInfoBox = styled.div`
+export const ListItemHeader = styled.div`
+    width: 100%;
     display: flex;
-    flex-direction: column;
     justify-content: space-between;
-    height: 100%;
-    padding: 0.15rem 0;
+    align-items: center;
+    margin-bottom: 0.2rem;
+    @media (min-width: ${B.mobile}px) and (max-width: ${B.smallTablet - 1}px) {
+        margin-bottom: 0.4rem;
+    }
+    @media (max-width: ${B.mobile - 1}px) {
+        margin-bottom: 0.5rem;
+    }
+    div {
+        display: flex;
+        align-items: center;
+        &.category-box {
+            span {
+                font-size: 0.25rem;
+                @media (min-width: ${B.bigTablet}px) and (max-width: ${B.noteBook - 1}px) {
+                    font-size: 0.3rem;
+                }
+                @media (min-width: ${B.smallTablet}px) and (max-width: ${B.bigTablet - 1}px) {
+                    font-size: 0.3rem;
+                }
+                @media (min-width: ${B.mobile}px) and (max-width: ${B.smallTablet - 1}px) {
+                    font-size: 0.6rem;
+                }
+                @media (max-width: ${B.mobile - 1}px) {
+                    font-size: 0.7rem;
+                }
+            }
+            svg {
+                font-size: 0.3rem;
+                margin-right: 0.15rem;
+                @media (min-width: ${B.bigTablet}px) and (max-width: ${B.noteBook - 1}px) {
+                    font-size: 0.4rem;
+                }
+                @media (min-width: ${B.smallTablet}px) and (max-width: ${B.bigTablet - 1}px) {
+                    font-size: 0.45rem;
+                }
+                @media (min-width: ${B.mobile}px) and (max-width: ${B.smallTablet - 1}px) {
+                    font-size: 0.75rem;
+                }
+                @media (max-width: ${B.mobile - 1}px) {
+                    font-size: 0.9rem;
+                }
+            }
+        }
+        &.btn-box {
+            svg {
+                font-size: 0.2rem;
+                color: ${B.lightGrayColor};
+                margin-left: 0.2rem;
+                cursor: pointer;
+                @media (min-width: ${B.bigTablet}px) and (max-width: ${B.noteBook - 1}px) {
+                    font-size: 0.25rem;
+                }
+                @media (min-width: ${B.smallTablet}px) and (max-width: ${B.bigTablet - 1}px) {
+                    font-size: 0.3rem;
+                    margin-left: 0.3rem;
+                }
+                @media (min-width: ${B.mobile}px) and (max-width: ${B.smallTablet - 1}px) {
+                    font-size: 0.5rem;
+                    margin-left: 0.5rem;
+                }
+                @media (max-width: ${B.mobile - 1}px) {
+                    font-size: 0.6rem;
+                    margin-left: 0.6rem;
+                }
+            }
+        }
+    }
+    span, svg {
+        display: block;
+    }
+`
+
+export const ListItemContent = styled.div`
     p {
-        font-size: ${B.deskTopFontSizeMicro}rem;
+        font-size: 0.3rem;
+        font-weight: bold;
         @media (min-width: ${B.bigTablet}px) and (max-width: ${B.noteBook - 1}px) {
-            font-size: ${B.noteBookFontSizeMicro}rem;
+            font-size: 0.35rem;
         }
         @media (min-width: ${B.smallTablet}px) and (max-width: ${B.bigTablet - 1}px) {
-            font-size: ${B.bigTabletFontSizeMicro}rem;
+            font-size: 0.35rem;
         }
         @media (min-width: ${B.mobile}px) and (max-width: ${B.smallTablet - 1}px) {
-            font-size: ${B.smallTabletFontSizeMicro}rem;
+            font-size: 0.8rem;
         }
         @media (max-width: ${B.mobile - 1}px) {
-            font-size: ${B.mobileFontSizeMicro}rem;
+            font-size: 0.9rem;
         }
-        &.category {
-            font-weight: bold;
-            padding-bottom: 0.1rem;
-        }
-        &.expiryDate {
-            color: ${B.mainColor};
+        &.expDate {
+            font-size: 0.2rem;
+            margin-top: 0.2rem;
+            text-align: right;
+            color: ${B.redColor};
+            @media (min-width: ${B.bigTablet}px) and (max-width: ${B.noteBook - 1}px) {
+                font-size: 0.3rem;
+            }
+            @media (min-width: ${B.smallTablet}px) and (max-width: ${B.bigTablet - 1}px) {
+                font-size: 0.3rem;
+            }
+            @media (min-width: ${B.mobile}px) and (max-width: ${B.smallTablet - 1}px) {
+                font-size: 0.5rem;
+            }
+            @media (max-width: ${B.mobile - 1}px) {
+                font-size: 0.6rem;
+            }
         }
     }
 `
 
 export const ListAddBtn = styled.button`
     width: 100%;
-    height: 2.3rem;
+    height: 1.6rem;
     color: ${B.mainColor};
     font-size: ${B.deskTopFontSizeMicro}rem;
     font-weight: bold;
@@ -119,11 +225,11 @@ export const ListAddBtn = styled.button`
     cursor: pointer;
     @media (min-width: ${B.bigTablet}px) and (max-width: ${B.noteBook - 1}px) {
         font-size: ${B.noteBookFontSizeMicro}rem;
-        height: 2.5rem;
+        height: 2rem;
     }
     @media (min-width: ${B.smallTablet}px) and (max-width: ${B.bigTablet - 1}px) {
         font-size: ${B.bigTabletFontSizeMicro}rem;
-        height: 4rem;
+        height: 2rem;
         margin-bottom: 2rem;
     }
     @media (min-width: ${B.mobile}px) and (max-width: ${B.smallTablet - 1}px) {

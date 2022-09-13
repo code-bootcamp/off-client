@@ -18,33 +18,33 @@ const schema = yup.object({
 const testData = [
     {
         id: "test1",
-        category: "test1",
-        price: 3000,
-        name: "물고기",
+        category: "육류",
+        price: 15000,
+        name: "돼지고기 등심",
         alarm: "2022-09-19",
         expDate: "2022-09-21",
     },
     {
         id: "test2",
-        category: "test2",
-        price: 5000,
-        name: "야채",
+        category: "채소류",
+        price: 4000,
+        name: "양파",
         alarm: "2022-09-19",
         expDate: "2022-09-21",
     },
     {
         id: "test3",
-        category: "test3",
+        category: "어패류",
         price: 7000,
-        name: "육류",
+        name: "고등어",
         alarm: "2022-09-19",
         expDate: "2022-09-21",
     },
     {
         id: "test4",
-        category: "test4",
-        price: 9000,
-        name: "유제품",
+        category: "유제품",
+        price: 2000,
+        name: "요구르트",
         alarm: "2022-09-19",
         expDate: "2022-09-21",
     },
@@ -67,14 +67,17 @@ export default function MyFridgeList() {
 
     const columnsList = {
         [uuidv4()]: {
+            isCreateBtn: true,
             name: "목록",
             items: testData
         },
         [uuidv4()]: {
+            isCreateBtn: false,
             name: "냉동",
             items: []
         },
         [uuidv4()]: {
+            isCreateBtn: false,
             name: "냉장",
             items: []
         }

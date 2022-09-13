@@ -5,7 +5,10 @@ import { resetStyles } from '../src/commons/styles/reset'
 import { Global } from '@emotion/react';
 import { RecoilRoot } from 'recoil'
 import ApolloSetting from '../src/components/commons/apollo';
+import { config } from '@fortawesome/fontawesome-svg-core'
+import '@fortawesome/fontawesome-svg-core/styles.css'
 
+config.autoAddCss = false
 
 function MyApp({ Component, pageProps }: AppProps) {
   return (
