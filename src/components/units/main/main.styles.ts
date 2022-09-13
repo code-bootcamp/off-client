@@ -189,6 +189,7 @@ export const IntroCol = styled(Col)`
     align-items: center;
     /* border: 1px solid red; */
     width: 5.7rem;
+    height: 6.25rem;
     &:last-of-type{
         width: 6.6rem;
     }
@@ -196,9 +197,16 @@ export const IntroCol = styled(Col)`
         display: block;
         font-weight: bold;
         font-size: ${B.deskTopFontSizeMiddle}rem;
+        margin-bottom: 0.23rem;
         &:nth-of-type(2){
             color: ${B.mainColor};
-            margin-bottom: 0.5rem;
+            margin-bottom: 0.4rem;
+        }
+        &:nth-of-type(3){
+            font-weight: 400;
+            font-size: ${B.deskTopFontSizeSmall}rem;
+            color: ${B.strongGrayColor};
+            margin-bottom: 0.11rem;
         }
         &:last-of-type{
             font-weight: 400;

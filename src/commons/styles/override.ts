@@ -2,13 +2,8 @@
 import * as B from './basic'
 import styled from '@emotion/styled'
 import { Drawer } from 'antd';
-// import Slider from 'react-slick';
-// import "slick-carousel/slick/slick.css";
-// import "slick-carousel/slick/slick-theme.css";
-import {Swiper,SwiperSlide} from 'swiper/react';
-import 'swiper/swiper.min.css';
-import 'swiper/swiper-bundle.min.css'
-// import 'swiper/swiper-bundle.css'
+import  ReactCardCarousel  from 'react-card-carousel'
+
 
 
 
@@ -72,128 +67,51 @@ export const MenuDrawer = styled(Drawer)`
     }
 `
 
-export const RowSwiper = styled(Swiper)`
-    width: 100%;
-    .swiper-container {
-        width: 100%;
-        /* padding-top: 50px;
-        padding-bottom: 50px; */
-    }
-    .swiper-slide {
-        background-position: center;
-        background-size: cover;
-        width: 3.4rem;
+export const ColSlide = styled(ReactCardCarousel)`
+    div{
+        width: 10rem!important;
         height: fit-content;
-    }
-
-    .swiper-slide img {
-        display: block;
-        width: 100%;
-        height: fit-content;
-    }
-    @media (min-width: ${B.bigTablet}px) and (max-width: ${B.noteBook - 1}px) {
-        .swiper-slide {
-            width: 3.4rem;
+        @media (min-width: ${B.bigTablet}px) and (max-width: ${B.noteBook - 1}px) {
+            width: 10rem!important;
+            height: fit-content;
+        }
+        @media (min-width: ${B.smallTablet}px) and (max-width: ${B.bigTablet - 1}px) {
+                width: 8rem;
+                height: fit-content;
+        }
+        @media (min-width: ${B.mobile}px) and (max-width: ${B.smallTablet - 1}px) {
+                width: 10.52rem;
+                height: fit-content;
+        }
+        @media (max-width: ${B.mobile - 1}px) {
+                width: 13rem;
+                height: fit-content;
         }
     }
-    @media (min-width: ${B.smallTablet}px) and (max-width: ${B.bigTablet - 1}px) {
-        .swiper-slide {
-            width: 3.38rem;
-        }
-    }
-    @media (min-width: ${B.mobile}px) and (max-width: ${B.smallTablet - 1}px) {
-        .swiper-slide {
-            width: 5.4rem;
-        }
-    }
-    @media (max-width: ${B.mobile - 1}px) {
-        .swiper-slide {
-            width: 5.4rem;
-        }
-    }
-`
-export const ColSwiper = styled(Swiper)`
-    width: 6rem;
-    .swiper-container {
-        width: 100%;
-        /* padding-top: 50px;
-        padding-bottom: 50px; */
-    }
-
-    .swiper-slide {
-        background-position: left;
-        background-size: cover;
+    img{
         width: 5rem;
         height: fit-content;
     }
-
-    .swiper-slide img {
-        display: block;
+`
+export const RowSlide = styled(ReactCardCarousel)`
+    img{
         width: 100%;
         height: fit-content;
-    }
-    @media (min-width: ${B.bigTablet}px) and (max-width: ${B.noteBook - 1}px) {
-        width: 8rem;
-        .swiper-slide {
-            width: 6.66rem;
+        @media (min-width: ${B.bigTablet}px) and (max-width: ${B.noteBook - 1}px) {
+            width: 3.4rem;
             height: fit-content;
         }
-    }
-    @media (min-width: ${B.smallTablet}px) and (max-width: ${B.bigTablet - 1}px) {
-        width: 9.8rem;
-        .swiper-slide {
-            width: 8rem;
-            height: fit-content;
+        @media (min-width: ${B.smallTablet}px) and (max-width: ${B.bigTablet - 1}px) {
+            width: 3.38rem;
+                height: fit-content;
         }
-    }
-    @media (min-width: ${B.mobile}px) and (max-width: ${B.smallTablet - 1}px) {
-        width: 12.63rem;
-        .swiper-slide {
-            width: 10.52rem;
-            height: fit-content;
+        @media (min-width: ${B.mobile}px) and (max-width: ${B.smallTablet - 1}px) {
+            width: 5.4rem;
+                height: fit-content;
         }
-    }
-    @media (max-width: ${B.mobile - 1}px) {
-        width: 16.55rem;
-        .swiper-slide {
-            width: 13rem;
-            height: fit-content;
+        @media (max-width: ${B.mobile - 1}px) {
+            width: 5.4rem;
+                height: fit-content;
         }
     }
 `
-
-// export const ColSlider = styled(Slider)`
-//     width: 8.75rem;
-//     height: 6.25rem;
-//     /* margin: 0.2rem; */
-//     overflow: hidden;
-//     div > img {
-//         width: 3.75rem;
-//         height: 4.75rem;
-//     }
-//     .slick-track{
-
-//     }
-//     .slick-list{
-//         top: 10%;
-//         /* width: fit-content; */
-//         height: 100%;
-//     }
-//     .slide{
-//         position: absolute;
-//         transform: scale(0.8);
-//         transition: transform  300ms;
-//         /* opacity: 0.5 ; */
-
-//     }
-//     .slide.activeSlide{
-//         position: absolute;
-//         transform:  scale(1);
-//         transition: transform 300ms;
-//         /* opacity: 1; */
-//         z-index: 10;
-//     }
-//     .slick-slide.slick-active.slick-current{
-
-//     }
-// `

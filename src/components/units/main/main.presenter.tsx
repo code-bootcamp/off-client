@@ -35,7 +35,8 @@ export default function MainUI() {
                         <p>
                             <span>유통기한이 다가오면</span>
                             <span>OFF가 알려드릴게요</span>
-                            <span>까먹기 쉬운 냉동, 냉장식품 유통기한<br/>입력해놓으시면 저희가 알려드려요.</span>
+                            <span>까먹기 쉬운 냉동, 냉장식품 유통기한</span>
+                            <span>입력해놓으시면 저희가 알려드려요.</span>
                         </p>
                     </IntroCol>
                     <IntroCol xl={{span:14, order:2}} lg={{span:14, order:2}} md={{span:14, order:2}} sm={{span:24, order:2}} xs={{span:24, order:2}}>
@@ -48,7 +49,8 @@ export default function MainUI() {
                         <p>
                             <span>안먹는 음식들</span>
                             <span>OFF에서 나눔해요.</span>
-                            <span>냉장고에서의 의미없이 방치되어있는<br/>음식 OFF나눔마켓에서 나눔해요.</span>
+                            <span>냉장고에서의 의미없이 방치되어있는</span>
+                            <span>음식 OFF나눔마켓에서 나눔해요.</span>
                         </p>
                     </IntroCol>
                 </IntroRow>
