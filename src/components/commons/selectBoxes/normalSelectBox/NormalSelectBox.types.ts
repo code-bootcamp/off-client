@@ -2,12 +2,12 @@ export interface INormalSelectBoxProps {
     name: string
     control: any
     placeholder: string
-    category: Array<any>
+    category: any
 }
 
 export interface INormalSelectBoxUIProps {
     name: string
     control: any
     placeholder: string
-    category: Array<any>
+    category: any
 }

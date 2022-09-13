@@ -9,7 +9,7 @@ export default function MyFridgeListDroppable(props: MyFridgeListDroppableProps)
             {(provided, snapshot) => {
                 return (
                     <div {...provided.droppableProps} ref = {provided.innerRef}>
-                        { props.column.items.map((item: any, index: any) => {
+                        { props.column.items?.map((item: any, index: any) => {
                             return (
                                 <MyFridgeListDraggable item = { item } index = { index } />
                             )

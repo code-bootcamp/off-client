@@ -3,6 +3,7 @@ import { MyFridgeListDraggableProps } from './MyFridgeList.types'
 import { ListItemHeader, ListItem, ListItemContent } from "./MyFridgeList.styles"
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faDrumstickBite, faPen, faXmark } from '@fortawesome/free-solid-svg-icons'
+import { getDate } from '../../../../commons/libraries/utils'
 
 export default function MyFridgeListDraggable(props: MyFridgeListDraggableProps) {
     return (
@@ -13,7 +14,7 @@ export default function MyFridgeListDraggable(props: MyFridgeListDraggableProps)
                         <ListItemHeader>
                             <div className = 'category-box'>
                                 <FontAwesomeIcon icon = { faDrumstickBite } />
-                                <span>{ props.item.category }</span>
+                                <span>{ props.item.category.name }</span>
                             </div>
                             <div className = 'btn-box'>
                                 <FontAwesomeIcon icon = { faPen } />
@@ -22,7 +23,7 @@ export default function MyFridgeListDraggable(props: MyFridgeListDraggableProps)
                         </ListItemHeader>
                         <ListItemContent>
                             <p>{ props.item.name }</p>
-                            <p className = 'expDate'>{ props.item.expDate } 까지</p>
+                            <p className = 'expDate'>{ getDate(props.item.expDate) } 까지</p>
                         </ListItemContent>
                     </ListItem>
                 )
