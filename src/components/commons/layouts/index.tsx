@@ -3,6 +3,7 @@ import styled from '@emotion/styled'
 import * as B from '../../../commons/styles/basic'
 import LayoutHeader from "./header/LayoutHeader.container";
 import LayoutFooter from "./footer/LayoutFooter.container";
+import { useRouter } from "next/router";
 
 interface ILayoutProps {
     children: ReactNode;
@@ -29,15 +30,17 @@ const LayoutBody = styled.div`
         padding-top: 2.5rem;
     }
 `
-
+const SHOW_FOOTER = ["/", "/info/login/", "/info/join/"]
 export default function Layout(props: ILayoutProps) {
+    const router = useRouter()
+    const isShowFooter = SHOW_FOOTER.includes(router.asPath)
     return (
         <LayoutWrapper>
             <LayoutHeader />
             <LayoutBody>
                 { props.children }
             </LayoutBody>
-            <LayoutFooter/>
+            { isShowFooter && <LayoutFooter/> }
         </LayoutWrapper>
     )
 }

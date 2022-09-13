@@ -23,7 +23,7 @@ export default function SlideCol() {
     return(
         <ReactCardCarousel alignment={'vertical'} spread={"wide"} disable_box_shadow={true} autoplay={true} autoplay_speed={2500}>
             {images.map((el,i)=>(
-                <Card><img src={el}/></Card>
+                <Card key={i}><img src={el}/></Card>
             ))}
         </ReactCardCarousel>
     )

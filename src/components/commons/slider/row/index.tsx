@@ -26,7 +26,7 @@ export default function SlideRow() {
     return(
         <ReactCardCarousel disable_box_shadow={true} spread={"wide"} autoplay={true} autoplay_speed={3000}>
             {images.map((el,i)=>(
-               <Card><img src={el}/></Card>
+               <Card key={i}><img src={el}/></Card>
             ))}
         </ReactCardCarousel>
     )
