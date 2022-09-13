@@ -2,7 +2,7 @@
 import * as B from './basic'
 import styled from '@emotion/styled'
 import { Drawer } from 'antd';
-import  ReactCardCarousel  from 'react-card-carousel'
+
 
 
 
@@ -63,55 +63,6 @@ export const MenuDrawer = styled(Drawer)`
                     }
                 }
             }
-        }
-    }
-`
-
-export const ColSlide = styled(ReactCardCarousel)`
-    div{
-        width: 10rem!important;
-        height: fit-content;
-        @media (min-width: ${B.bigTablet}px) and (max-width: ${B.noteBook - 1}px) {
-            width: 10rem!important;
-            height: fit-content;
-        }
-        @media (min-width: ${B.smallTablet}px) and (max-width: ${B.bigTablet - 1}px) {
-                width: 8rem;
-                height: fit-content;
-        }
-        @media (min-width: ${B.mobile}px) and (max-width: ${B.smallTablet - 1}px) {
-                width: 10.52rem;
-                height: fit-content;
-        }
-        @media (max-width: ${B.mobile - 1}px) {
-                width: 13rem;
-                height: fit-content;
-        }
-    }
-    img{
-        width: 5rem;
-        height: fit-content;
-    }
-`
-export const RowSlide = styled(ReactCardCarousel)`
-    img{
-        width: 100%;
-        height: fit-content;
-        @media (min-width: ${B.bigTablet}px) and (max-width: ${B.noteBook - 1}px) {
-            width: 3.4rem;
-            height: fit-content;
-        }
-        @media (min-width: ${B.smallTablet}px) and (max-width: ${B.bigTablet - 1}px) {
-            width: 3.38rem;
-                height: fit-content;
-        }
-        @media (min-width: ${B.mobile}px) and (max-width: ${B.smallTablet - 1}px) {
-            width: 5.4rem;
-                height: fit-content;
-        }
-        @media (max-width: ${B.mobile - 1}px) {
-            width: 5.4rem;
-                height: fit-content;
         }
     }
 `
