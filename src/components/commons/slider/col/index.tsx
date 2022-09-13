@@ -1,39 +1,17 @@
-import { ColSwiper } from "../../../../commons/styles/override";
-import { SwiperSlide } from 'swiper/react';
-import SwiperCore, { Autoplay, EffectCoverflow } from "swiper/core";
-import * as B from '../../../../commons/styles/basic'
+import styled from "@emotion/styled";
+import { ColSlide } from "../../../../commons/styles/override";
 
-SwiperCore.use([EffectCoverflow, Autoplay]);
 const images = ['/images/C군만두.png', '/images/C모둠채소.png', '/images/C스팸.png']
+const Card = styled.div`
+    width: 10rem;
+`
 export default function SlideCol() {
 
-
     return(
-        <ColSwiper
-            direction="vertical"
-            effect={"coverflow"}
-            grabCursor={true}
-            centeredSlides={true}
-            slidesPerView={3}
-            coverflowEffect={{
-                rotate: 0,
-                stretch: 0,
-                depth: 100,
-                modifier: 5,
-                slideShadows: false,
-            }}
-            autoplay={{
-                delay:2000,
-                disableOnInteraction: false,
-            }}
-            speed={1000}
-            // loop={true}
-            // loopedSlides={1}
-            pagination={false}
-        >
+        <ColSlide alignment={'vertical'} disable_box_shadow={true} autoplay={true} autoplay_speed={2000}>
             {images.map((el,i)=>(
-                <SwiperSlide key={i}><img src={el}/></SwiperSlide>
+                <Card><img src={el}/></Card>
             ))}
-        </ColSwiper>
+        </ColSlide>
     )
 }
