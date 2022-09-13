@@ -182,10 +182,33 @@ export const Circle = styled.div`
     }
     `
 export const IntroRow = styled(Row)`
+    #tc{
+        height: 3rem;
+        button{
+            width: 5rem!important;
+            height: 0.7rem!important;
+            @media (min-width: ${B.bigTablet}px) and (max-width: ${B.noteBook - 1}px) {
+                width: 6rem!important;
+                height: 0.8rem!important;
+            }
+            @media (min-width: ${B.smallTablet}px) and (max-width: ${B.bigTablet - 1}px) {
+                width: 9.4rem!important;
+                height: 1rem!important;
+            }
+            @media (min-width: ${B.mobile}px) and (max-width: ${B.smallTablet - 1}px) {
+                width: 11rem!important;
+                height: 1.2rem!important;
+            }
+            @media (max-width: ${B.mobile - 1}px) {
+                width: 12.63rem!important;
+                height: 1.5rem!important;
+            }
+        }
+    }
 `
 export const IntroCol = styled(Col)`
     display: flex;
-    justify-content: start;
+    justify-content: center;
     align-items: center;
     /* border: 1px solid red; */
     width: 5.7rem;
@@ -193,7 +216,7 @@ export const IntroCol = styled(Col)`
     &:last-of-type{
         width: 6.6rem;
     }
-    span {
+    #s> span {
         display: block;
         font-weight: bold;
         font-size: ${B.deskTopFontSizeMiddle}rem;
@@ -213,6 +236,113 @@ export const IntroCol = styled(Col)`
             font-size: ${B.deskTopFontSizeSmall}rem;
             color: ${B.strongGrayColor};
         }
+        @media (min-width: ${B.bigTablet}px) and (max-width: ${B.noteBook - 1}px) {
+            font-size: ${B.noteBookFontSizeMiddle}rem;
+            &:nth-of-type(2){
+                font-size: ${B.noteBookFontSizeMiddle}rem;
+            }
+            &:nth-of-type(3){
+                font-size: ${B.noteBookFontSizeSmall}rem;
+            }
+            &:last-of-type{
+                font-size: ${B.noteBookFontSizeSmall}rem;
+            }
+        }
+
+        @media (min-width: ${B.smallTablet}px) and (max-width: ${B.bigTablet - 1}px) {
+            font-size: ${B.bigTabletFontSizeMiddle}rem;
+            &:nth-of-type(2){
+                font-size: ${B.bigTabletFontSizeMiddle}rem;
+            }
+            &:nth-of-type(3){
+                font-weight: 400;
+                font-size: ${B.bigTabletFontSizeSmall}rem;
+
+                margin-bottom: 0.11rem;
+            }
+            &:last-of-type{
+            font-size: ${B.bigTabletFontSizeSmall}rem;
+            }
+        }
+        @media (min-width: ${B.mobile}px) and (max-width: ${B.smallTablet - 1}px) {
+            text-align: center;
+            font-size: ${B.smallTabletFontSizeMiddle}rem;
+            &:nth-of-type(2){
+                margin-bottom: 0.4rem;
+            }
+            &:nth-of-type(3){
+                font-weight: 400;
+                font-size: ${B.smallTabletFontSizeSmall}rem;
+
+                margin-bottom: 0.11rem;
+            }
+            &:last-of-type{
+            font-size: ${B.smallTabletFontSizeSmall}rem;
+            }
+        }
+        @media (max-width: ${B.mobile - 1}px) {
+            text-align: center;
+            font-size: ${B.mobileFontSizeMiddle}rem;
+            &:nth-of-type(2){
+                color: ${B.mainColor};
+                margin-bottom: 0.6rem;
+            }
+            &:nth-of-type(3){
+                font-weight: 400;
+                font-size: ${B.mobileFontSizeSmall}rem;
+                color: ${B.strongGrayColor};
+                margin-bottom: 0.11rem;
+            }
+            &:last-of-type{
+            font-size: ${B.mobileFontSizeSmall}rem;
+            }
+        }
+
+    }
+    #t> span {
+            display: block;
+            font-size: ${B.deskTopFontSizeMiddle}rem;
+            color: ${B.whiteColor};
+            &:first-of-type{
+                font-weight: bold;
+                margin-bottom: 0.2rem;
+            }
+            &:nth-of-type(2){
+                margin-bottom: 0.5rem;
+                color: ${B.whiteColor};
+            }
+            &:last-of-type{
+                font-size: ${B.deskTopFontSizeSmall}rem;
+                color: ${B.strongGrayColor};
+            }
+            @media (min-width: ${B.bigTablet}px) and (max-width: ${B.noteBook - 1}px) {
+                font-size: ${B.noteBookFontSizeMiddle}rem;
+                &:last-of-type{
+                font-size: ${B.noteBookFontSizeSmall}rem;
+                }
+            }
+
+            @media (min-width: ${B.smallTablet}px) and (max-width: ${B.bigTablet - 1}px) {
+                text-align: center;
+                font-size: ${B.bigTabletFontSizeMiddle}rem;
+                &:last-of-type{
+                font-size: ${B.bigTabletFontSizeSmall}rem;
+                }
+            }
+            @media (min-width: ${B.mobile}px) and (max-width: ${B.smallTablet - 1}px) {
+                text-align: center;
+                font-size: ${B.smallTabletFontSizeMiddle}rem;
+                &:last-of-type{
+                font-size: ${B.smallTabletFontSizeSmall}rem;
+                }
+            }
+            @media (max-width: ${B.mobile - 1}px) {
+                text-align: center;
+                font-size: ${B.mobileFontSizeMiddle}rem;
+                &:last-of-type{
+                font-size: ${B.mobileFontSizeSmall}rem;
+                }
+            }
     }
 `
 export const Introduce1 = styled.section`
@@ -307,9 +437,9 @@ export const Introduce1 = styled.section`
 export const Introduce2 = styled.section`
     position: absolute;
     top: calc(100vh + 5.9rem);
-    padding: 2rem;
+    padding: 1rem;
     background-color: ${B.whiteColor};
-    /* border: 1px solid black; */
+    /* border: 1px solid red; */
     @media (min-width: ${B.bigTablet}px) and (max-width: ${B.noteBook - 1}px) {
         top: calc(100vh + 6.34rem);
     }
@@ -322,5 +452,27 @@ export const Introduce2 = styled.section`
     @media (max-width: ${B.mobile - 1}px) {
         top: calc(31.03rem + 10.59rem);
     }
+`
+export const Introduce3 = styled.section`
+    position: absolute;
+    top: calc(100vh + 22.77rem);
+    width: 100%;
+    padding: 1rem;
+    background-color: ${B.blackColor};
+    border: 1px solid violet;
+    @media (min-width: ${B.bigTablet}px) and (max-width: ${B.noteBook - 1}px) {
+        top: calc(100vh + 23.4rem);
+    }
+    @media (min-width: ${B.smallTablet}px) and (max-width: ${B.bigTablet - 1}px) {
+        top: calc(21.6rem + 24.75rem);
+    }
+    @media (min-width: ${B.mobile}px) and (max-width: ${B.smallTablet - 1}px) {
+        top: calc(24.68rem + 42.45rem);
+    }
+    @media (max-width: ${B.mobile - 1}px) {
+        top: calc(31.03rem + 46rem);
+    }
+    span{
 
+    }
 `
