@@ -1,6 +1,7 @@
 import { FieldValues, FormState, UseFormHandleSubmit } from "react-hook-form";
 
-export interface IMyFridgeListUIProps{
+export interface IMyFridgeListUIProps {
+    winReady: boolean
     productList: any
     isWriteModalOpen: boolean
     formState: FormState<FieldValues>
@@ -12,4 +13,14 @@ export interface IMyFridgeListUIProps{
     onDragEnd: (result: any, columns: any, setColumns: any) => void
     columns: any
     setColumns: any
+}
+
+export interface MyFridgeListDroppableProps {
+    columnId: any
+    column: any
+}
+
+export interface MyFridgeListDraggableProps {
+    item: any
+    index: any
 }

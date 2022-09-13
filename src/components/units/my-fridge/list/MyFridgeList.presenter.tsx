@@ -4,18 +4,16 @@ import Error from "../../../commons/error"
 import NormalInput from "../../../commons/inputs/normalInput/NormalInput.container"
 import NormalSelectBox from "../../../commons/selectBoxes/normalSelectBox/NormalSelectBox.container"
 import { Row, Col } from 'antd'
-import { FormCol, FormRow, ListAddBtn, ListBody, ListImgBox, ListInfoBox, ListItem, ListWrapper, SubTitle, Wrapper, WriteModal } from "./MyFridgeList.styles"
+import { FormCol, FormRow, ListAddBtn, ListWrapper, SubTitle, Wrapper, WriteModal } from "./MyFridgeList.styles"
 import { IMyFridgeListUIProps } from "./MyFridgeList.types"
 import { CATEGORY } from "../../../../commons/libraries/siteConfig"
-import { v4 as uuidv4 } from 'uuid'
-import { DragDropContext, Droppable, Draggable } from 'react-beautiful-dnd'
+import { DragDropContext } from 'react-beautiful-dnd'
+import MyFridgeListDroppable from "./MyFridgeListDroppable.presenter"
 
 
 
 
 export default function MyFridgeListUI(props: IMyFridgeListUIProps) {
-    console.log(props.columns)
-
     return (
         <>
             { props.winReady ? 
@@ -61,52 +59,15 @@ export default function MyFridgeListUI(props: IMyFridgeListUIProps) {
                     </FormRow>
                 </form>
             </WriteModal>
-            <Row gutter={30}>
+            <Row gutter = { 30 }>
                 <DragDropContext onDragEnd = { result => props.onDragEnd(result, props.columns, props.setColumns) }>
-                    { Object.entries(props.columns).map(([ columnId, column]: any, index) => {
+                    { Object.entries(props.columns).map(([columnId, column]: any, index) => {
                         return (
-                            <Col xs = { 24 } sm = { 24 } md = { 24 } lg = { 8 } xl = { 8 } key = { columnId }>
+                            <Col xs = { 24 } sm = { 24 } md = { 8 } lg = { 8 } xl = { 8 } key = { columnId }>
                                 <ListWrapper>
                                     <SubTitle>{ column.name }</SubTitle>
-                                    <Droppable droppableId = { columnId } key = { columnId }>
-                                        {(provided, snapshot) => {
-                                            return (
-                                                <div {...provided.droppableProps} ref = {provided.innerRef}>
-                                                    { column.items.map((item: any, index: any) => {
-                                                        return (
-                                                            <Draggable key = { item.id } draggableId = { item.id } index = { index }>
-                                                                {(provided, snapshot) => {
-                                                                    return (
-                                                                        <ListItem ref = { provided.innerRef } { ...provided.draggableProps } { ...provided.dragHandleProps }>
-                                                                            <Row gutter={20}>
-                                                                                <Col span = { 10 }>
-                                                                                    <ListImgBox>
-                                                                                        <img src='/images/food.jpeg' alt = "img" />
-                                                                                    </ListImgBox>
-                                                                                </Col>
-                                                                                <Col span = { 14 }>
-                                                                                    <ListInfoBox>
-                                                                                        <div>
-                                                                                            <p className = 'category'>{ item.category }</p>
-                                                                                            <p className = 'name'>{ item.name }</p>
-                                                                                        </div>
-                                                                                        <div>
-                                                                                            <p className = 'expiryDate'>{ item.expDate }</p>
-                                                                                        </div>
-                                                                                    </ListInfoBox>
-                                                                                </Col>
-                                                                            </Row>
-                                                                        </ListItem>
-                                                                    )
-                                                                }}
-                                                            </Draggable>
-                                                        )
-                                                    }) }
-                                                    { provided.placeholder }
-                                                </div>
-                                            )
-                                        }}
-                                    </Droppable>
+                                    <MyFridgeListDroppable columnId = { columnId } column = { column } />
+                                    { column.isCreateBtn && <ListAddBtn onClick = { props.onClickShowWriteModal }>클릭하여 상품 추가하기 +</ListAddBtn> }
                                 </ListWrapper>
                             </Col>
                         )
