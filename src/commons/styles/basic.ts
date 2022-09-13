@@ -40,7 +40,8 @@ export const mobileFontSizeSmall = 0.75 // 22px
 export const mobileFontSizeMicro = 0.55 // 16px
 
 // colors
-export const mainColor = "#004CFF"
+// export const mainColor = "#004CFF"
+export const mainColor = "#1290FF"
 export const strongGrayColor = "#909090"
 export const lightGrayColor = "#CECECE"
 export const whiteColor = "#FFFFFF"

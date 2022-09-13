@@ -2,6 +2,7 @@ import { ReactNode } from "react";
 import styled from '@emotion/styled'
 import * as B from '../../../commons/styles/basic'
 import LayoutHeader from "./header/LayoutHeader.container";
+import LayoutFooter from "./footer/LayoutFooter.container";
 
 interface ILayoutProps {
     children: ReactNode;
@@ -36,6 +37,7 @@ export default function Layout(props: ILayoutProps) {
             <LayoutBody>
                 { props.children }
             </LayoutBody>
+            <LayoutFooter/>
         </LayoutWrapper>
     )
 }

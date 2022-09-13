@@ -141,6 +141,7 @@ export const Phone = styled.img`
     bottom: -5%;
     width: 603px;
     height: 799px;
+    z-index: 3;
     @media (min-width: ${B.bigTablet}px) and (max-width: ${B.noteBook - 1}px) {
         width: 10.05rem;
         height: 12.31rem;
@@ -164,6 +165,7 @@ export const Circle = styled.div`
     height: 797px;
     /* border: 1px solid black; */
     background-color: #ffffff;
+    clip-path: inset(0 0 17.81%);
     @media (min-width: ${B.bigTablet}px) and (max-width: ${B.noteBook - 1}px) {
         width: 13.28rem;
         height: 13.28rem;
@@ -346,27 +348,20 @@ export const IntroCol = styled(Col)`
     }
 `
 export const Introduce1 = styled.section`
-    /* border: 1px solid red; */
-    position: absolute;
-    top: 100vh;
     padding: 2rem 0;
     width: 100%;
     background-color: #F9F9F9;
     text-align: center;
     @media (min-width: ${B.bigTablet}px) and (max-width: ${B.noteBook - 1}px) {
-        top: 100vh;
         padding: 2rem 0;
     }
     @media (min-width: ${B.smallTablet}px) and (max-width: ${B.bigTablet - 1}px) {
-        top: calc(21.6rem + 1.8rem);
         padding: 1.6rem 0;
     }
     @media (min-width: ${B.mobile}px) and (max-width: ${B.smallTablet - 1}px) {
-        top: calc(24.68rem + 2.1rem);
         padding: 1.89rem 0;
     }
     @media (max-width: ${B.mobile - 1}px) {
-        top: calc(31.03rem + 2.5rem);
         padding: 2.2rem 0;
     }
     span{
@@ -435,44 +430,17 @@ export const Introduce1 = styled.section`
     }
 `
 export const Introduce2 = styled.section`
-    position: absolute;
-    top: calc(100vh + 5.9rem);
     padding: 1rem;
     background-color: ${B.whiteColor};
-    /* border: 1px solid red; */
-    @media (min-width: ${B.bigTablet}px) and (max-width: ${B.noteBook - 1}px) {
-        top: calc(100vh + 6.34rem);
-    }
-    @media (min-width: ${B.smallTablet}px) and (max-width: ${B.bigTablet - 1}px) {
-        top: calc(21.6rem + 7.6rem);
-    }
     @media (min-width: ${B.mobile}px) and (max-width: ${B.smallTablet - 1}px) {
-        top: calc(24.68rem + 9.04rem);
+        padding: 2rem 0 4rem;
     }
     @media (max-width: ${B.mobile - 1}px) {
-        top: calc(31.03rem + 10.59rem);
+        padding: 2rem 0 4rem;
     }
 `
 export const Introduce3 = styled.section`
-    position: absolute;
-    top: calc(100vh + 22.77rem);
     width: 100%;
     padding: 1rem;
     background-color: ${B.blackColor};
-    border: 1px solid violet;
-    @media (min-width: ${B.bigTablet}px) and (max-width: ${B.noteBook - 1}px) {
-        top: calc(100vh + 23.4rem);
-    }
-    @media (min-width: ${B.smallTablet}px) and (max-width: ${B.bigTablet - 1}px) {
-        top: calc(21.6rem + 24.75rem);
-    }
-    @media (min-width: ${B.mobile}px) and (max-width: ${B.smallTablet - 1}px) {
-        top: calc(24.68rem + 42.45rem);
-    }
-    @media (max-width: ${B.mobile - 1}px) {
-        top: calc(31.03rem + 46rem);
-    }
-    span{
-
-    }
 `
