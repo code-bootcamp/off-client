@@ -1,9 +1,11 @@
 
+import { PropertySafetyFilled } from "@ant-design/icons";
 import NormalButton from "../../commons/buttons/normalButton/normalButton.container";
-import SlideCol from "../../commons/slider/col";
-import SlideRow from "../../commons/slider/row";
-import { Circle, IntroCol, Introduce1, Introduce2, Introduce3, IntroRow, Main, MainCol, MainImgWrapper, MainRow, MainTitle, MainTitleWrapper, Phone, SubTitle } from "./main.styles";
-export default function MainUI() {
+import SlideCol from "../../commons/slider/col/ColSlide";
+import SlideRow from "../../commons/slider/row/RowSlide";
+import { Circle, IntroCol, Introduce1, Introduce2, Introduce3, IntroRow, Main, MainCol, MainImgWrapper, MainRow, MainTitle, MainTitleWrapper, Phone, SubTitle } from "./Main.styles";
+import { IMainUIProps } from "./Main.types";
+export default function MainUI(props: IMainUIProps) {
     return(
         <Main>
             <MainRow>
@@ -12,7 +14,7 @@ export default function MainUI() {
                         <MainTitle><strong>냉장고</strong>를</MainTitle>
                         <MainTitle><strong>체계적</strong>으로!</MainTitle>
                         <SubTitle><b>O</b>ur <b>F</b>resh <b>F</b>ridge</SubTitle>
-                        <NormalButton title="바로 이용하러 가기" color="blue"  disabled={false}/>
+                        <NormalButton title="바로 이용하러 가기" color="blue"  disabled={false} onClick={props.onClickMoveToMarket}/>
                     </MainTitleWrapper>
                 </MainCol>
                 <MainCol xl={{span:12}} lg={{span:12}} md={{span:24}} sm={{span:24}} xs={{span:24}}>
@@ -65,7 +67,7 @@ export default function MainUI() {
                         </p>
                     </IntroCol>
                     <IntroCol id="tc" xl={{span:12}} lg={{span:12}} md={{span:24}} sm={{span:24}} xs={{span:24}}>
-                        <NormalButton title="바로 이용하러 가기" color="blue"  disabled={false}/>
+                        <NormalButton title="바로 이용하러 가기" color="blue"  disabled={false} onClick={props.onClickMoveToMarket}/>
                     </IntroCol>
                 </IntroRow>
             </Introduce3>
