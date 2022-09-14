@@ -30,7 +30,7 @@ export default function MainUI() {
                 </p>
             </Introduce1>
             <Introduce2>
-                <IntroRow align="middle" gutter={[0,50]}>
+                <IntroRow  gutter={[0,50]}>
                     <IntroCol xl={{span:11, order:1}} lg={{span:11, order:1}} md={{span:12, order:1}} sm={{span:24, order:1}} xs={{span:24, order:1}}>
                         <p id="s">
                             <span>유통기한이 다가오면</span>
@@ -56,15 +56,15 @@ export default function MainUI() {
                 </IntroRow>
             </Introduce2>
             <Introduce3>
-                <IntroRow justify="center" gutter={[0,30]}>
-                    <IntroCol id="tc" xl={{span:15}} lg={{span:15}} md={{span:24}} sm={{span:24}} xs={{span:24}}>
+                <IntroRow gutter={[0,30]}>
+                    <IntroCol id="tc" xl={{span:12}} lg={{span:12}} md={{span:24}} sm={{span:24}} xs={{span:24}}>
                         <p id="t">
                             <span>지금바로</span>
                             <span>간편하게 OFF를 시작해보세요</span>
                             <span>데스크탑, 휴대폰 어디서든 사용가능해요 : &#41;</span>
                         </p>
                     </IntroCol>
-                    <IntroCol id="tc" xl={{span:9}} lg={{span:9}} md={{span:24}} sm={{span:24}} xs={{span:24}}>
+                    <IntroCol id="tc" xl={{span:12}} lg={{span:12}} md={{span:24}} sm={{span:24}} xs={{span:24}}>
                         <NormalButton title="바로 이용하러 가기" color="blue"  disabled={false}/>
                     </IntroCol>
                 </IntroRow>

@@ -3,7 +3,6 @@ import { Col, Row } from "antd";
 import * as B from "../../../commons/styles/basic"
 
 export const Main = styled.main`
-
 `
 export const MainRow = styled(Row)`
     /* border: 1px solid red; */
@@ -13,13 +12,16 @@ export const MainRow = styled(Row)`
         height: calc(100vh - 1.6rem );
     }
     @media (min-width: ${B.smallTablet}px) and (max-width: ${B.bigTablet - 1}px) {
+        padding-top: 1.2rem;
         height: 21.6rem
     }
     @media (min-width: ${B.mobile}px) and (max-width: ${B.smallTablet - 1}px) {
-        height: 24.68rem
+        padding-top: 1.58rem;
+        height: 22.68rem
     }
     @media (max-width: ${B.mobile - 1}px) {
-        height: 31.03rem
+        padding-top: 2.07rem;
+        height: 25.03rem
     }
 `
 export const MainCol = styled(Col)`
@@ -187,6 +189,7 @@ export const IntroRow = styled(Row)`
     #tc{
         height: 3rem;
         button{
+            align-self: center;
             width: 5rem!important;
             height: 0.7rem!important;
             @media (min-width: ${B.bigTablet}px) and (max-width: ${B.noteBook - 1}px) {
