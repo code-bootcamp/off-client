@@ -5,7 +5,7 @@ import MyFridgeWriteUI from "./MyFridgeWrite.presenter";
 import { CREATE_FRIDGE_FOOD, FETCH_CATEGORY } from "./MyFridgeWrite.queries";
 import { getDate } from '../../../../../src/commons/libraries/utils';
 import * as yup from "yup"
-import { FETCH_CREATED_FRIDGE_FOODS } from "../list/MyFridgeList.queries";
+import { FETCH_FRIDGE_FOODS } from "../list/MyFridgeList.queries";
 import { message } from "antd";
 import { MyFridgeWriteProps } from "./MyFridgeWrite.types";
 
@@ -33,24 +33,26 @@ export default function MyFridgeWrite(props: MyFridgeWriteProps) {
     }
 
     const onClickCreateProduct = async (data: any) => {
-        const convertExpDate = getDate(data.expDate)
-        const convertAlarm = getDate(data.alarm)
         try {
             await createFridgeFood({
                 variables: {
                     fridgeFoodInput: {
                         name: data.name,
                         price: data.price,
-                        expDate: convertExpDate,
-                        alarm: convertAlarm,
+                        expDate: getDate(data.expDate),
+                        alarm: getDate(data.alarm),
                         category: data.category
-                    }
+                    },
+                    status: "LIST"
                 },
-                refetchQueries: [
-                    {
-                        query: FETCH_CREATED_FRIDGE_FOODS
-                    }
-                ]
+                // refetchQueries: [
+                //     {
+                //         query: FETCH_FRIDGE_FOODS,
+                //         variables: {
+                //             status: "LIST"
+                //         }
+                //     }
+                // ]
             })
             props.setIsWriteModalOpen(false)
             message.success("등록에 성공하셨습니다")
