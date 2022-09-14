@@ -28,6 +28,7 @@ const HEADER_MENUS_NO_LOGIN = [
 const HEADER_MENUS_LOGIN = [
     { name: "마이 냉장고", page: "/my-fridge" },
     { name: "나눔 마켓", page: "/market" },
+    { name: "마이 페이지", page: "/info/my" },
     { name: "로그아웃", page: "/", },
 
 ]
