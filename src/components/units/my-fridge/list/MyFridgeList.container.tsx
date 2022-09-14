@@ -1,14 +1,12 @@
 import MyFridgeListUI from "./MyFridgeList.presenter";
 import { useEffect, useState } from 'react'
-import { useForm } from "react-hook-form";
-import { message } from 'antd';
-import { v4 as uuidv4 } from 'uuid'
-import * as yup from "yup"
-import { yupResolver } from "@hookform/resolvers/yup"
-import { getDate } from '../../../../../src/commons/libraries/utils';
 import { useMutation, useQuery } from "@apollo/client"
-import { CREATE_FRIDGE_FOOD, FETCH_CATEGORY, FETCH_CREATED_FRIDGE_FOODS } from "./MyFridgeList.queries";
-import { IMutation, IMutationCreateFridgeFoodArgs } from "../../../../commons/types/generated/types";
+import { UPDATE_FRIDGE_FOODS, FETCH_CREATED_FRIDGE_FOODS, FETCH_FRIDGE_FOODS, CREATE_FRIDGE_FOOD, FETCH_CATEGORY } from "./MyFridgeList.queries";
+import { getDate } from "../../../../commons/libraries/utils";
+import { message } from "antd";
+import { useForm } from "react-hook-form";
+import { yupResolver } from "@hookform/resolvers/yup";
+import * as yup from "yup"
 
 const schema = yup.object({
     name: yup.string().required("상품명은 필수입니다"),
@@ -18,42 +16,11 @@ const schema = yup.object({
     category: yup.string().required("카테고리는 필수입니다")
 })
 
-const testData = [
-    {
-        id: "test1",
-        category: "육류",
-        price: 15000,
-        name: "돼지고기 등심",
-        alarm: "2022-09-19",
-        expDate: "2022-09-21",
-    },
-    {
-        id: "test2",
-        category: "채소류",
-        price: 4000,
-        name: "양파",
-        alarm: "2022-09-19",
-        expDate: "2022-09-21",
-    },
-    {
-        id: "test3",
-        category: "어패류",
-        price: 7000,
-        name: "고등어",
-        alarm: "2022-09-19",
-        expDate: "2022-09-21",
-    },
-    {
-        id: "test4",
-        category: "유제품",
-        price: 2000,
-        name: "요구르트",
-        alarm: "2022-09-19",
-        expDate: "2022-09-21",
-    },
-]
-
 export default function MyFridgeList() {
+    const { control, handleSubmit, formState, reset } = useForm({
+        resolver: yupResolver(schema),
+        mode: "onChange"
+    })
 
     const columnData = {
         ["createProductList"]: {
@@ -74,32 +41,84 @@ export default function MyFridgeList() {
     }
 
     const [columns, setColumns] = useState(columnData)
-    const [productList, setProductList] = useState([])
-    const [isWriteModalOpen, setIsWriteModalOpen] = useState(false)
     const [winReady, setWinReady] = useState(false)
+    const [isWriteModalOpen, setIsWriteModalOpen] = useState(false)
 
+    const [updateFridgeFoods] = useMutation(UPDATE_FRIDGE_FOODS)
     const [createFridgeFood] = useMutation(CREATE_FRIDGE_FOOD)
 
-    const { data: dataFetchCreatedFridgeFood } = useQuery(FETCH_CREATED_FRIDGE_FOODS, { onCompleted(data) {
-        const _columns = {
-            ...columns,
-            ["createProductList"]: {
-                isCreateBtn: true,
-                name: "목록",
-                items: data.fetchCreatedFridgeFoods
-            }
-        }
-        setColumns(_columns)
-    }, })
+
     const { data: dataCategory } = useQuery(FETCH_CATEGORY)
+
+
+    // const { data: dataFetchCreatedFridgeFood } = useQuery(FETCH_CREATED_FRIDGE_FOODS, { onCompleted(data) {
+    //     const _columns = {
+    //         ...columns,
+    //         ["createProductList"]: {
+    //             isCreateBtn: true,
+    //             name: "목록",
+    //             items: data.fetchCreatedFridgeFoods
+    //         }
+    //     }
+    //     setColumns(_columns)
+    // }, })
+
+    const { data: dataFetchCreatedFood } = useQuery(FETCH_FRIDGE_FOODS, {
+        variables: {
+            status: "LIST"
+        },
+        onCompleted(data) {
+            const _columns = {
+                ...columns,
+                ["createProductList"]: {
+                    isCreateBtn: true,
+                    name: "목록",
+                    items: data.fetchFridgeFoods
+                }
+            }
+            setColumns(_columns)
+        }
+    })
+
+    const { data: dataFetchFreezerFood } = useQuery(FETCH_FRIDGE_FOODS, {
+        variables: {
+            status: "FREEZER"
+        },
+        onCompleted(data) {
+            const _columns = {
+                ...columns,
+                ["frozenList"]: {
+                    isCreateBtn: false,
+                    name: "냉동",
+                    items: data.fetchFridgeFoods
+                }
+            }
+            setColumns(_columns)
+        }
+    })
+
+    const { data: dataFetchFridgeFood } = useQuery(FETCH_FRIDGE_FOODS, {
+        variables: {
+            status: "FRIDGE"
+        },
+        onCompleted(data) {
+            const _columns = {
+                ...columns,
+                ["fridgeList"]: {
+                    isCreateBtn: false,
+                    name: "냉장",
+                    items: data.fetchFridgeFoods
+                }
+            }
+            setColumns(_columns)
+        }
+    })
 
     useEffect(() => {
         setWinReady(true)
     }, [])
 
-    console.log(columns)
-
-    const onDragEnd = (result: any, columns: any, setColumns: any) => {
+    const onDragEnd = async (result: any, columns: any, setColumns: any) => {
         if(!result.destination) return
         const { source, destination } = result
 
@@ -110,6 +129,81 @@ export default function MyFridgeList() {
             const destItems = [...destColumn.items];
             const [removed] = sourceItems.splice(source.index, 1)
             destItems.splice(destination.index, 0, removed)
+            if(destination.droppableId === "frozenList") {
+                let selectItem = {
+                    id: "",
+                    name: "",
+                    price: 0,
+                    expDate: "",
+                    alarm: "",
+                    category: ""
+                }
+                destItems.forEach((element1) => {
+                    if(element1.id === result.draggableId) {
+                        selectItem.id = element1.id
+                        selectItem.name = element1.name
+                        selectItem.price = element1.price
+                        selectItem.expDate = getDate(element1.expDate)
+                        selectItem.alarm = getDate(element1.alarm)
+                        selectItem.category = element1.category.id
+                    }
+                })
+                try {
+                    await updateFridgeFoods({
+                        variables: {
+                            fridgeFoodId: selectItem.id,
+                            updateFridgeFoodInput: {
+                                name: selectItem.name,
+                                price: selectItem.price,
+                                expDate: selectItem.expDate,
+                                alarm: selectItem.alarm,
+                                category: selectItem.category
+                            },
+                            status: "FREEZER"
+                        }
+                    })
+                    message.success("등록에 성공했습니다")
+                } catch(error) {
+                    message.error("등록에 실패하셨습니다")
+                }
+            } else if(destination.droppableId === "fridgeList") {
+                let selectItem = {
+                    id: "",
+                    name: "",
+                    price: 0,
+                    expDate: "",
+                    alarm: "",
+                    category: ""
+                }
+                destItems.forEach((element1) => {
+                    if(element1.id === result.draggableId) {
+                        selectItem.id = element1.id
+                        selectItem.name = element1.name
+                        selectItem.price = element1.price
+                        selectItem.expDate = getDate(element1.expDate)
+                        selectItem.alarm = getDate(element1.alarm)
+                        selectItem.category = element1.category.id
+                    }
+                })
+                try {
+                    await updateFridgeFoods({
+                        variables: {
+                            fridgeFoodId: selectItem.id,
+                            updateFridgeFoodInput: {
+                                name: selectItem.name,
+                                price: selectItem.price,
+                                expDate: selectItem.expDate,
+                                alarm: selectItem.alarm,
+                                category: selectItem.category
+                            },
+                            status: "FRIDGE"
+                        }
+                    })
+                    message.success("등록에 성공했습니다")
+                } catch(error) {
+                    message.error("등록에 실패하셨습니다")
+                }
+            }
             setColumns({
                 ...columns,
                 [source.droppableId]: {
@@ -136,17 +230,12 @@ export default function MyFridgeList() {
         }
     }
 
-    const { control, handleSubmit, formState, reset } = useForm({
-        resolver: yupResolver(schema),
-        mode: "onChange"
-    })
-
-    const onClickShowWriteModal = () => {
-        setIsWriteModalOpen(true)
-    }
-
     const onClickCancelWriteModal = () => {
         setIsWriteModalOpen(false)
+    }
+
+    const onClickOpenWriteModal = () => {
+        setIsWriteModalOpen(true)
     }
 
     const onClickCreateProduct = async (data: any) => {
@@ -161,15 +250,20 @@ export default function MyFridgeList() {
                         expDate: convertExpDate,
                         alarm: convertAlarm,
                         category: data.category
-                    }
+                    },
+                    status: "LIST"
                 },
                 refetchQueries: [
                     {
-                        query: FETCH_CREATED_FRIDGE_FOODS
+                        query: FETCH_FRIDGE_FOODS,
+                        variables: {
+                            status: "LIST"
+                        }
                     }
                 ]
             })
             setIsWriteModalOpen(false)
+            message.success("등록에 성공하셨습니다")
         } catch(error) {
             message.error("등록에 실패하셨습니다")
         }
@@ -178,18 +272,18 @@ export default function MyFridgeList() {
     return (
         <MyFridgeListUI 
         winReady = { winReady }
-        category = { dataCategory }
-        productList = { productList }
-        isWriteModalOpen = { isWriteModalOpen } 
+        isWriteModalOpen = { isWriteModalOpen }
+        onDragEnd = { onDragEnd }
+        onClickOpenWriteModal = { onClickOpenWriteModal }
+        columns = { columns }
+        setColumns = { setColumns }
+        setIsWriteModalOpen = { setIsWriteModalOpen }
         formState = { formState }
         control = { control }
         handleSubmit = { handleSubmit }
-        onClickShowWriteModal = { onClickShowWriteModal }
         onClickCancelWriteModal = { onClickCancelWriteModal }
         onClickCreateProduct = { onClickCreateProduct }
-        onDragEnd = { onDragEnd }
-        columns = { columns }
-        setColumns = { setColumns }
+        category = { dataCategory }
         />
     )
 }

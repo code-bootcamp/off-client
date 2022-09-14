@@ -25,7 +25,6 @@ export default function LayoutHeader() {
     const onClickLogout = async () => {
         try {
             await logout()
-            setIsLogin(false)
             setIsAccessToken("")
             setMenuVisible(false)
         } catch {
