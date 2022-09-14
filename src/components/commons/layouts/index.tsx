@@ -33,14 +33,14 @@ const LayoutBody = styled.div`
 const SHOW_FOOTER = ["/", "/info/login/", "/info/join/"]
 export default function Layout(props: ILayoutProps) {
     const router = useRouter()
-    const isShowFooter = SHOW_FOOTER.includes(router.asPath)
+    // const isShowFooter = SHOW_FOOTER.includes(router.asPath)
     return (
         <LayoutWrapper>
             <LayoutHeader />
             <LayoutBody>
                 { props.children }
             </LayoutBody>
-            { isShowFooter && <LayoutFooter/> }
+            {/* { isShowFooter && <LayoutFooter/> } */}
         </LayoutWrapper>
     )
 }

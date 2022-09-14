@@ -21,7 +21,7 @@ const Card = styled.div`
 export default function SlideCol() {
 
     return(
-        <ReactCardCarousel alignment={'vertical'} spread={"wide"} disable_box_shadow={true} autoplay={true} autoplay_speed={2500}>
+        <ReactCardCarousel alignment={'vertical'} spread={"wide"} disable_box_shadow={true} autoplay={true} autoplay_speed={3500}>
             {images.map((el,i)=>(
                 <Card key={i}><img src={el}/></Card>
             ))}
