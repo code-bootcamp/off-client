@@ -10,12 +10,13 @@ export const FETCH_CATEGORY = gql`
 `
 
 export const CREATE_FRIDGE_FOOD = gql`
-    mutation createFridgeFood($fridgeFoodInput: CreateFridgeFoodInput!) {
-        createFridgeFood(fridgeFoodInput: $fridgeFoodInput) {
+    mutation createFridgeFood($fridgeFoodInput: CreateFridgeFoodInput!, $status: String!) {
+        createFridgeFood(fridgeFoodInput: $fridgeFoodInput, status: $status) {
             id
             name
             price
             expDate
+            regDate
             alarm
         } 
     }

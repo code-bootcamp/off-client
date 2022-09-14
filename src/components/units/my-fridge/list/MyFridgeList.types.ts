@@ -8,12 +8,6 @@ export interface IMyFridgeListUIProps {
     columns: any
     setColumns: any
     setIsWriteModalOpen: any
-    formState: any
-    control: any
-    handleSubmit: any
-    onClickCancelWriteModal: () => void
-    onClickCreateProduct: (data: any) => void
-    category: any
 }
 
 export interface MyFridgeListDroppableProps {
