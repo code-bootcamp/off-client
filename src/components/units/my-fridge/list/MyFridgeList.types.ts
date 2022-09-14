@@ -2,18 +2,18 @@ import { FieldValues, FormState, UseFormHandleSubmit } from "react-hook-form";
 
 export interface IMyFridgeListUIProps {
     winReady: boolean
-    category: any
-    productList: any
     isWriteModalOpen: boolean
-    formState: FormState<FieldValues>
-    control: any
-    handleSubmit: UseFormHandleSubmit<FieldValues>;
-    onClickShowWriteModal: () => void
-    onClickCancelWriteModal: () => void
-    onClickCreateProduct: (data: any) => void
     onDragEnd: (result: any, columns: any, setColumns: any) => void
+    onClickOpenWriteModal: () => void
     columns: any
     setColumns: any
+    setIsWriteModalOpen: any
+    formState: any
+    control: any
+    handleSubmit: any
+    onClickCancelWriteModal: () => void
+    onClickCreateProduct: (data: any) => void
+    category: any
 }
 
 export interface MyFridgeListDroppableProps {

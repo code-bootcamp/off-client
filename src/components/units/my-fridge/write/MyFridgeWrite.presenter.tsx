@@ -1,22 +1,15 @@
-import { Row, Col } from 'antd'
-import { FormCol, FormRow, ListAddBtn, ListWrapper, SubTitle, Wrapper, WriteModal } from "./MyFridgeList.styles"
-import { IMyFridgeListUIProps } from "./MyFridgeList.types"
-import { DragDropContext } from 'react-beautiful-dnd'
-import MyFridgeListDroppable from "./MyFridgeListDroppable.presenter"
-import MyFridgeWrite from '../write/MyFridgeWrite.container'
+import { FormCol, FormRow, WriteModal } from "./MyFridgeWrite.styles";
 import NormalButton from "../../../commons/buttons/normalButton/normalButton.container"
 import NormalDatePicker from "../../../commons/datepickers/normalDatePicker/NormalDatePicker.container"
 import Error from "../../../commons/error"
 import NormalInput from "../../../commons/inputs/normalInput/NormalInput.container"
 import NormalSelectBox from "../../../commons/selectBoxes/normalSelectBox/NormalSelectBox.container"
+import { MyFridgeWriteUIProps } from "./MyFridgeWrite.types";
 
-export default function MyFridgeListUI(props: IMyFridgeListUIProps) {
+export default function MyFridgeWriteUI(props: MyFridgeWriteUIProps) {
     return (
         <>
-            { props.winReady ? 
-            <Wrapper>
-                {/* <MyFridgeWrite isWriteModalOpen = { props.isWriteModalOpen } setIsWriteModalOpen = { props.setIsWriteModalOpen } /> */}
-                <WriteModal title = "상품 등록하기"
+            <WriteModal title = "상품 등록하기"
             visible = { props.isWriteModalOpen }
             footer = { null }
             maskClosable = { false }>
@@ -57,25 +50,6 @@ export default function MyFridgeListUI(props: IMyFridgeListUIProps) {
                     </FormRow>
                 </form>
             </WriteModal>
-                <Row gutter = { 30 }>
-                    <DragDropContext onDragEnd = { result => props.onDragEnd(result, props.columns, props.setColumns) }>
-                        { Object.entries(props.columns).map(([columnId, column]: any, index) => {
-                            return (
-                                <Col xs = { 24 } sm = { 24 } md = { 8 } lg = { 8 } xl = { 8 } key = { columnId }>
-                                    <ListWrapper>
-                                        <SubTitle>{ column.name }</SubTitle>
-                                        <MyFridgeListDroppable columnId = { columnId } column = { column } />
-                                        { column.isCreateBtn && <ListAddBtn onClick = { props.onClickOpenWriteModal }>클릭하여 상품 추가하기 +</ListAddBtn> }
-                                    </ListWrapper>
-                                </Col>
-                            )
-                        }) }
-                    </DragDropContext>
-                </Row>
-            </Wrapper>
-            : 
-            null 
-            }
         </>
     )
 }

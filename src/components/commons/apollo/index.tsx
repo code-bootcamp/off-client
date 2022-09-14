@@ -19,7 +19,6 @@ export default function ApolloSetting(props: IApolloSettingProps) {
     useEffect(() => {
         getAccessToken().then((newAccessToken) => {
             setAccessToken(newAccessToken)
-            if(newAccessToken)
             setIsLogin(true)
         })
     },[])

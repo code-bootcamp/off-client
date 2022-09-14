@@ -244,6 +244,8 @@ export const ListAddBtn = styled.button`
     }
 `
 
+
+
 export const WriteModal = styled(Modal)`
     width: 80%!important;
     top: 50%!important;
