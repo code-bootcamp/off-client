@@ -1,4 +1,4 @@
-schema: http://freshfridge.shop:3000/graphql
+schema: https://freshfridge.shop/graphql
 generates:
   ./src/commons/types/generated/types.ts:
     plugins:
