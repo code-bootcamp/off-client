@@ -11,7 +11,12 @@ export default function MyFridgeListDroppable(props: MyFridgeListDroppableProps)
                     <div {...provided.droppableProps} ref = {provided.innerRef}>
                         { props.column.items?.map((item: any, index: any) => {
                             return (
-                                <MyFridgeListDraggable key = { uuidv4() } item = { item } index = { index } />
+                                <MyFridgeListDraggable 
+                                key = { uuidv4() } 
+                                item = { item } 
+                                index = { index } 
+                                onClickOpenEditModal = { props.onClickOpenEditModal }
+                                />
                             )
                         }) }
                         { provided.placeholder }

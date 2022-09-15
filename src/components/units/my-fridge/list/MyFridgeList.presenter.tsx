@@ -10,7 +10,13 @@ export default function MyFridgeListUI(props: IMyFridgeListUIProps) {
         <>
             { props.winReady ? 
             <Wrapper>
-                <MyFridgeWrite isWriteModalOpen = { props.isWriteModalOpen } setIsWriteModalOpen = { props.setIsWriteModalOpen } />
+                <MyFridgeWrite 
+                isEdit = { props.isEdit }
+                setIsEdit = { props.setIsEdit }
+                isWriteModalOpen = { props.isWriteModalOpen } 
+                setIsWriteModalOpen = { props.setIsWriteModalOpen } 
+                editData = { props.editData }
+                />
                 <Row gutter = { 30 }>
                     <DragDropContext onDragEnd = { result => props.onDragEnd(result, props.columns, props.setColumns) }>
                         { Object.entries(props.columns).map(([columnId, column]: any, index) => {
@@ -18,7 +24,11 @@ export default function MyFridgeListUI(props: IMyFridgeListUIProps) {
                                 <Col xs = { 24 } sm = { 24 } md = { 8 } lg = { 8 } xl = { 8 } key = { columnId }>
                                     <ListWrapper>
                                         <SubTitle>{ column.name }</SubTitle>
-                                        <MyFridgeListDroppable columnId = { columnId } column = { column } />
+                                        <MyFridgeListDroppable 
+                                        columnId = { columnId } 
+                                        column = { column } 
+                                        onClickOpenEditModal = { props.onClickOpenEditModal }
+                                        />
                                         { column.isCreateBtn && <ListAddBtn onClick = { props.onClickOpenWriteModal }>클릭하여 상품 추가하기 +</ListAddBtn> }
                                     </ListWrapper>
                                 </Col>
