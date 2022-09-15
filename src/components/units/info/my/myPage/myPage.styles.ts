@@ -2,9 +2,9 @@ import styled from "@emotion/styled"
 import * as B from "../../../../../commons/styles/basic"
 
 export const Wrapper = styled.div`
-    width: 80%;
+    width: 90%;
     margin: 0 auto;
-    @media (min-width: ${B.bigTablet}px) and (max-width: ${B.noteBook - 1}px) {
+    /* @media (min-width: ${B.bigTablet}px) and (max-width: ${B.noteBook - 1}px) {
         width: 58%;
     }
     @media (min-width: ${B.smallTablet}px) and (max-width: ${B.bigTablet - 1}px) {
@@ -15,7 +15,7 @@ export const Wrapper = styled.div`
     }
     @media (max-width: ${B.mobile - 1}px) {
         width: 91%;
-    }
+    } */
 `
 
 export const Title = styled.h1`

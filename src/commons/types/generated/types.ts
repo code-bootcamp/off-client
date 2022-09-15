@@ -11,6 +11,7 @@ export type Scalars = {
   Int: number;
   Float: number;
   DateTime: any;
+  JSONObject: any;
   Upload: any;
 };
 
@@ -50,7 +51,7 @@ export type ICreateBoardInput = {
 };
 
 export type ICreateFridgeFoodInput = {
-  alarm: Scalars['Int'];
+  alarm: Scalars['DateTime'];
   category: Scalars['String'];
   expDate: Scalars['DateTime'];
   name: Scalars['String'];
@@ -67,7 +68,8 @@ export type ICreateUserInput = {
 
 export enum IFridge_Status_Enum {
   Freezer = 'FREEZER',
-  Fridge = 'FRIDGE'
+  Fridge = 'FRIDGE',
+  List = 'LIST'
 }
 
 export type IFridge = {
@@ -78,7 +80,7 @@ export type IFridge = {
 
 export type IFridgeFood = {
   __typename?: 'FridgeFood';
-  alarm: Scalars['Int'];
+  alarm: Scalars['DateTime'];
   category: ICategory;
   expDate: Scalars['DateTime'];
   fridge: IFridge;
@@ -102,6 +104,7 @@ export type IMutation = {
   getToken: Scalars['String'];
   login: Scalars['String'];
   logout: Scalars['String'];
+  restoreAccessToken: Scalars['String'];
   restoreUser: Scalars['Boolean'];
   updateBoard: IBoard;
   updateFridgeFoods: Scalars['String'];
@@ -183,7 +186,6 @@ export type IMutationUpdateFridgeFoodsArgs = {
 
 
 export type IMutationUpdateUserArgs = {
-  email: Scalars['String'];
   updateUserInput: IUpdateUserInput;
 };
 
@@ -195,9 +197,13 @@ export type IMutationUploadFileArgs = {
 export type IQuery = {
   __typename?: 'Query';
   fetchBoard: IBoard;
+  fetchBoardCategory: Scalars['JSONObject'];
+  fetchBoardLocation: Scalars['JSONObject'];
+  fetchBoardTitle: Scalars['JSONObject'];
   fetchBoards: Array<IBoard>;
+  fetchCategory: Array<ICategory>;
   fetchFridgeFoods: Array<IFridgeFood>;
-  fetchUser: IUser;
+  fetchUserLoggedIn: IUser;
   fetchUserWithDeleted: Array<IUser>;
   fetchUsers: Array<IUser>;
 };
@@ -208,13 +214,24 @@ export type IQueryFetchBoardArgs = {
 };
 
 
-export type IQueryFetchFridgeFoodsArgs = {
-  page?: InputMaybe<Scalars['Int']>;
+export type IQueryFetchBoardCategoryArgs = {
+  category?: InputMaybe<Scalars['String']>;
 };
 
 
-export type IQueryFetchUserArgs = {
-  email: Scalars['String'];
+export type IQueryFetchBoardLocationArgs = {
+  location?: InputMaybe<Scalars['String']>;
+};
+
+
+export type IQueryFetchBoardTitleArgs = {
+  title?: InputMaybe<Scalars['String']>;
+};
+
+
+export type IQueryFetchFridgeFoodsArgs = {
+  page?: InputMaybe<Scalars['Int']>;
+  status?: InputMaybe<Scalars['String']>;
 };
 
 export type ISalesLocations = {
@@ -239,7 +256,7 @@ export type IUpdateBoardInput = {
 };
 
 export type IUpdateFridgeFoodInput = {
-  alarm: Scalars['Int'];
+  alarm: Scalars['DateTime'];
   category: Scalars['String'];
   expDate: Scalars['DateTime'];
   name: Scalars['String'];
@@ -268,6 +285,7 @@ export type IUsersImage = {
 
 export type IUpdateUserInput = {
   email?: InputMaybe<Scalars['String']>;
+  image: Scalars['String'];
   name?: InputMaybe<Scalars['String']>;
   nickname?: InputMaybe<Scalars['String']>;
   password?: InputMaybe<Scalars['String']>;

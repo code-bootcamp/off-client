@@ -67,11 +67,13 @@ export const MenuDrawer = styled(Drawer)`
     }
 `
 export const MyPageTab = styled(Tabs)`
-    height: 900px;
     .ant-tabs-tab-btn{
         font-weight: bold;
-        font-size: ${B.deskTopFontSizeMiddle}rem;
+        font-size: ${B.deskTopFontSizeSmall}rem;
         color: ${B.strongGrayColor};
+    }
+    .ant-tabs-nav{
+        box-shadow: 10px 0 10px -10px rgba(0,0,0,0.1);
     }
 `
 export const TabItem = styled(Tabs.TabPane)`
