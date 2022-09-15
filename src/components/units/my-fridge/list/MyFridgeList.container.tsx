@@ -27,6 +27,8 @@ export default function MyFridgeList() {
     const [columns, setColumns] = useState(columnData)
     const [winReady, setWinReady] = useState(false)
     const [isWriteModalOpen, setIsWriteModalOpen] = useState(false)
+    const [isEdit, setIsEdit] = useState(false)
+    const [editData, setEditData] = useState({})
 
     const [updateFridgeFoods] = useMutation(UPDATE_FRIDGE_FOODS)
 
@@ -46,7 +48,6 @@ export default function MyFridgeList() {
             setColumns(_columns)
         }
     })
-    console.log(dataFetchCreatedFood)
 
     const { data: dataFetchFreezerFood } = useQuery(FETCH_FRIDGE_FOODS, {
         variables: {
@@ -237,6 +238,13 @@ export default function MyFridgeList() {
 
     const onClickOpenWriteModal = () => {
         setIsWriteModalOpen(true)
+        setIsEdit(false)
+    }
+
+    const onClickOpenEditModal = (data: any) => {
+        setIsWriteModalOpen(true)
+        setIsEdit(true)
+        console.log(data)
     }
 
     return (
@@ -245,9 +253,13 @@ export default function MyFridgeList() {
         isWriteModalOpen = { isWriteModalOpen }
         onDragEnd = { onDragEnd }
         onClickOpenWriteModal = { onClickOpenWriteModal }
+        onClickOpenEditModal = { onClickOpenEditModal }
         columns = { columns }
         setColumns = { setColumns }
         setIsWriteModalOpen = { setIsWriteModalOpen }
+        isEdit = { isEdit }
+        setIsEdit = { setIsEdit }
+        editData = { editData }
         />
     )
 }

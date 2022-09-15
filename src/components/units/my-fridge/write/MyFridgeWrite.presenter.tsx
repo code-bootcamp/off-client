@@ -12,7 +12,7 @@ export default function MyFridgeWriteUI(props: MyFridgeWriteUIProps) {
             <WriteModal title = "상품 등록하기"
             visible = { props.isWriteModalOpen }
             footer = { null }
-            maskClosable = { false }>
+            maskClosable = { false } destroyOnClose = { true }>
                 <form>
                     <FormRow gutter={20}>
                         <FormCol xs = { 24 } sm = { 24 } md = { 12 } lg = { 12 } xl = { 12 }>
