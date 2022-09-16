@@ -4,11 +4,12 @@ import { INormalInputUIProps } from "./NormalInput.types";
 
 export default function NormalInputUI(props: INormalInputUIProps) {
     return (
-        <Controller 
-        control = { props.control } 
-        name = { props.name } 
+        <Controller
+        control = { props.control }
+        name = { props.name }
+        defaultValue = { props.defaultValue }
         render = {({ field: { onChange } }) => (
-            <NormalInput type = { props.type } placeholder = { props.placeholder } onChange = {(value) => {
+            <NormalInput type = { props.type } placeholder = { props.placeholder } defaultValue = { props.defaultValue } onChange = {(value) => {
                 onChange(value)
             }} />
         )}

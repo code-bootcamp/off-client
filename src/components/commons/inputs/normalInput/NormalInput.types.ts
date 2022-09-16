@@ -3,6 +3,7 @@ export interface INormalInputProps {
     control: any
     name: string
     placeholder: string
+    defaultValue?: string
 }
 
 export interface INormalInputUIProps {
@@ -10,4 +11,5 @@ export interface INormalInputUIProps {
     control: any
     name: string
     placeholder: string
+    defaultValue?: string
 }

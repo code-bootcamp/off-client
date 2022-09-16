@@ -17,33 +17,38 @@ export default function MyInfoUI(props) {
                     <UserThumb>
                         {userInfo?.usersimage ? (
                             <img src={`storage.googleapis.com/${userInfo.usersimage}`}/>
-                        ) : (
-                            <img src="/images/thumb.png"/>
-                        )}
+                            ) : (
+                                <img src="/images/thumb.png"/>
+                                )}
                     </UserThumb>
                 </InfoCol>
                 <InfoCol xl={{span:10}} lg={{span:10}} md={{span:24}} sm={{span:24}} xs={{span:24}} >
-                        {INFO.map(( el, i )=>( props.isEdit && (el === props.checkId)
-                            ? (
-                                <div key = { String(i)} id = { el } >
-                                    <NormalInput
-                                        type = "text"
-                                        name = { el }
-                                        placeholder = { `변경하실 ${el}을 적어주세요` }
-                                        control = { props.control }
-                                    />
-                                    <NormalButton title = "확인" color = {"blue"} onClick = { props.onClickCheckValidToken } disabled={!props.isGetToken}/>
-                                    <FontAwesomeIcon icon = { faXmark } onClick = { props.onClickCancel }  />
-                                </div>
-                            )
-                            : (
+                        { props.isEdit
+                            ? <form>
+                                { INFO.map(( el, i )=>(
+                                    <div key = { String(i)} id = { el } >
+                                        <NormalInput
+                                            type = "text"
+                                            name = { el }
+                                            placeholder = { `변경하실 ${el}을 적어주세요` }
+                                            control = { props.control }
+                                            defaultValue = { userInfo?.[ el ] }
+                                            />
+                                    </div>
+                                ))}
+                                <NormalButton title = "확인" color = {"blue"} onClick = { props.handleSubmit(props.onClickUpdate) } disabled={!props.formState.isValid}/>
+                            </form>
+                            : INFO.map(( el, i )=>(
                                 <div key = { String(i)} id = { el }>
                                     <span>{ userInfo?.[ el ]}</span>
-                                    <FontAwesomeIcon id={ el } icon = { faPen } onClick = { props.onClickToEdit }/>
                                 </div>
                             )
-                        ))}
+                            )}
                 </InfoCol>
+                {props.isEdit
+                    ? <FontAwesomeIcon icon = { faXmark } onClick = { props.onClickCancel }  />
+                    : <FontAwesomeIcon icon = { faPen } onClick = { props.onClickToEdit }/>
+                }
             </InfoRow>
         </Wrapper>
     )
