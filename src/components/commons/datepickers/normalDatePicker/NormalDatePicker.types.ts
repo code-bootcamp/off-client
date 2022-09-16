@@ -2,6 +2,7 @@ export interface INormalDatePickerProps {
     name: string
     control: any
     placeholder: string
+    defaultValue?: any
 }
 
 export interface INormalDatePickerUIProps {
@@ -9,4 +10,5 @@ export interface INormalDatePickerUIProps {
     control: any
     disabledDate: (date: any) => boolean
     placeholder: string
+    defaultValue?: any
 }

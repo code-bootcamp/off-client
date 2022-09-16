@@ -16,6 +16,7 @@ export default function NormalDatePickerUI(props: INormalDatePickerUIProps) {
             placeholder = { props.placeholder } 
             format = "YYYY-MM-DD"
             disabledDate = { props.disabledDate } 
+            defaultValue = { props.defaultValue }
             onChange = {(value) => { onChange(value) }}
             />
         )}

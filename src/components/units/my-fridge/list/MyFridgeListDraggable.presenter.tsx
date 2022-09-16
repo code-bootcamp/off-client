@@ -19,9 +19,12 @@ export default function MyFridgeListDraggable(props: MyFridgeListDraggableProps)
                             <div className = 'btn-box'>
                                 <FontAwesomeIcon 
                                 icon = { faPen } 
-                                onClick = { props.onClickOpenEditModal(props.item) } 
+                                onClick = { props.onClickOpenEditModal(props.item) }
                                 />
-                                <FontAwesomeIcon icon = { faXmark } />
+                                <FontAwesomeIcon 
+                                icon = { faXmark } 
+                                onClick = { props.onClickDeleteItem(props.item) }
+                                />
                             </div>
                         </ListItemHeader>
                         <ListItemContent>

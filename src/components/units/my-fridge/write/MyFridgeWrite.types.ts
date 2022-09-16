@@ -7,11 +7,14 @@ export interface MyFridgeWriteProps {
 }
 
 export interface MyFridgeWriteUIProps {
+    editData: any
+    isEdit: boolean
     isWriteModalOpen: boolean
     formState: any
     control: any
     category: any
     handleSubmit: any
     onClickCreateProduct: (data: any) => void
+    onClickUpdateProduct: (data: any) => void
     onClickCancelWriteModal: () => void
 }
