@@ -15,6 +15,7 @@ export default function NormalDatePicker(props: INormalDatePickerProps) {
         control = { props.control }
         placeholder = { props.placeholder } 
         disabledDate = { disabledDate } 
+        defaultValue = { props.defaultValue }
         />
     )
 }

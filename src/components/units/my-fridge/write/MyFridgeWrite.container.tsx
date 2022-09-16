@@ -8,7 +8,6 @@ import * as yup from "yup"
 import { FETCH_FRIDGE_FOODS } from "../list/MyFridgeList.queries";
 import { message } from "antd";
 import { MyFridgeWriteProps } from "./MyFridgeWrite.types";
-import { useEffect } from "react";
 
 const schema = yup.object({
     name: yup.string().required("상품명은 필수입니다"),
@@ -19,7 +18,6 @@ const schema = yup.object({
 })
 
 export default function MyFridgeWrite(props: MyFridgeWriteProps) {
-
     const { control, handleSubmit, formState, reset } = useForm({
         resolver: yupResolver(schema),
         mode: "onChange"
@@ -55,6 +53,13 @@ export default function MyFridgeWrite(props: MyFridgeWriteProps) {
                     }
                 ]
             })
+            reset({
+                name: "",
+                price: null,
+                category: "",
+                expDate: "",
+                alarm: ""
+            })
             props.setIsWriteModalOpen(false)
             message.success("등록에 성공하셨습니다")
         } catch(error) {
@@ -62,14 +67,21 @@ export default function MyFridgeWrite(props: MyFridgeWriteProps) {
         }
     }
 
+    const onClickUpdateProduct = async (data: any) => {
+        console.log(data)
+    }
+
     return (
         <MyFridgeWriteUI 
+        editData = { props.editData }
+        isEdit = { props.isEdit }
         isWriteModalOpen = { props.isWriteModalOpen } 
         formState = { formState }
         control = { control }
         handleSubmit = { handleSubmit }
         category = { dataCategory }
         onClickCreateProduct = { onClickCreateProduct }
+        onClickUpdateProduct = { onClickUpdateProduct }
         onClickCancelWriteModal = { onClickCancelWriteModal }
         />
     )

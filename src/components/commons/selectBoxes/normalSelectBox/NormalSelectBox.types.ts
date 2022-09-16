@@ -3,6 +3,7 @@ export interface INormalSelectBoxProps {
     control: any
     placeholder: string
     category: any
+    defaultValue?: any
 }
 
 export interface INormalSelectBoxUIProps {
@@ -10,4 +11,5 @@ export interface INormalSelectBoxUIProps {
     control: any
     placeholder: string
     category: any
+    defaultValue?: any
 }

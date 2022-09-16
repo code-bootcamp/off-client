@@ -28,6 +28,7 @@ export default function MyFridgeListUI(props: IMyFridgeListUIProps) {
                                         columnId = { columnId } 
                                         column = { column } 
                                         onClickOpenEditModal = { props.onClickOpenEditModal }
+                                        onClickDeleteItem = { props.onClickDeleteItem }
                                         />
                                         { column.isCreateBtn && <ListAddBtn onClick = { props.onClickOpenWriteModal }>클릭하여 상품 추가하기 +</ListAddBtn> }
                                     </ListWrapper>

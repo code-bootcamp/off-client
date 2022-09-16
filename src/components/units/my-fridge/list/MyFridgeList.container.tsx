@@ -1,7 +1,7 @@
 import MyFridgeListUI from "./MyFridgeList.presenter";
 import { useEffect, useState } from 'react'
 import { useMutation, useQuery } from "@apollo/client"
-import { UPDATE_FRIDGE_FOODS, FETCH_FRIDGE_FOODS } from "./MyFridgeList.queries";
+import { UPDATE_FRIDGE_FOODS, FETCH_FRIDGE_FOODS, DELETE_FRIDGE_FOOD } from "./MyFridgeList.queries";
 import { getDate } from "../../../../commons/libraries/utils";
 import { message } from "antd";
 
@@ -31,6 +31,7 @@ export default function MyFridgeList() {
     const [editData, setEditData] = useState({})
 
     const [updateFridgeFoods] = useMutation(UPDATE_FRIDGE_FOODS)
+    const [deleteFridgeFood] = useMutation(DELETE_FRIDGE_FOOD)
 
     const { data: dataFetchCreatedFood } = useQuery(FETCH_FRIDGE_FOODS, {
         variables: {
@@ -130,6 +131,26 @@ export default function MyFridgeList() {
                             },
                             status: "FREEZER"
                         },
+                        refetchQueries: [
+                            {
+                                query: FETCH_FRIDGE_FOODS,
+                                variables: {
+                                    status: "LIST"
+                                }
+                            },
+                            {
+                                query: FETCH_FRIDGE_FOODS,
+                                variables: {
+                                    status: "FREEZER"
+                                }
+                            },
+                            {
+                                query: FETCH_FRIDGE_FOODS,
+                                variables: {
+                                    status: "FRIDGE"
+                                }
+                            },
+                        ]
                     })
                     message.success("등록에 성공했습니다")
                 } catch(error) {
@@ -166,7 +187,27 @@ export default function MyFridgeList() {
                                 category: selectItem.category
                             },
                             status: "FRIDGE"
-                        }
+                        },
+                        refetchQueries: [
+                            {
+                                query: FETCH_FRIDGE_FOODS,
+                                variables: {
+                                    status: "LIST"
+                                }
+                            },
+                            {
+                                query: FETCH_FRIDGE_FOODS,
+                                variables: {
+                                    status: "FREEZER"
+                                }
+                            },
+                            {
+                                query: FETCH_FRIDGE_FOODS,
+                                variables: {
+                                    status: "FRIDGE"
+                                }
+                            },
+                        ]
                     })
                     message.success("등록에 성공했습니다")
                 } catch(error) {
@@ -203,7 +244,27 @@ export default function MyFridgeList() {
                                 category: selectItem.category
                             },
                             status: "LIST"
-                        }
+                        },
+                        refetchQueries: [
+                            {
+                                query: FETCH_FRIDGE_FOODS,
+                                variables: {
+                                    status: "LIST"
+                                }
+                            },
+                            {
+                                query: FETCH_FRIDGE_FOODS,
+                                variables: {
+                                    status: "FREEZER"
+                                }
+                            },
+                            {
+                                query: FETCH_FRIDGE_FOODS,
+                                variables: {
+                                    status: "FRIDGE"
+                                }
+                            },
+                        ]
                     })
                     message.success("등록에 성공했습니다")
                 } catch(error) {
@@ -239,12 +300,35 @@ export default function MyFridgeList() {
     const onClickOpenWriteModal = () => {
         setIsWriteModalOpen(true)
         setIsEdit(false)
+        setEditData({})
     }
 
-    const onClickOpenEditModal = (data: any) => {
+    const onClickOpenEditModal = (data: any) => () => {
         setIsWriteModalOpen(true)
         setIsEdit(true)
+        setEditData(data)
+    }
+
+    const onClickDeleteItem = (data: any) => () => {
         console.log(data)
+        try {
+            deleteFridgeFood({
+                variables: {
+                    foodId: data.id
+                },
+                refetchQueries: [
+                    {
+                        query: FETCH_FRIDGE_FOODS,
+                        variables: {
+                            status: data.status
+                        }
+                    }
+                ]
+            })
+            message.success("삭제에 성공하셨습니다")
+        } catch(error) {
+            
+        }
     }
 
     return (
@@ -254,6 +338,7 @@ export default function MyFridgeList() {
         onDragEnd = { onDragEnd }
         onClickOpenWriteModal = { onClickOpenWriteModal }
         onClickOpenEditModal = { onClickOpenEditModal }
+        onClickDeleteItem = { onClickDeleteItem }
         columns = { columns }
         setColumns = { setColumns }
         setIsWriteModalOpen = { setIsWriteModalOpen }
