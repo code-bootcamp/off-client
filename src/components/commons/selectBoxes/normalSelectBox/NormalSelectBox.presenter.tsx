@@ -11,6 +11,7 @@ export default function NormalSelectBoxUI(props: INormalSelectBoxUIProps) {
         <Controller 
         control = { props.control } 
         name = { props.name }
+        defaultValue = { props.defaultValue }
         render = {({ field: { onChange } }) => (
             <NormalSelectBox placeholder = { props.placeholder } defaultValue = { props.defaultValue } onChange = {(value) => { onChange(value) }}>
                 { props.category && props.category.map((el: any) => (

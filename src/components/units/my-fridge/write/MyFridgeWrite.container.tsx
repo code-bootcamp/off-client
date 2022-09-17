@@ -2,12 +2,13 @@ import { useMutation, useQuery } from "@apollo/client";
 import { yupResolver } from "@hookform/resolvers/yup"
 import { useForm } from "react-hook-form";
 import MyFridgeWriteUI from "./MyFridgeWrite.presenter";
-import { CREATE_FRIDGE_FOOD, FETCH_CATEGORY } from "./MyFridgeWrite.queries";
+import { CREATE_FRIDGE_FOOD, FETCH_CATEGORY, UPDATE_FRIDGE_FOODS } from "./MyFridgeWrite.queries";
 import { getDate } from '../../../../../src/commons/libraries/utils';
 import * as yup from "yup"
 import { FETCH_FRIDGE_FOODS } from "../list/MyFridgeList.queries";
 import { message } from "antd";
 import { MyFridgeWriteProps } from "./MyFridgeWrite.types";
+import { useEffect, useState } from "react";
 
 const schema = yup.object({
     name: yup.string().required("상품명은 필수입니다"),
@@ -20,15 +21,44 @@ const schema = yup.object({
 export default function MyFridgeWrite(props: MyFridgeWriteProps) {
     const { control, handleSubmit, formState, reset } = useForm({
         resolver: yupResolver(schema),
-        mode: "onChange"
+        mode: "onChange",
     })
 
+    useEffect(() => {
+        if(props.isEdit) {
+            reset({
+                name: props.editData.name,
+                price: props.editData.price,
+                expDate: props.editData.expDate,
+                alarm: props.editData.alarm,
+                category: props.editData.category?.id
+            })
+        } else {
+            reset({
+                name: "",
+                price: null,
+                expDate: null,
+                alarm: null,
+                category: ""
+            })
+        }
+    }, [props.isEdit, props.editData])
+    
     const { data: dataCategory } = useQuery(FETCH_CATEGORY)
 
     const [createFridgeFood] = useMutation(CREATE_FRIDGE_FOOD)
+    const [updateFridgeFoods] = useMutation(UPDATE_FRIDGE_FOODS)
 
     const onClickCancelWriteModal = () => {
         props.setIsWriteModalOpen(false)
+        props.setIsEdit({})
+        reset({
+            name: "",
+            price: null,
+            expDate: null,
+            alarm: null,
+            category: ""
+        })
     }
 
     const onClickCreateProduct = async (data: any) => {
@@ -53,13 +83,6 @@ export default function MyFridgeWrite(props: MyFridgeWriteProps) {
                     }
                 ]
             })
-            reset({
-                name: "",
-                price: null,
-                category: "",
-                expDate: "",
-                alarm: ""
-            })
             props.setIsWriteModalOpen(false)
             message.success("등록에 성공하셨습니다")
         } catch(error) {
@@ -68,7 +91,33 @@ export default function MyFridgeWrite(props: MyFridgeWriteProps) {
     }
 
     const onClickUpdateProduct = async (data: any) => {
-        console.log(data)
+        try {
+            await updateFridgeFoods({
+                variables: {
+                    fridgeFoodId: props.editData.id,
+                    updateFridgeFoodInput: {
+                        name: data.name,
+                        price: data.price,
+                        expDate: getDate(data.expDate),
+                        alarm: getDate(data.alarm),
+                        category: data.category
+                    },
+                    status: props.editData.status
+                },
+                refetchQueries: [
+                    {
+                        query: FETCH_FRIDGE_FOODS,
+                        variables: {
+                            status: props.editData.status
+                        }
+                    }
+                ]
+            })
+            props.setIsWriteModalOpen(false)
+            message.success("수정에 성공했습니다")
+        } catch(error) {
+            message.error("수정에 실패하셨습니다")
+        }
     }
 
     return (

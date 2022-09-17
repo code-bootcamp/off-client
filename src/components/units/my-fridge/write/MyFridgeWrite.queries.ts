@@ -21,3 +21,9 @@ export const CREATE_FRIDGE_FOOD = gql`
         } 
     }
 `
+
+export const UPDATE_FRIDGE_FOODS = gql`
+    mutation updateFridgeFoods($fridgeFoodId: String!, $updateFridgeFoodInput: UpdateFridgeFoodInput!, $status: String!) {
+        updateFridgeFoods(fridgeFoodId: $fridgeFoodId, updateFridgeFoodInput: $updateFridgeFoodInput, status: $status)
+    }
+`

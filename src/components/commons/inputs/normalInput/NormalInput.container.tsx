@@ -1,4 +1,3 @@
-import { property } from "lodash";
 import NormalInputUI from "./NormalInput.presenter";
 import { INormalInputProps } from "./NormalInput.types";
 
@@ -8,7 +7,7 @@ export default function NormalInput(props: INormalInputProps) {
         type = { props.type }
         name = { props.name }
         placeholder = { props.placeholder }
-        defaultValue = { props.defaultValue || "" }
+        defaultValue = { props.defaultValue }
         control = { props.control }
         />
     )
