@@ -37,6 +37,7 @@ export default function MyFridgeList() {
         variables: {
             status: "LIST"
         },
+        fetchPolicy: 'network-only',
         onCompleted(data) {
             const _columns = {
                 ...columns,
@@ -54,6 +55,7 @@ export default function MyFridgeList() {
         variables: {
             status: "FREEZER"
         },
+        fetchPolicy: 'network-only',
         onCompleted(data) {
             const _columns = {
                 ...columns,
@@ -71,6 +73,7 @@ export default function MyFridgeList() {
         variables: {
             status: "FRIDGE"
         },
+        fetchPolicy: 'network-only',
         onCompleted(data) {
             const _columns = {
                 ...columns,

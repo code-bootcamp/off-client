@@ -40,9 +40,6 @@ export const NormalButton = styled.button`
     font-size: ${B.deskTopFontSizeMicro}rem;
     user-select: none;
     cursor: pointer;
-    &:active{
-        box-shadow: 10px 10px 10px  #001cff inset, -10px -10px 5px  #001cff inset;
-    }
     &:disabled{
         opacity: 50%;
         pointer-events: none;
