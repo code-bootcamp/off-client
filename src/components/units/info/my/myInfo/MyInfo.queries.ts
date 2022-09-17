@@ -8,6 +8,9 @@ export const FETCH_USER_LOGGED_IN = gql`
             email
             nickname
             phone
+            usersimage{
+                url
+            }
         }
     }
 `
@@ -26,6 +29,10 @@ export const UPDATE_USER = gql`
             email
             nickname
             phone
+            usersimage{
+                id
+                url
+            }
         }
     }
 `

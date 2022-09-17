@@ -147,7 +147,6 @@ export type IMutationDeleteBoardArgs = {
 
 export type IMutationDeleteFridgeFoodArgs = {
   foodId: Scalars['String'];
-  fridgeId: Scalars['String'];
 };
 
 
@@ -285,7 +284,7 @@ export type IUsersImage = {
 
 export type IUpdateUserInput = {
   email?: InputMaybe<Scalars['String']>;
-  image: Scalars['String'];
+  image?: InputMaybe<Scalars['String']>;
   name?: InputMaybe<Scalars['String']>;
   nickname?: InputMaybe<Scalars['String']>;
   password?: InputMaybe<Scalars['String']>;

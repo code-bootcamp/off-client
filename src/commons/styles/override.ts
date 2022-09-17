@@ -1,7 +1,7 @@
 // 여기는 ant.ui나 다른 타 라이브러리에서 가져온 컴포넌트의 css를 변경시키고싶을때 작성하는 곳입니다!!
 import * as B from './basic'
 import styled from '@emotion/styled'
-import { Drawer, Tabs } from 'antd';
+import { Drawer, Popover, Tabs } from 'antd';
 
 
 
@@ -74,7 +74,12 @@ export const MyPageTab = styled(Tabs)`
     }
     .ant-tabs-nav{
         box-shadow: 10px 0 10px -10px rgba(0,0,0,0.1);
+        margin-bottom: 50px !important;
     }
+
 `
 export const TabItem = styled(Tabs.TabPane)`
+
+`
+export const Pop = styled(Popover)`
 `
