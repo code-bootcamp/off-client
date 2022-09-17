@@ -26,18 +26,18 @@ export const Title = styled.h1`
     margin: 2rem 0 0.2rem;
     @media (min-width: ${B.bigTablet}px) and (max-width: ${B.noteBook - 1}px) {
         font-size: ${B.noteBookFontSizeMiddle}rem;
-        margin: 2.67rem 0 0.26rem;
+        margin: 2rem 0 0.26rem;
     }
     @media (min-width: ${B.smallTablet}px) and (max-width: ${B.bigTablet - 1}px) {
         font-size: ${B.bigTabletFontSizeMiddle}rem;
-        margin: 3.2rem 0 0.32rem;
+        margin: 2rem 0 0.32rem;
     }
     @media (min-width: ${B.mobile}px) and (max-width: ${B.smallTablet - 1}px) {
         font-size: ${B.smallTabletFontSizeMiddle}rem;
-        margin: 4.21rem 0 0.42rem;
+        margin: 3rem 0 0.42rem;
     }
     @media (max-width: ${B.mobile - 1}px) {
         font-size: ${B.mobileFontSizeMiddle}rem;
-        margin: 5.51rem 0 0.55rem;
+        margin: 4rem 0 0.55rem;
     }
 `
