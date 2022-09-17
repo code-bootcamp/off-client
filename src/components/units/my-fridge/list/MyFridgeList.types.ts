@@ -8,6 +8,7 @@ export interface IMyFridgeListUIProps {
     onClickOpenWriteModal: () => void
     onClickOpenEditModal: (data: any) => () => void
     onClickDeleteItem: (data: any) => () => void
+    getCategoryIcon: (categoryName: string) => void
     columns: any
     setColumns: any
     setIsWriteModalOpen: any
@@ -20,6 +21,7 @@ export interface MyFridgeListDroppableProps {
     column: any
     onClickOpenEditModal: (data: any) => void
     onClickDeleteItem: (data: any) => void
+    getCategoryIcon: (categoryName: string) => void
 }
 
 export interface MyFridgeListDraggableProps {
@@ -27,4 +29,9 @@ export interface MyFridgeListDraggableProps {
     index: any
     onClickOpenEditModal: (data: any) => void
     onClickDeleteItem: (data: any) => void
+    getCategoryIcon: (categoryName: string) => void
+}
+
+export interface MyFridgeListItemIsAlarmProps {
+    isAlarm: boolean
 }

@@ -1,6 +1,7 @@
 import styled from '@emotion/styled'
 import * as B from '../../../../commons/styles/basic'
 import { Row, Col, Modal } from 'antd';
+import { MyFridgeListItemIsAlarmProps } from './MyFridgeList.types';
 
 export const Wrapper = styled.div`
     width: 80%;
@@ -80,7 +81,7 @@ export const SubTitle = styled.h2`
 
 export const ListItem = styled.li`
     list-style: none;
-    box-shadow: 4px 10px 9px #00000014;
+    box-shadow: 4px 10px 9px ${(props: MyFridgeListItemIsAlarmProps) => props.isAlarm ? "red" : "#00000014"};
     border-radius: 20px;
     margin-bottom: 0.5rem;
     padding: 0.2rem;

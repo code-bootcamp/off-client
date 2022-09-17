@@ -2,18 +2,22 @@ import { Draggable } from 'react-beautiful-dnd'
 import { MyFridgeListDraggableProps } from './MyFridgeList.types'
 import { ListItemHeader, ListItem, ListItemContent } from "./MyFridgeList.styles"
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faDrumstickBite, faPen, faXmark } from '@fortawesome/free-solid-svg-icons'
+import { 
+    faPen, 
+    faXmark,
+} from '@fortawesome/free-solid-svg-icons'
 import { getDate } from '../../../../commons/libraries/utils'
 
 export default function MyFridgeListDraggable(props: MyFridgeListDraggableProps) {
+
     return (
         <Draggable key = { props.item.id } draggableId = { props.item.id } index = { props.index }>
             {(provided, snapshot) => {
                 return (
-                    <ListItem ref = { provided.innerRef } { ...provided.draggableProps } { ...provided.dragHandleProps }>
+                    <ListItem isAlarm = { getDate(new Date()) === getDate(props.item.alarm) ? true : false } ref = { provided.innerRef } { ...provided.draggableProps } { ...provided.dragHandleProps }>
                         <ListItemHeader>
                             <div className = 'category-box'>
-                                <FontAwesomeIcon icon = { faDrumstickBite } />
+                                <FontAwesomeIcon icon = { props.getCategoryIcon(props.item.category.name) } />
                                 <span>{ props.item.category.name }</span>
                             </div>
                             <div className = 'btn-box'>

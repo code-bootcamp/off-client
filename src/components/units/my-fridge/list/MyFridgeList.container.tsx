@@ -4,6 +4,15 @@ import { useMutation, useQuery } from "@apollo/client"
 import { UPDATE_FRIDGE_FOODS, FETCH_FRIDGE_FOODS, DELETE_FRIDGE_FOOD } from "./MyFridgeList.queries";
 import { getDate } from "../../../../commons/libraries/utils";
 import { message } from "antd";
+import { 
+    faDrumstickBite, 
+    faAppleWhole,
+    faCarrot,
+    faIceCream,
+    faFish,
+    faCheese, 
+    faSeedling
+} from '@fortawesome/free-solid-svg-icons'
 
 export default function MyFridgeList() {
     const columnData = {
@@ -300,6 +309,35 @@ export default function MyFridgeList() {
         }
     }
 
+    const getCategoryIcon = (categoryName: string) => {
+        let result
+        switch(categoryName) {
+            case "육류":
+                result = faDrumstickBite
+                break;
+            case "어패류":
+                result = faFish
+                break;
+            case "과일류":
+                result = faAppleWhole
+                break;
+            case "기타":
+                result = faSeedling
+                break;
+            case "냉동식품":
+                result = faIceCream
+                break;
+            case "유제품":
+                result = faCheese
+                break;
+            case "채소류":
+                result = faCarrot
+                break;
+        }
+
+        return result
+    }
+
     const onClickOpenWriteModal = () => {
         setIsWriteModalOpen(true)
         setIsEdit(false)
@@ -348,6 +386,7 @@ export default function MyFridgeList() {
         isEdit = { isEdit }
         setIsEdit = { setIsEdit }
         editData = { editData }
+        getCategoryIcon = { getCategoryIcon }
         />
     )
 }
