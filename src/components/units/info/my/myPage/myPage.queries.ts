@@ -6,10 +6,14 @@ export const FETCH_FRIDGE_FOODS = gql`
             id
             name
             price
-            exDate
+            expDate
             regDate
             alarm
             status
+            category{
+                id
+                name
+            }
         }
     }
 `

@@ -8,6 +8,7 @@ import * as yup from "yup"
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { IMutation, IMutationUpdateUserArgs, IMutationUploadFileArgs, IQuery } from "../../../../../commons/types/generated/types";
+import { FETCH_FRIDGE_FOODS } from "../myPage/MyPage.queries";
 
 const schema = yup.object().shape({
     email: yup.string().email("이메일 아이디를 @까지 정확하게 입력해주세요.").required("이메일 아이디를 @까지 정확하게 입력해주세요."),
@@ -97,8 +98,6 @@ const onClickUpdate = async(data: any) => {
     useEffect(()=>{
         setUserInfo(data?.fetchUserLoggedIn)
     },[data])
-
-
 
     return<MyInfoUI
             isEdit = { isEdit }

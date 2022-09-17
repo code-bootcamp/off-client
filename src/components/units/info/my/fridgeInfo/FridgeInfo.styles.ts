@@ -4,9 +4,7 @@ export const Wrapper = styled.div`
     width: 90%;
     margin: 0 auto 1rem;
     /* border: 1px solid black; */
-    border-radius: 20px;
-    padding: 0.5rem;
-    box-shadow: 5px 5px 20px 2px rgba(0,0,0,0.3);
+
     font-size: ${B.deskTopFontSizeMiddle}rem;
     /* @media (min-width: ${B.bigTablet}px) and (max-width: ${B.noteBook - 1}px) {
         width: 58%;
@@ -19,5 +17,12 @@ export const Wrapper = styled.div`
     }
     @media (max-width: ${B.mobile - 1}px) {
         width: 91%;
+    } */
+    /* button {
+        position: fixed;
+        right: 1vh;
+        bottom: 1vh;
+        padding: 0 1rem;
+        width: fit-content;
     } */
 `
