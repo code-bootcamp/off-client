@@ -5,11 +5,11 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { 
     faPen, 
     faXmark,
+    faCartShopping
 } from '@fortawesome/free-solid-svg-icons'
 import { getDate } from '../../../../commons/libraries/utils'
 
 export default function MyFridgeListDraggable(props: MyFridgeListDraggableProps) {
-
     return (
         <Draggable key = { props.item.id } draggableId = { props.item.id } index = { props.index }>
             {(provided, snapshot) => {
@@ -21,6 +21,10 @@ export default function MyFridgeListDraggable(props: MyFridgeListDraggableProps)
                                 <span>{ props.item.category.name }</span>
                             </div>
                             <div className = 'btn-box'>
+                            <FontAwesomeIcon 
+                                icon = { faCartShopping } 
+                                onClick = { props.onClickMoveMarketCreate(props.item.id) }
+                                />
                                 <FontAwesomeIcon 
                                 icon = { faPen } 
                                 onClick = { props.onClickOpenEditModal(props.item) }

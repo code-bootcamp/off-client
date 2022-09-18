@@ -8,12 +8,14 @@ export interface IMyFridgeListUIProps {
     onClickOpenWriteModal: () => void
     onClickOpenEditModal: (data: any) => () => void
     onClickDeleteItem: (data: any) => () => void
+    onClickMoveMarketCreate: (id: string) => () => void
     getCategoryIcon: (categoryName: string) => void
     columns: any
     setColumns: any
     setIsWriteModalOpen: any
     setIsEdit: any
     editData: any
+    userInfo: any
 }
 
 export interface MyFridgeListDroppableProps {
@@ -21,6 +23,7 @@ export interface MyFridgeListDroppableProps {
     column: any
     onClickOpenEditModal: (data: any) => void
     onClickDeleteItem: (data: any) => void
+    onClickMoveMarketCreate: (id: string) => () => void
     getCategoryIcon: (categoryName: string) => void
 }
 
@@ -29,6 +32,7 @@ export interface MyFridgeListDraggableProps {
     index: any
     onClickOpenEditModal: (data: any) => void
     onClickDeleteItem: (data: any) => void
+    onClickMoveMarketCreate: (id: string) => () => void
     getCategoryIcon: (categoryName: string) => void
 }
 
