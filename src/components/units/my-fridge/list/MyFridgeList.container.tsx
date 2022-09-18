@@ -13,6 +13,10 @@ import {
     faCheese, 
     faSeedling
 } from '@fortawesome/free-solid-svg-icons'
+import { useRecoilState } from "recoil";
+import { userInfoState } from "../../../../commons/store";
+import { FETCH_USER_LOGGED_IN } from "../../info/my/myInfo/MyInfo.queries";
+import { useRouter } from "next/router";
 
 export default function MyFridgeList() {
     const columnData = {
@@ -33,6 +37,9 @@ export default function MyFridgeList() {
         }
     }
 
+    const router = useRouter()
+
+    const [userInfo, setUserInfo]: any = useRecoilState(userInfoState)
     const [columns, setColumns] = useState(columnData)
     const [winReady, setWinReady] = useState(false)
     const [isWriteModalOpen, setIsWriteModalOpen] = useState(false)
@@ -41,6 +48,8 @@ export default function MyFridgeList() {
 
     const [updateFridgeFoods] = useMutation(UPDATE_FRIDGE_FOODS)
     const [deleteFridgeFood] = useMutation(DELETE_FRIDGE_FOOD)
+
+    const { data } = useQuery(FETCH_USER_LOGGED_IN)
 
     const { data: dataFetchCreatedFood } = useQuery(FETCH_FRIDGE_FOODS, {
         variables: {
@@ -95,6 +104,10 @@ export default function MyFridgeList() {
             setColumns(_columns)
         }
     })
+
+    useEffect(()=>{
+        setUserInfo(data?.fetchUserLoggedIn)
+    },[data])
 
     useEffect(() => {
         setWinReady(true)
@@ -351,7 +364,6 @@ export default function MyFridgeList() {
     }
 
     const onClickDeleteItem = (data: any) => () => {
-        console.log(data)
         try {
             deleteFridgeFood({
                 variables: {
@@ -372,14 +384,20 @@ export default function MyFridgeList() {
         }
     }
 
+    const onClickMoveMarketCreate = (id: string) => () => {
+        router.push(`/market/${id}/new`)
+    }
+
     return (
         <MyFridgeListUI 
         winReady = { winReady }
+        userInfo = { userInfo }
         isWriteModalOpen = { isWriteModalOpen }
         onDragEnd = { onDragEnd }
         onClickOpenWriteModal = { onClickOpenWriteModal }
         onClickOpenEditModal = { onClickOpenEditModal }
         onClickDeleteItem = { onClickDeleteItem }
+        onClickMoveMarketCreate = { onClickMoveMarketCreate }
         columns = { columns }
         setColumns = { setColumns }
         setIsWriteModalOpen = { setIsWriteModalOpen }

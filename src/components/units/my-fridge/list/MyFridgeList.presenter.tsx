@@ -1,5 +1,5 @@
 import { Row, Col } from 'antd'
-import { ListAddBtn, ListWrapper, SubTitle, Wrapper } from "./MyFridgeList.styles"
+import { ListAddBtn, ListWrapper, SubTitle, Title, Wrapper } from "./MyFridgeList.styles"
 import { IMyFridgeListUIProps } from "./MyFridgeList.types"
 import { DragDropContext } from 'react-beautiful-dnd'
 import MyFridgeListDroppable from "./MyFridgeListDroppable.presenter"
@@ -29,6 +29,7 @@ export default function MyFridgeListUI(props: IMyFridgeListUIProps) {
                                         column = { column } 
                                         onClickOpenEditModal = { props.onClickOpenEditModal }
                                         onClickDeleteItem = { props.onClickDeleteItem }
+                                        onClickMoveMarketCreate = { props.onClickMoveMarketCreate }
                                         getCategoryIcon = { props.getCategoryIcon }
                                         />
                                         { column.isCreateBtn && <ListAddBtn onClick = { props.onClickOpenWriteModal }>클릭하여 상품 추가하기 +</ListAddBtn> }

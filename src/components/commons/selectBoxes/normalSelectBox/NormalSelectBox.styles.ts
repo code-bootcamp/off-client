@@ -4,6 +4,7 @@ import { Select } from "antd";
 
 export const NormalSelectBox = styled(Select)`
     width: 100%;
+    display: block!important;
     font-size: ${B.deskTopFontSizeMicro}rem!important;
     @media (min-width: ${B.bigTablet}px) and (max-width: ${B.noteBook - 1}px) {
         font-size: ${B.noteBookFontSizeMicro}rem!important;
@@ -36,6 +37,7 @@ export const NormalSelectBox = styled(Select)`
             font-weight: bold!important;
             &.ant-select-selection-search {
                 input {
+                    display: block!important;
                     height: 0.7rem!important;
                     @media (min-width: ${B.bigTablet}px) and (max-width: ${B.noteBook - 1}px) {
                         height: 1.1rem!important;

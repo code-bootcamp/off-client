@@ -1,6 +1,5 @@
 import styled from "@emotion/styled"
 import { Row, Col } from "antd";
-
 import Link from "next/link"
 import * as B from "../../../../commons/styles/basic"
 
