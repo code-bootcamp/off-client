@@ -30,7 +30,7 @@ export default function MyFridgeListDraggable(props: MyFridgeListDraggableProps)
                                         <div className = 'btn-box'>
                                             <FontAwesomeIcon 
                                                 icon = { faCartShopping } 
-                                                onClick = { props.onClickMoveMarketCreate(props.item.id) }
+                                                onClick = { props.onClickOpenMarketCreateModal(props.item) }
                                             />
                                             <FontAwesomeIcon 
                                                 icon = { faPen } 
