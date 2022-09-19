@@ -19,7 +19,7 @@ export default function MainUI(props: IMainUIProps) {
                 </MainCol>
                 <MainCol xl={{span:12}} lg={{span:12}} md={{span:24}} sm={{span:24}} xs={{span:24}}>
                     <MainImgWrapper>
-                        <Phone src="/images/phone.png"/>
+                        <Phone src="/images/phone.webp"/>
                         <Circle/>
                     </MainImgWrapper>
                 </MainCol>

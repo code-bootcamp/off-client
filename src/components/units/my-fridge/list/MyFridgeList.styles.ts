@@ -40,7 +40,8 @@ export const Title = styled.h1`
 
 export const ListWrapper = styled.div`
     width: 100%;
-    box-shadow: 4px 10px 9px #00000030;
+    /* box-shadow: 4px 10px 9px #00000030; */
+    box-shadow: 0px 0px 10px -2px rgba(0,0,0,0.3);
     border-radius: 20px;
     padding: 0.3rem;
     ul, li {
@@ -81,7 +82,8 @@ export const SubTitle = styled.h2`
 
 export const ListItem = styled.li`
     list-style: none;
-    box-shadow: 4px 10px 9px ${(props: MyFridgeListItemIsAlarmProps) => props.isAlarm ? "red" : "#00000014"};
+    /* box-shadow: 0px 0px 10px -2px ${(props: MyFridgeListItemIsAlarmProps) => props.isAlarm ? "red" : "rgba(255,0,0)"}; */
+    box-shadow: 4px 10px 9px ${(props: MyFridgeListItemIsAlarmProps) => props.isAlarm ? "#ff000014" : "#00000014"};
     border-radius: 20px;
     margin-bottom: 0.5rem;
     padding: 0.2rem;
@@ -223,6 +225,7 @@ export const ListAddBtn = styled.button`
     border: 2px dashed ${B.mainColor};
     border-radius: 20px;
     box-shadow: 4px 10px 9px #00000014;
+    /* box-shadow: 0px 0px 10px -2px rgba(0,0,0,0.3); */
     cursor: pointer;
     @media (min-width: ${B.bigTablet}px) and (max-width: ${B.noteBook - 1}px) {
         font-size: ${B.noteBookFontSizeMicro}rem;
@@ -252,6 +255,7 @@ export const WriteModal = styled(Modal)`
     padding-bottom: 0!important;
     div.ant-modal-content {
         box-shadow: 0px 21px 22px #00000026!important;
+        /* box-shadow: 0px 0px 10px -2px rgba(0,0,0,0.3); */
         border-radius: 20px!important;
         button.ant-modal-close {
             display: none!important;
