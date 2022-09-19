@@ -37,14 +37,14 @@ export default function MyFridgeList() {
         }
     }
 
-    const router = useRouter()
-
     const [userInfo, setUserInfo]: any = useRecoilState(userInfoState)
     const [columns, setColumns] = useState(columnData)
     const [winReady, setWinReady] = useState(false)
     const [isWriteModalOpen, setIsWriteModalOpen] = useState(false)
+    const [isMarketCreateModalOpen, setIsMarketCreateModalOpen] = useState(false)
     const [isEdit, setIsEdit] = useState(false)
     const [editData, setEditData] = useState({})
+    const [marketCreateData, setMarketCreateData] = useState({})
 
     const [updateFridgeFoods] = useMutation(UPDATE_FRIDGE_FOODS)
     const [deleteFridgeFood] = useMutation(DELETE_FRIDGE_FOOD)
@@ -300,6 +300,11 @@ export default function MyFridgeList() {
         setEditData(data)
     }
 
+    const onClickOpenMarketCreateModal = (data: any) => () => {
+        setIsMarketCreateModalOpen(true)
+        setMarketCreateData(data)
+    }
+
     const onClickDeleteItem = (data: any) => () => {
         try {
             deleteFridgeFood({
@@ -321,26 +326,25 @@ export default function MyFridgeList() {
         }
     }
 
-    const onClickMoveMarketCreate = (id: string) => () => {
-        router.push(`/market/${id}/new`)
-    }
-
     return (
         <MyFridgeListUI 
         winReady = { winReady }
         userInfo = { userInfo }
         isWriteModalOpen = { isWriteModalOpen }
+        isMarketCreateModalOpen = { isMarketCreateModalOpen }
         onDragEnd = { onDragEnd }
         onClickOpenWriteModal = { onClickOpenWriteModal }
         onClickOpenEditModal = { onClickOpenEditModal }
         onClickDeleteItem = { onClickDeleteItem }
-        onClickMoveMarketCreate = { onClickMoveMarketCreate }
+        onClickOpenMarketCreateModal = { onClickOpenMarketCreateModal }
         columns = { columns }
         setColumns = { setColumns }
         setIsWriteModalOpen = { setIsWriteModalOpen }
+        setIsMarketCreateModalOpen = { setIsMarketCreateModalOpen }
         isEdit = { isEdit }
         setIsEdit = { setIsEdit }
         editData = { editData }
+        marketCreateData = { marketCreateData }
         getCategoryIcon = { getCategoryIcon }
         />
     )

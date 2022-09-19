@@ -17,7 +17,7 @@ export default function MyFridgeListDroppable(props: MyFridgeListDroppableProps)
                                 index = { index } 
                                 onClickOpenEditModal = { props.onClickOpenEditModal }
                                 onClickDeleteItem = { props.onClickDeleteItem }
-                                onClickMoveMarketCreate = { props.onClickMoveMarketCreate }
+                                onClickOpenMarketCreateModal = { props.onClickOpenMarketCreateModal }
                                 getCategoryIcon = { props.getCategoryIcon }
                                 />
                             )

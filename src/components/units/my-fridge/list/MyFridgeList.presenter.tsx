@@ -5,6 +5,7 @@ import { IMyFridgeListUIProps } from "./MyFridgeList.types"
 import { DragDropContext } from 'react-beautiful-dnd'
 import MyFridgeListDroppable from "./MyFridgeListDroppable.presenter"
 import MyFridgeWrite from '../write/MyFridgeWrite.container'
+import MarketWrite from '../../market/write/MarketWrite.container';
 
 export default function MyFridgeListUI(props: IMyFridgeListUIProps) {
     return (
@@ -17,6 +18,11 @@ export default function MyFridgeListUI(props: IMyFridgeListUIProps) {
                 isWriteModalOpen = { props.isWriteModalOpen } 
                 setIsWriteModalOpen = { props.setIsWriteModalOpen } 
                 editData = { props.editData }
+                />
+                <MarketWrite
+                isMarketCreateModalOpen = { props.isMarketCreateModalOpen }
+                setIsMarketCreateModalOpen = { props.setIsMarketCreateModalOpen }
+                marketCreateData = { props.marketCreateData }
                 />
                 <InfoAlert type = 'info' banner message = {
                     <Marquee gradient = { false }>
@@ -36,7 +42,7 @@ export default function MyFridgeListUI(props: IMyFridgeListUIProps) {
                                         column = { column } 
                                         onClickOpenEditModal = { props.onClickOpenEditModal }
                                         onClickDeleteItem = { props.onClickDeleteItem }
-                                        onClickMoveMarketCreate = { props.onClickMoveMarketCreate }
+                                        onClickOpenMarketCreateModal = { props.onClickOpenMarketCreateModal }
                                         getCategoryIcon = { props.getCategoryIcon }
                                         />
                                         { column.isCreateBtn && <ListAddBtn onClick = { props.onClickOpenWriteModal }>클릭하여 상품 추가하기 +</ListAddBtn> }

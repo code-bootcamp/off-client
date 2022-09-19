@@ -1,14 +1,15 @@
 export interface MarketWriteProps {
-    data: any
+    isMarketCreateModalOpen: boolean
+    setIsMarketCreateModalOpen: any
+    marketCreateData: any
 }
 
 export interface MarketWriteUIProps {
-    data: any
-    category: any
+    marketCreateData: any
+    isMarketCreateModalOpen: boolean
+    formState: any
     control: any
-    address: string
-    fileUrls: any
-    onChangeFileUrls: (fileUrl: string, index: number) => void
+    category: any
     handleSubmit: any
-    onClickCreate: (data: any) => void
+    onClickCancelWriteModal: () => void
 }

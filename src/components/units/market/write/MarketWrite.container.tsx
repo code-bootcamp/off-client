@@ -13,42 +13,35 @@ const schema = yup.object({
 
 export default function MarketWrite(props: MarketWriteProps) {
     
-    const { control, handleSubmit, getValues, trigger, formState, reset } = useForm({
+    const { control, handleSubmit, formState, reset } = useForm({
         resolver: yupResolver(schema),
-        mode: "onChange"
+        mode: "onChange",
     })
 
     useEffect(() => {
         reset({
-            name: props.data?.fetchFridgeFoodOne.name
+            name: props.marketCreateData.name,
         })
-    }, [props.data])
+    }, [props.marketCreateData])
 
     const { data: dataCategory } = useQuery(FETCH_CATEGORY)
 
-    const [isAddressOpen, setIsAddressOpen] = useState(false)
-    const [fileUrls, setFileUrls] = useState(["", "", ""])
-
-    const onChangeFileUrls = (fileUrl: string, index: number) => {
-        const newFileUrls = [...fileUrls]
-        newFileUrls[index] = fileUrl
-        setFileUrls(newFileUrls)
+    const onClickCancelWriteModal = () => {
+        props.setIsMarketCreateModalOpen(false)
+        reset({
+            name: "",
+        })
     }
 
-    const onClickCreate = (data: any) => {
-        console.log(data)
-    }
-    
     return (
         <MarketWriteUI
-        data = { props.data?.fetchFridgeFoodOne }
-        address = { getValues("salesLocations.address") }
-        category = { dataCategory }
+        marketCreateData = { props.marketCreateData }
+        isMarketCreateModalOpen = { props.isMarketCreateModalOpen }
+        formState = { formState }
         control = { control }
-        fileUrls = { fileUrls }
-        onChangeFileUrls = { onChangeFileUrls }
+        category = { dataCategory }
         handleSubmit = { handleSubmit }
-        onClickCreate = { onClickCreate }
+        onClickCancelWriteModal = { onClickCancelWriteModal }
         />
     )
 }

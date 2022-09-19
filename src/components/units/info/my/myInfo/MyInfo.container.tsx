@@ -17,7 +17,6 @@ const schema = yup.object().shape({
     name: yup.string().required("이름을 입력해주세요."),
     nickname: yup.string().required("닉네임을 입력해주세요"),
     phone: yup.string().matches(/^\d{3}\d{4}\d{4}$/,"올바른 전화번호 형식이 아닙니다.").required("전화번호를 입력해주세요"),
-    // token: yup.string().required("인증을받아주세요")
 });
 
 export default function MyInfoContainer () {
@@ -40,40 +39,38 @@ export default function MyInfoContainer () {
         setCheckId(e.target.id)
         setIsEdit(true)
     }
+
     const onClickCancel = (e:any) => {
         setCheckId(e.target.id)
         setIsEdit(false)
     }
 
     const fileRef = useRef<HTMLInputElement>(null);
+
     const onClickImageEdit = () => {
         fileRef.current?.click()
     }
-    const onChangeFile = async (e: ChangeEvent<HTMLInputElement>) => {
-      const file = e?.target.files?.[0];
-      if (!file) return;
-    //   const isValid = checkValidationFile(file);
-    //   if (!isValid) return;
-      const fileReader = new FileReader();
-      fileReader.readAsDataURL(file);
-      fileReader.onload = (data) => {
-        if (typeof data.target?.result === "string") {
-        //   console.log(data.target?.result);
-          setImageUrl(data.target?.result);
-        //   console.log("file", file);
-          setImageFile(file);
-        }
-    };
-};
 
-const onClickUpdate = async(data: any) => {
-    let url = await userInfo.usersimage?.url || ""
-    console.log(url)
-    if(imageFile||url===""){
-        const resultFile = await uploadFile({ variables: { files: [imageFile] } });
-        url = resultFile.data?.uploadFile[0]
-    }
-    try{
+    const onChangeFile = async (e: ChangeEvent<HTMLInputElement>) => {
+        const file = e?.target.files?.[0];
+        if (!file) return;
+        const fileReader = new FileReader();
+        fileReader.readAsDataURL(file);
+        fileReader.onload = (data) => {
+        if (typeof data.target?.result === "string") {
+                setImageUrl(data.target?.result);
+                setImageFile(file);
+            }
+        };
+    };
+
+    const onClickUpdate = async(data: any) => {
+        let url = await userInfo.usersimage?.url || ""
+        if(imageFile||url===""){
+            const resultFile = await uploadFile({ variables: { files: [imageFile] } });
+            url = resultFile.data?.uploadFile[0]
+        }
+        try {
             const result = await updateUser({
                 variables: {
                     updateUserInput: {
@@ -89,13 +86,12 @@ const onClickUpdate = async(data: any) => {
                     query: FETCH_USER_LOGGED_IN
                 }]
             })
-            console.log("업데이트결과",result)
             setIsEdit(false)
-        }catch(error){
+        } catch(error){
 
         }
-
     }
+
     useEffect(()=>{
         setUserInfo(data?.fetchUserLoggedIn)
     },[data])
