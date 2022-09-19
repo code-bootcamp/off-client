@@ -4,18 +4,6 @@ import * as B from "../../../../../commons/styles/basic"
 export const Wrapper = styled.div`
     width: 90%;
     margin: 0 auto;
-    /* @media (min-width: ${B.bigTablet}px) and (max-width: ${B.noteBook - 1}px) {
-        width: 58%;
-    }
-    @media (min-width: ${B.smallTablet}px) and (max-width: ${B.bigTablet - 1}px) {
-        width: 70%;
-    }
-    @media (min-width: ${B.mobile}px) and (max-width: ${B.smallTablet - 1}px) {
-        width: 90%;
-    }
-    @media (max-width: ${B.mobile - 1}px) {
-        width: 91%;
-    } */
 `
 
 export const Title = styled.h1`
@@ -23,21 +11,21 @@ export const Title = styled.h1`
     font-weight: bold;
     font-size: ${B.deskTopFontSizeMiddle}rem;
     text-align: start;
-    margin: 2rem 0 0.2rem;
+    margin: 1rem 0;
     @media (min-width: ${B.bigTablet}px) and (max-width: ${B.noteBook - 1}px) {
         font-size: ${B.noteBookFontSizeMiddle}rem;
-        margin: 2rem 0 0.26rem;
+        margin: 1rem 0;
     }
     @media (min-width: ${B.smallTablet}px) and (max-width: ${B.bigTablet - 1}px) {
         font-size: ${B.bigTabletFontSizeMiddle}rem;
-        margin: 2rem 0 0.32rem;
+        margin: 1.5rem 0 1rem 0;
     }
     @media (min-width: ${B.mobile}px) and (max-width: ${B.smallTablet - 1}px) {
         font-size: ${B.smallTabletFontSizeMiddle}rem;
-        margin: 3rem 0 0.42rem;
+        margin: 1.5rem 0 1rem 0;
     }
     @media (max-width: ${B.mobile - 1}px) {
         font-size: ${B.mobileFontSizeMiddle}rem;
-        margin: 4rem 0 0.55rem;
+        margin: 1.5rem 0 1rem 0;
     }
 `

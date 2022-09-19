@@ -1,6 +1,6 @@
 import { Draggable } from 'react-beautiful-dnd'
 import { MyFridgeListDraggableProps } from './MyFridgeList.types'
-import { ListItemHeader, ListItem, ListItemContent } from "./MyFridgeList.styles"
+import { ListItemHeader, ListItem, ListItemContent, BadgeRibbon } from "./MyFridgeList.styles"
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { 
     faPen, 
@@ -14,32 +14,38 @@ export default function MyFridgeListDraggable(props: MyFridgeListDraggableProps)
         <Draggable key = { props.item.id } draggableId = { props.item.id } index = { props.index }>
             {(provided, snapshot) => {
                 return (
-                    <ListItem isAlarm = { getDate(new Date()) === getDate(props.item.alarm) ? true : false } ref = { provided.innerRef } { ...provided.draggableProps } { ...provided.dragHandleProps }>
-                        <ListItemHeader>
-                            <div className = 'category-box'>
-                                <FontAwesomeIcon icon = { props.getCategoryIcon(props.item.category.name) } />
-                                <span>{ props.item.category.name }</span>
-                            </div>
-                            <div className = 'btn-box'>
-                            <FontAwesomeIcon 
-                                icon = { faCartShopping } 
-                                onClick = { props.onClickMoveMarketCreate(props.item.id) }
-                                />
-                                <FontAwesomeIcon 
-                                icon = { faPen } 
-                                onClick = { props.onClickOpenEditModal(props.item) }
-                                />
-                                <FontAwesomeIcon 
-                                icon = { faXmark } 
-                                onClick = { props.onClickDeleteItem(props.item) }
-                                />
-                            </div>
-                        </ListItemHeader>
-                        <ListItemContent>
-                            <p>{ props.item.name }</p>
-                            <p className = 'expDate'>{ getDate(props.item.expDate) } 까지</p>
-                        </ListItemContent>
-                    </ListItem>
+                    <div ref = { provided.innerRef } { ...provided.draggableProps } { ...provided.dragHandleProps }>
+                        <BadgeRibbon isAlarm = { getDate(new Date()) === getDate(props.item.alarm) ? true : true } text = "유효기간 임박" color = 'red'>
+                            <ListItem>
+                                <ListItemHeader>
+                                    <div className = 'category-box'>
+                                        <FontAwesomeIcon icon = { props.getCategoryIcon(props.item.category.name) } />
+                                        <span>{ props.item.category.name }</span>
+                                    </div>
+                                </ListItemHeader>
+                                <ListItemContent>
+                                    <p>{ props.item.name }</p>
+                                    <div className = 'content-flex'>
+                                        <p className = 'expDate'>{ getDate(props.item.expDate) } 까지</p>
+                                        <div className = 'btn-box'>
+                                            <FontAwesomeIcon 
+                                                icon = { faCartShopping } 
+                                                onClick = { props.onClickMoveMarketCreate(props.item.id) }
+                                            />
+                                            <FontAwesomeIcon 
+                                                icon = { faPen } 
+                                                onClick = { props.onClickOpenEditModal(props.item) }
+                                            />
+                                            <FontAwesomeIcon 
+                                                icon = { faXmark } 
+                                                onClick = { props.onClickDeleteItem(props.item) }
+                                            />
+                                        </div>
+                                    </div>
+                                </ListItemContent>
+                            </ListItem>
+                        </BadgeRibbon>
+                    </div>
                 )
             }}
         </Draggable>

@@ -7,12 +7,8 @@ import PreviewUpload from "../../../commons/uploads/previewUpload/PreviewUpload.
 import { FormCol, FormRow, Wrapper } from "./MarketWrite.styles";
 import { MarketWriteUIProps } from "./MarketWrite.types";
 import { v4 as uuidv4 } from "uuid";
-import { useRecoilState } from "recoil";
-import { fridgeInfoState } from "../../../../commons/store";
 
 export default function MarketWriteUI(props: MarketWriteUIProps) {
-    const [data] = useRecoilState(fridgeInfoState)
-    console.log("프레젠터에서",data)
     return (
         <Wrapper>
             <form>
@@ -36,7 +32,7 @@ export default function MarketWriteUI(props: MarketWriteUIProps) {
                 </FormRow>
                 <FormRow gutter = { 20 }>
                     <FormCol xs = { 24 } sm = { 24 } md = { 12 } lg = { 12 } xl = { 12 }>
-                        <KaKaoMap address = { props.address } />
+                        {/* <KaKaoMap address = { props.address } /> */}
                     </FormCol>
                     <FormCol xs = { 24 } sm = { 24 } md = { 12 } lg = { 12 } xl = { 12 }>
                         <FormRow className = "margin-reset">
@@ -54,9 +50,8 @@ export default function MarketWriteUI(props: MarketWriteUIProps) {
                 </FormRow>
                 <FormRow gutter={20}>
                     { props.fileUrls.map((el: any, index: any) => (
-                        <FormCol xs = { 8 } sm = { 8 } md = { 8 } lg = { 8 } xl = { 6 }>
+                        <FormCol key = { uuidv4() } xs = { 8 } sm = { 8 } md = { 8 } lg = { 8 } xl = { 6 }>
                             <PreviewUpload
-                                key = { uuidv4() }
                                 index = { index }
                                 fileUrl = { el }
                                 onChangeFileUrls = { props.onChangeFileUrls }
@@ -64,6 +59,7 @@ export default function MarketWriteUI(props: MarketWriteUIProps) {
                         </FormCol>
                     )) }
                 </FormRow>
+                <button type = "button" onClick = { props.handleSubmit(props.onClickCreate) }>테스트</button>
             </form>
         </Wrapper>
     )
