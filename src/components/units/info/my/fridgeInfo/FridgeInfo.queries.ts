@@ -1,8 +1,8 @@
 import { gql } from "@apollo/client";
 
 export const FETCH_FRIDGE_FOODS = gql`
-    query {
-        fetchFridgeFoods{
+    query fetchFridgeFoods($page: Int){
+        fetchFridgeFoods(page: $page){
             id
             name
             price

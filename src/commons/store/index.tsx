@@ -7,10 +7,15 @@ export const accessTokenState = atom({
 
 export const userInfoState = atom({
     key: "userInfoState",
-    default: {}
+    default: {},
 });
 
 export const isLoginState = atom({
     key: "isLoginState",
     default: false,
 });
+
+export const fridgeInfoState = atom({
+    key: "fridgeInfoState",
+    default: {},
+})

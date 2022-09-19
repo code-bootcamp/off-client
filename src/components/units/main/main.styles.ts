@@ -140,7 +140,7 @@ export const Phone = styled.img`
     position: absolute;
     /* border: 1px solid black; */
     left: 15%;
-    bottom: -5%;
+    bottom: 1%;
     width: 603px;
     height: 799px;
     z-index: 3;

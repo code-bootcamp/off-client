@@ -7,8 +7,8 @@ import { FETCH_USER_LOGGED_IN, UPDATE_USER, UPLOAD_FILE } from "./MyInfo.queries
 import * as yup from "yup"
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
-import { IMutation, IMutationUpdateUserArgs, IMutationUploadFileArgs, IQuery } from "../../../../../commons/types/generated/types";
-import { FETCH_FRIDGE_FOODS } from "../myPage/MyPage.queries";
+import { IMutation, IMutationUpdateUserArgs, IMutationUploadFileArgs } from "../../../../../commons/types/generated/types";
+
 
 const schema = yup.object().shape({
     email: yup.string().email("이메일 아이디를 @까지 정확하게 입력해주세요.").required("이메일 아이디를 @까지 정확하게 입력해주세요."),
@@ -67,8 +67,9 @@ export default function MyInfoContainer () {
 };
 
 const onClickUpdate = async(data: any) => {
-    let url = userInfo.usersimage.url
-    if(imageFile){
+    let url = await userInfo.usersimage?.url || ""
+    console.log(url)
+    if(imageFile||url===""){
         const resultFile = await uploadFile({ variables: { files: [imageFile] } });
         url = resultFile.data?.uploadFile[0]
     }

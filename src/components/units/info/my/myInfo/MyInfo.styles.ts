@@ -8,7 +8,8 @@ export const Wrapper = styled.div`
     /* border: 1px solid black; */
     border-radius: 20px;
     padding: 0.5rem;
-    box-shadow: 5px 5px 20px 2px rgba(0,0,0,0.3);
+    /* box-shadow: 5px 5px 20px 2px rgba(0,0,0,0.3); */
+    box-shadow: 0px 0px 10px -2px ${B.mainColor};
     font-size: ${B.deskTopFontSizeMiddle}rem;
     /* @media (min-width: ${B.bigTablet}px) and (max-width: ${B.noteBook - 1}px) {
         width: 58%;

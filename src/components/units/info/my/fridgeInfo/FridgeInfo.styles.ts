@@ -1,4 +1,5 @@
 import styled from "@emotion/styled";
+import { Col, Row } from "antd";
 import * as B from "../../../../../commons/styles/basic"
 export const Wrapper = styled.div`
     width: 90%;
@@ -25,4 +26,10 @@ export const Wrapper = styled.div`
         padding: 0 1rem;
         width: fit-content;
     } */
+`
+export const ListWrapper = styled(Row)`
+    margin-bottom: 1rem;
+`
+export const ListItem = styled(Col)`
+
 `
