@@ -156,28 +156,7 @@ export default function MyFridgeList() {
                             },
                             status: "FREEZER"
                         },
-                        refetchQueries: [
-                            {
-                                query: FETCH_FRIDGE_FOODS,
-                                variables: {
-                                    status: "LIST"
-                                }
-                            },
-                            {
-                                query: FETCH_FRIDGE_FOODS,
-                                variables: {
-                                    status: "FREEZER"
-                                }
-                            },
-                            {
-                                query: FETCH_FRIDGE_FOODS,
-                                variables: {
-                                    status: "FRIDGE"
-                                }
-                            },
-                        ]
                     })
-                    message.success("등록에 성공했습니다")
                 } catch(error) {
                     message.error("등록에 실패하셨습니다")
                 }
@@ -213,28 +192,7 @@ export default function MyFridgeList() {
                             },
                             status: "FRIDGE"
                         },
-                        refetchQueries: [
-                            {
-                                query: FETCH_FRIDGE_FOODS,
-                                variables: {
-                                    status: "LIST"
-                                }
-                            },
-                            {
-                                query: FETCH_FRIDGE_FOODS,
-                                variables: {
-                                    status: "FREEZER"
-                                }
-                            },
-                            {
-                                query: FETCH_FRIDGE_FOODS,
-                                variables: {
-                                    status: "FRIDGE"
-                                }
-                            },
-                        ]
                     })
-                    message.success("등록에 성공했습니다")
                 } catch(error) {
                     message.error("등록에 실패하셨습니다")
                 }
@@ -270,28 +228,7 @@ export default function MyFridgeList() {
                             },
                             status: "LIST"
                         },
-                        refetchQueries: [
-                            {
-                                query: FETCH_FRIDGE_FOODS,
-                                variables: {
-                                    status: "LIST"
-                                }
-                            },
-                            {
-                                query: FETCH_FRIDGE_FOODS,
-                                variables: {
-                                    status: "FREEZER"
-                                }
-                            },
-                            {
-                                query: FETCH_FRIDGE_FOODS,
-                                variables: {
-                                    status: "FRIDGE"
-                                }
-                            },
-                        ]
                     })
-                    message.success("등록에 성공했습니다")
                 } catch(error) {
                     message.error("등록에 실패하셨습니다")
                 }

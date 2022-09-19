@@ -3,6 +3,7 @@ import { Controller } from "react-hook-form";
 import { INormalInputUIProps } from "./NormalInput.types";
 
 export default function NormalInputUI(props: INormalInputUIProps) {
+    console.log(props.defaultValue)
     return (
         <Controller
         control = { props.control }

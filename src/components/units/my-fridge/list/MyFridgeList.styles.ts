@@ -1,11 +1,12 @@
 import styled from '@emotion/styled'
 import * as B from '../../../../commons/styles/basic'
-import { Row, Col, Modal } from 'antd';
+import { Row, Col, Modal, Alert, Badge, Card } from 'antd';
 import { MyFridgeListItemIsAlarmProps } from './MyFridgeList.types';
+
 
 export const Wrapper = styled.div`
     width: 80%;
-    margin: 1.5rem auto 1.5rem auto;
+    margin: 0.8rem auto;
     @media (min-width: ${B.bigTablet}px) and (max-width: ${B.noteBook - 1}px) {
         width: 90%;
     }
@@ -22,19 +23,23 @@ export const Wrapper = styled.div`
 
 export const Title = styled.h1`
     font-weight: bold;
-    font-size: ${B.deskTopFontSizeMiddle};
+    font-size: 0.7rem;
     margin-bottom: 0.5rem;
     @media (min-width: ${B.bigTablet}px) and (max-width: ${B.noteBook - 1}px) {
-        font-size: ${B.noteBookFontSizeMiddle}rem;
+        font-size: 0.9rem;
     }
     @media (min-width: ${B.smallTablet}px) and (max-width: ${B.bigTablet - 1}px) {
-        font-size: ${B.bigTabletFontSizeMiddle}rem;
+        font-size: 1rem;
     }
     @media (min-width: ${B.mobile}px) and (max-width: ${B.smallTablet - 1}px) {
-        font-size: ${B.smallTabletFontSizeMiddle}rem;
+        font-size: 1.3rem;
+        text-align: center;
+        margin-bottom: 1rem;
     }
     @media (max-width: ${B.mobile - 1}px) {
-        font-size: ${B.mobileFontSizeMiddle}rem;
+        font-size: 1.4rem;
+        text-align: center;
+        margin-bottom: 1rem;
     }
 `
 
@@ -82,8 +87,7 @@ export const SubTitle = styled.h2`
 
 export const ListItem = styled.li`
     list-style: none;
-    /* box-shadow: 0px 0px 10px -2px ${(props: MyFridgeListItemIsAlarmProps) => props.isAlarm ? "red" : "rgba(255,0,0)"}; */
-    box-shadow: 4px 10px 9px ${(props: MyFridgeListItemIsAlarmProps) => props.isAlarm ? "#ff000014" : "#00000014"};
+    box-shadow: 4px 10px 9px #00000014;
     border-radius: 20px;
     margin-bottom: 0.5rem;
     padding: 0.2rem;
@@ -103,9 +107,6 @@ export const ListItem = styled.li`
 
 export const ListItemHeader = styled.div`
     width: 100%;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
     margin-bottom: 0.2rem;
     @media (min-width: ${B.mobile}px) and (max-width: ${B.smallTablet - 1}px) {
         margin-bottom: 0.4rem;
@@ -149,8 +150,56 @@ export const ListItemHeader = styled.div`
                 }
             }
         }
-        &.btn-box {
+    }
+    span, svg {
+        display: block;
+    }
+`
+
+export const ListItemContent = styled.div`
+    p {
+        font-size: 0.3rem;
+        font-weight: bold;
+        margin-bottom: 0.2rem;
+        @media (min-width: ${B.bigTablet}px) and (max-width: ${B.noteBook - 1}px) {
+            font-size: 0.35rem;
+        }
+        @media (min-width: ${B.smallTablet}px) and (max-width: ${B.bigTablet - 1}px) {
+            font-size: 0.35rem;
+        }
+        @media (min-width: ${B.mobile}px) and (max-width: ${B.smallTablet - 1}px) {
+            font-size: 0.8rem;
+            margin-bottom: 0.4rem;
+        }
+        @media (max-width: ${B.mobile - 1}px) {
+            font-size: 0.9rem;
+            margin-bottom: 0.5rem;
+        }
+    }
+    div.content-flex {
+        display: flex;
+        justify-content: space-between;
+        p.expDate {
+            font-size: 0.2rem;
+            color: ${B.redColor};
+            margin-bottom: 0!important;
+            @media (min-width: ${B.bigTablet}px) and (max-width: ${B.noteBook - 1}px) {
+                font-size: 0.3rem;
+            }
+            @media (min-width: ${B.smallTablet}px) and (max-width: ${B.bigTablet - 1}px) {
+                font-size: 0.25rem;
+            }
+            @media (min-width: ${B.mobile}px) and (max-width: ${B.smallTablet - 1}px) {
+                font-size: 0.5rem;
+            }
+            @media (max-width: ${B.mobile - 1}px) {
+                font-size: 0.6rem;
+            }
+        }
+        div.btn-box {
+            display: flex;
             svg {
+                display: block;
                 font-size: 0.2rem;
                 color: ${B.lightGrayColor};
                 margin-left: 0.2rem;
@@ -170,46 +219,6 @@ export const ListItemHeader = styled.div`
                     font-size: 0.6rem;
                     margin-left: 0.6rem;
                 }
-            }
-        }
-    }
-    span, svg {
-        display: block;
-    }
-`
-
-export const ListItemContent = styled.div`
-    p {
-        font-size: 0.3rem;
-        font-weight: bold;
-        @media (min-width: ${B.bigTablet}px) and (max-width: ${B.noteBook - 1}px) {
-            font-size: 0.35rem;
-        }
-        @media (min-width: ${B.smallTablet}px) and (max-width: ${B.bigTablet - 1}px) {
-            font-size: 0.35rem;
-        }
-        @media (min-width: ${B.mobile}px) and (max-width: ${B.smallTablet - 1}px) {
-            font-size: 0.8rem;
-        }
-        @media (max-width: ${B.mobile - 1}px) {
-            font-size: 0.9rem;
-        }
-        &.expDate {
-            font-size: 0.2rem;
-            margin-top: 0.2rem;
-            text-align: right;
-            color: ${B.redColor};
-            @media (min-width: ${B.bigTablet}px) and (max-width: ${B.noteBook - 1}px) {
-                font-size: 0.3rem;
-            }
-            @media (min-width: ${B.smallTablet}px) and (max-width: ${B.bigTablet - 1}px) {
-                font-size: 0.3rem;
-            }
-            @media (min-width: ${B.mobile}px) and (max-width: ${B.smallTablet - 1}px) {
-                font-size: 0.5rem;
-            }
-            @media (max-width: ${B.mobile - 1}px) {
-                font-size: 0.6rem;
             }
         }
     }
@@ -307,5 +316,83 @@ export const FormCol = styled(Col)`
     }
     @media (max-width: ${B.mobile - 1}px) {
         margin-bottom: 0.6rem;
+    }
+`
+
+export const InfoAlert = styled(Alert)`
+    border-radius: 15px!important;
+    margin-bottom: 0.8rem!important;
+    display: flex!important;
+    align-items: center!important;
+    padding: 15px!important;
+    span.anticon {
+        display: block;
+        font-size: 0.5rem!important;
+        @media (min-width: ${B.bigTablet}px) and (max-width: ${B.noteBook - 1}px) {
+            font-size: 0.7rem!important;
+        }
+        @media (min-width: ${B.smallTablet}px) and (max-width: ${B.bigTablet - 1}px) {
+            font-size: 0.7rem!important;
+        }
+        @media (min-width: ${B.mobile}px) and (max-width: ${B.smallTablet - 1}px) {
+            font-size: 0.8rem!important;
+        }
+        @media (max-width: ${B.mobile - 1}px) {
+            font-size: 0.9rem!important;
+        }
+    }
+    div.ant-alert-content {
+        div.ant-alert-message {
+            font-size: 0.2rem!important;
+            color: ${B.mainColor}!important;
+            font-weight: bold!important;
+            @media (min-width: ${B.bigTablet}px) and (max-width: ${B.noteBook - 1}px) {
+                font-size: 0.3rem!important;
+            }
+            @media (min-width: ${B.smallTablet}px) and (max-width: ${B.bigTablet - 1}px) {
+                font-size: 0.3rem!important;
+            }
+            @media (min-width: ${B.mobile}px) and (max-width: ${B.smallTablet - 1}px) {
+                font-size: 0.4rem!important;
+            }
+            @media (max-width: ${B.mobile - 1}px) {
+                font-size: 0.5rem!important;
+            }
+        }
+    }
+`
+
+export const BadgeRibbon = styled(Badge.Ribbon)`
+    display: ${(props: MyFridgeListItemIsAlarmProps) => props.isAlarm ? "block" : "none"};
+    font-size: 0!important;
+    height: 0!important;
+    line-height: 0!important;
+    padding: 0.15rem 8px;
+    @media (min-width: ${B.bigTablet}px) and (max-width: ${B.noteBook - 1}px) {
+        padding: 0.25rem 8px;
+    }
+    @media (min-width: ${B.smallTablet}px) and (max-width: ${B.bigTablet - 1}px) {
+        padding: 0.25rem 8px;
+    }
+    @media (min-width: ${B.mobile}px) and (max-width: ${B.smallTablet - 1}px) {
+        padding: 0.35rem 8px;
+    }
+    @media (max-width: ${B.mobile - 1}px) {
+        padding: 0.45rem 8px;
+    }
+    span.ant-ribbon-text {
+        font-size: 0.2rem!important;
+        @media (min-width: ${B.bigTablet}px) and (max-width: ${B.noteBook - 1}px) {
+            font-size: 0.25rem!important;
+        }
+        @media (min-width: ${B.smallTablet}px) and (max-width: ${B.bigTablet - 1}px) {
+            font-size: 0.25rem!important;
+        }
+        @media (min-width: ${B.mobile}px) and (max-width: ${B.smallTablet - 1}px) {
+            font-size: 0.4rem!important;
+        }
+        @media (max-width: ${B.mobile - 1}px) {
+            font-size: 0.5rem!important;
+        }
     }
 `

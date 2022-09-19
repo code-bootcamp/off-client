@@ -9,4 +9,6 @@ export interface MarketWriteUIProps {
     address: string
     fileUrls: any
     onChangeFileUrls: (fileUrl: string, index: number) => void
+    handleSubmit: any
+    onClickCreate: (data: any) => void
 }

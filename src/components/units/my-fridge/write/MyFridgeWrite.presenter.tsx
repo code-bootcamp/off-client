@@ -45,7 +45,7 @@ export default function MyFridgeWriteUI(props: MyFridgeWriteUIProps) {
                     </FormRow>
                     <FormRow gutter={20} className = "margin-reset">
                         <FormCol xs = { 24 } sm = { 24 } md = { 12 } lg = { 12 } xl = { 12 }>
-                            <NormalButton title = '등록' color = 'blue' onClick = { props.isEdit ? props.handleSubmit(props.onClickUpdateProduct) : props.handleSubmit(props.onClickCreateProduct)} />
+                            <NormalButton title = { props.isEdit ? "수정" : "등록" } color = 'blue' onClick = { props.isEdit ? props.handleSubmit(props.onClickUpdateProduct) : props.handleSubmit(props.onClickCreateProduct)} />
                         </FormCol>
                         <FormCol xs = { 24 } sm = { 24 } md = { 12 } lg = { 12 } xl = { 12 }>
                             <NormalButton title = '취소' color = 'red' onClick = { props.onClickCancelWriteModal } />
