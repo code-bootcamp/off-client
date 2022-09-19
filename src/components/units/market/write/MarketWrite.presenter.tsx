@@ -19,7 +19,7 @@ export default function MarketWriteUI(props: MarketWriteUIProps) {
                 </FormRow>
                 <FormRow gutter = { 20 }>
                     <FormCol xs = { 24 } sm = { 24 } md = { 12 } lg = { 12 } xl = { 12 }>
-                        <NormalInput name = "name" type = 'text' placeholder = '상품명을 입력해주세요' control = { props.control } defaultValue = { props.data?.name } />
+                        <NormalInput name = "name" type = 'text' placeholder = '상품명을 입력해주세요' control = { props.control } defaultValue = { props.data ? props.data?.name : "" } />
                     </FormCol>
                     <FormCol xs = { 24 } sm = { 24 } md = { 12 } lg = { 12 } xl = { 12 }>
                         <NormalInput name = "price" type = 'text' placeholder = '가격을 입력해주세요' control = { props.control } defaultValue = { props.data?.price } />

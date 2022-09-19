@@ -12,9 +12,10 @@ const schema = yup.object({
 })
 
 export default function MarketWrite(props: MarketWriteProps) {
+    
     const { control, handleSubmit, getValues, trigger, formState, reset } = useForm({
         resolver: yupResolver(schema),
-        mode: "onChange",
+        mode: "onChange"
     })
 
     useEffect(() => {
