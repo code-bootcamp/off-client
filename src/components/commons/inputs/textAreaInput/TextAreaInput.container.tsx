@@ -4,7 +4,7 @@ import { ITextAreaInputProps } from "./TextAreaInput.types";
 export default function TextAreaInput(props: ITextAreaInputProps) {
     return (
         <TextAreaInputUI
-        type = { props.type }
+        // type = { props.type }
         name = { props.name }
         placeholder = { props.placeholder }
         defaultValue = { props.defaultValue }

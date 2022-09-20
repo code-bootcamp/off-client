@@ -16,9 +16,10 @@ export default function PreviewUpload(props: IPreviewUploadProps) {
 
         try {
             const result = await uploadFile({
-                variables: { file }
+                variables: { files: [file] }
             })
-            props.onChangeFileUrls(result.data.uploadFile.url, props.index)
+            console.log(result)
+            props.onChangeFileUrls(result.data.uploadFile[0], props.index)
         } catch(error) {
             Modal.error({ content: "실패하였습니다" })
         }
@@ -31,7 +32,7 @@ export default function PreviewUpload(props: IPreviewUploadProps) {
 
     return (
         <PreviewUploadUI
-            fileRef = { fileRef } 
+            fileRef = { fileRef }
             fileUrl = { props.fileUrl }
             defaultFileUrl = { props.defaultFileUrl }
             onChangeFile = { onChangeFile }

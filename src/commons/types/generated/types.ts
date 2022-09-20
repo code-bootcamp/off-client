@@ -23,6 +23,7 @@ export enum IBoard_Status_Enum {
 
 export type IBoard = {
   __typename?: 'Board';
+  boardImage: Array<IBoardsImage>;
   category: ICategory;
   contents: Scalars['String'];
   deletedAt: Scalars['String'];
@@ -33,6 +34,13 @@ export type IBoard = {
   status: IBoard_Status_Enum;
   title: Scalars['String'];
   user: IUser;
+};
+
+export type IBoardsImage = {
+  __typename?: 'BoardsImage';
+  board: IBoard;
+  id: Scalars['String'];
+  url: Scalars['String'];
 };
 
 export type ICategory = {
@@ -97,9 +105,11 @@ export type IMutation = {
   createBoard: IBoard;
   createCategory: ICategory;
   createFridgeFood: IFridgeFood;
+  createReservation: Scalars['Boolean'];
   createUser: IUser;
   deleteBoard: Scalars['Boolean'];
   deleteFridgeFood: Scalars['Boolean'];
+  deleteReservation: Scalars['Boolean'];
   deleteUser: Scalars['Boolean'];
   getToken: Scalars['String'];
   login: Scalars['String'];
@@ -135,6 +145,12 @@ export type IMutationCreateFridgeFoodArgs = {
 };
 
 
+export type IMutationCreateReservationArgs = {
+  boardId: Scalars['String'];
+  buyer: Scalars['String'];
+};
+
+
 export type IMutationCreateUserArgs = {
   createUserInput: ICreateUserInput;
 };
@@ -147,6 +163,11 @@ export type IMutationDeleteBoardArgs = {
 
 export type IMutationDeleteFridgeFoodArgs = {
   foodId: Scalars['String'];
+};
+
+
+export type IMutationDeleteReservationArgs = {
+  boardId: Scalars['String'];
 };
 
 
@@ -193,6 +214,14 @@ export type IMutationUploadFileArgs = {
   files: Array<Scalars['Upload']>;
 };
 
+export type IOrderHistory = {
+  __typename?: 'OrderHistory';
+  board: IBoard;
+  id: Scalars['String'];
+  orderDate: Scalars['DateTime'];
+  user: IUser;
+};
+
 export type IQuery = {
   __typename?: 'Query';
   fetchBoard: IBoard;
@@ -201,7 +230,10 @@ export type IQuery = {
   fetchBoardTitle: Scalars['JSONObject'];
   fetchBoards: Array<IBoard>;
   fetchCategory: Array<ICategory>;
+  fetchFridgeFoodOne: IFridgeFood;
   fetchFridgeFoods: Array<IFridgeFood>;
+  fetchOrderHistory: Array<IOrderHistory>;
+  fetchSalseHistory: Array<ISalesHistory>;
   fetchUserLoggedIn: IUser;
   fetchUserWithDeleted: Array<IUser>;
   fetchUsers: Array<IUser>;
@@ -228,9 +260,22 @@ export type IQueryFetchBoardTitleArgs = {
 };
 
 
+export type IQueryFetchFridgeFoodOneArgs = {
+  foodId: Scalars['String'];
+};
+
+
 export type IQueryFetchFridgeFoodsArgs = {
   page?: InputMaybe<Scalars['Int']>;
   status?: InputMaybe<Scalars['String']>;
+};
+
+export type ISalesHistory = {
+  __typename?: 'SalesHistory';
+  board: IBoard;
+  id: Scalars['String'];
+  salesDate: Scalars['DateTime'];
+  user: IUser;
 };
 
 export type ISalesLocations = {
@@ -272,7 +317,7 @@ export type IUser = {
   password: Scalars['String'];
   phone: Scalars['String'];
   regDate: Scalars['DateTime'];
-  usersimage: IUsersImage;
+  usersimage?: Maybe<IUsersImage>;
 };
 
 export type IUsersImage = {
