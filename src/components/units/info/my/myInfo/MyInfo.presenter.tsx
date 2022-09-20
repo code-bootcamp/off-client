@@ -41,7 +41,7 @@ export default function MyInfoUI(props:IMyInfoProps) {
                         { props.isEdit
                             ?
                             <div>
-                                    {props.imageUrl
+                                    { props.imageUrl
                                         ? <img src={props.imageUrl}/>
                                         : (
                                             userInfo?.usersimage
@@ -49,7 +49,7 @@ export default function MyInfoUI(props:IMyInfoProps) {
                                             : <img src="/images/thumb.png"/>
                                             )
 
-                                        }
+                                    }
                                     <FontAwesomeIcon icon = { faPen } onClick = { props.onClickImageEdit }/>
                                     <input
                                         style={{ display: "none" }}

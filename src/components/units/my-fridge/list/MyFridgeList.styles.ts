@@ -1,6 +1,6 @@
 import styled from '@emotion/styled'
 import * as B from '../../../../commons/styles/basic'
-import { Row, Col, Modal, Alert, Badge, Card } from 'antd';
+import { Row, Col, Modal, Alert, Badge } from 'antd';
 import { MyFridgeListItemIsAlarmProps } from './MyFridgeList.types';
 
 

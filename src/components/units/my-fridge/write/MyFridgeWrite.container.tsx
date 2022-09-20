@@ -8,7 +8,7 @@ import * as yup from "yup"
 import { FETCH_FRIDGE_FOODS } from "../list/MyFridgeList.queries";
 import { message } from "antd";
 import { MyFridgeWriteProps } from "./MyFridgeWrite.types";
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 
 const schema = yup.object({
     name: yup.string().required("상품명은 필수입니다"),
