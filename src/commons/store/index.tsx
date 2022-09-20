@@ -19,3 +19,8 @@ export const fridgeInfoState = atom({
     key: "fridgeInfoState",
     default: {},
 })
+
+export const addressState = atom({
+    key: "addressState",
+    default: ""
+})
