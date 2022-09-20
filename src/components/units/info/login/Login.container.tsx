@@ -9,6 +9,7 @@ import { FETCH_USER_LOGGED_IN, LOGIN } from "./Login.queries";
 import * as yup from "yup"
 import { yupResolver } from "@hookform/resolvers/yup"
 import { message, Modal } from "antd";
+import { GoogleLogin, GoogleLogout } from 'react-google-login'
 
 
 const schema = yup.object({
@@ -58,12 +59,24 @@ export default function Login() {
     } catch (error) {
         message.error("로그인에 실패하였습니다. 다시 시도해주세요")
     }
-};
+  };
+
+  const onClickGoogleLogin = () => {
+    router.push('https://freshfridge.shop/login/google')
+  }
+
+  const onClickKakaoLogin = () => {
+    router.push('https://freshfridge.shop/login/kakao')
+  }
+
   return (
     <LoginUI
     control = { control }
     onClickLogin = { onClickLogin }
     handleSubmit = { handleSubmit }
-    formState = { formState } />
+    formState = { formState }
+    onClickGoogleLogin = { onClickGoogleLogin } 
+    onClickKakaoLogin = { onClickKakaoLogin }
+     />
   )
 }

@@ -27,7 +27,8 @@ export default function MyInfoContainer () {
     const [imageFile, setImageFile] = useState<File>()
     const [updateUser] = useMutation<Pick<IMutation,"updateUser">,IMutationUpdateUserArgs>(UPDATE_USER)
     const [uploadFile] = useMutation<Pick<IMutation,"uploadFile">,IMutationUploadFileArgs>(UPLOAD_FILE)
-    const {data} = useQuery(FETCH_USER_LOGGED_IN)
+    
+    const { data } = useQuery(FETCH_USER_LOGGED_IN)
 
 
     const { control, handleSubmit, formState, getValues } = useForm({
@@ -92,9 +93,9 @@ export default function MyInfoContainer () {
         }
     }
 
-    useEffect(()=>{
+    useEffect(() => {
         setUserInfo(data?.fetchUserLoggedIn)
-    },[data])
+    }, [data])
 
     return<MyInfoUI
             isEdit = { isEdit }

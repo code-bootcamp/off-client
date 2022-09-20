@@ -15,7 +15,7 @@ export default function MyFridgeListDraggable(props: MyFridgeListDraggableProps)
             {(provided, snapshot) => {
                 return (
                     <div ref = { provided.innerRef } { ...provided.draggableProps } { ...provided.dragHandleProps }>
-                        <BadgeRibbon isAlarm = { getDate(new Date()) === getDate(props.item.alarm) ? true : true } text = "유효기간 임박" color = 'red'>
+                        <BadgeRibbon isAlarm = { getDate(new Date()) === getDate(props.item.alarm) ? true : false } text = "유효기간 임박" color = 'red'>
                             <ListItem>
                                 <ListItemHeader>
                                     <div className = 'category-box'>

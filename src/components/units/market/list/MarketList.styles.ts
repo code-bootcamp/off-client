@@ -6,16 +6,16 @@ export const Wrapper = styled.div`
     width: 80%;
     margin: 0 auto;
     @media (min-width: ${B.bigTablet}px) and (max-width: ${B.noteBook - 1}px) {
-        width: 58%;
+        width: 85%;
     }
     @media (min-width: ${B.smallTablet}px) and (max-width: ${B.bigTablet - 1}px) {
-        width: 70%;
+        width: 85%;
     }
     @media (min-width: ${B.mobile}px) and (max-width: ${B.smallTablet - 1}px) {
         width: 90%;
     }
     @media (max-width: ${B.mobile - 1}px) {
-        width: 91%;
+        width: 90%;
     }
 `
 
@@ -42,6 +42,7 @@ export const Title = styled.h1`
         margin: 5.51rem 0 0.55rem;
     }
 `
+
 export const TitleInfo = styled.p`
     width: 100%;
     font-size: ${B.deskTopFontSizeMicro}rem;
@@ -63,13 +64,26 @@ export const TitleInfo = styled.p`
     }
 `
 
-export const Form = styled.form`
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+export const SearchBox = styled.div`
+    margin-bottom: 0.5rem;
 `
-export const ListWrapper = styled(Row)`
+
+export const ListRow = styled(Row)`
 `
-export const ItemWrapper = styled(Col)`
+
+export const ListCol = styled(Col)`
+    &.list-item {
+        margin-bottom: 0.4rem;
+    }
+    &.search-col {
+        @media (min-width: ${B.smallTablet}px) and (max-width: ${B.bigTablet - 1}px) {
+            margin-bottom: 0.5rem;
+        }
+        @media (min-width: ${B.mobile}px) and (max-width: ${B.smallTablet - 1}px) {
+            margin-bottom: 0.5rem;
+        }
+        @media (max-width: ${B.mobile - 1}px) {
+            margin-bottom: 0.5rem;
+        }
+    }
 `

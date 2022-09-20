@@ -30,17 +30,16 @@ const LayoutBody = styled.div`
         padding-top: 2.5rem;
     }
 `
-const SHOW_FOOTER = ["/", "/info/login/", "/info/join/"]
+
 export default function Layout(props: ILayoutProps) {
     const router = useRouter()
-    // const isShowFooter = SHOW_FOOTER.includes(router.asPath)
     return (
         <LayoutWrapper>
             <LayoutHeader />
             <LayoutBody>
                 { props.children }
             </LayoutBody>
-            {/* { isShowFooter && <LayoutFooter/> } */}
+            <LayoutFooter/>
         </LayoutWrapper>
     )
 }

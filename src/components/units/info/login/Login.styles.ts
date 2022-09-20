@@ -2,9 +2,10 @@ import styled from "@emotion/styled";
 import { Row, Col } from "antd";
 import Link from "next/link";
 import * as B from "../../../../commons/styles/basic";
+import { ISocialLoginStyleProps } from "./Login.types";
 
 export const Wrapper = styled.div`
-    width: 50%;
+    width: 30%;
     margin: 2rem auto;
     @media (min-width: ${B.bigTablet}px) and (max-width: ${B.noteBook - 1}px) {
         width: 55%;
@@ -134,5 +135,59 @@ export const FormCol = styled(Col)`
     }
     @media (max-width: ${B.mobile - 1}px) {
         margin-bottom: 0.7rem;
+    }
+`
+
+export const SocialLoginBtn = styled.button`
+    display: block!important;
+    width: 100%;
+    height: 0.7rem!important;
+    border-radius: 8px;
+    padding: 0;
+    font-weight: bold;
+    font-size: ${B.deskTopFontSizeMicro}rem;
+    cursor: pointer;
+    border: 1px solid ${(props:ISocialLoginStyleProps) => {
+        if(props.bgColor === "yellow"){
+            return "#fae100"
+        } else if(props.bgColor === "white"){
+            return "#000000"
+        } }};
+    background-color: ${(props:ISocialLoginStyleProps) => {
+        if(props.bgColor === "yellow"){
+            return "#fae100"
+        } else if(props.bgColor === "white"){
+            return "#ffffff"
+        } }};
+    @media (min-width: ${B.bigTablet}px) and (max-width: ${B.noteBook - 1}px) {
+        height: 1.1rem!important;
+        font-size: ${B.noteBookFontSizeMicro}rem;
+    }
+    @media (min-width: ${B.smallTablet}px) and (max-width: ${B.bigTablet - 1}px) {
+        height: 1.4rem!important;
+        font-size: ${B.bigTabletFontSizeMicro}rem;
+    }
+    @media (min-width: ${B.mobile}px) and (max-width: ${B.smallTablet - 1}px) {
+        height: 1.7rem!important;
+        font-size: ${B.smallTabletFontSizeMicro}rem;
+    }
+    @media (max-width: ${B.mobile - 1}px) {
+        height: 2.2rem!important;
+        font-size: ${B.mobileFontSizeMicro}rem;
+    }
+    div.align-box {
+        width: 100%;
+        height: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        img {
+            width: auto!important;
+            height: 70%!important;
+            margin-right: 10px;
+            &.kakao {
+                height: 100%!important;
+            }
+        }
     }
 `
