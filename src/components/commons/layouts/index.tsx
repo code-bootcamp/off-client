@@ -3,7 +3,6 @@ import styled from '@emotion/styled'
 import * as B from '../../../commons/styles/basic'
 import LayoutHeader from "./header/LayoutHeader.container";
 import LayoutFooter from "./footer/LayoutFooter.container";
-import { useRouter } from "next/router";
 
 interface ILayoutProps {
     children: ReactNode;
@@ -11,7 +10,6 @@ interface ILayoutProps {
 
 const LayoutWrapper = styled.div`
     width: 100%;
-    overflow: hidden;
 `
 
 const LayoutBody = styled.div`
@@ -32,7 +30,6 @@ const LayoutBody = styled.div`
 `
 
 export default function Layout(props: ILayoutProps) {
-    const router = useRouter()
     return (
         <LayoutWrapper>
             <LayoutHeader />

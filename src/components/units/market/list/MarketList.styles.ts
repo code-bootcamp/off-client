@@ -1,5 +1,5 @@
 import styled from "@emotion/styled"
-import { Col, Row } from "antd"
+import { Select, Col, Row } from "antd"
 import * as B from "../../../../commons/styles/basic"
 
 export const Wrapper = styled.div`
@@ -87,3 +87,8 @@ export const ListCol = styled(Col)`
         }
     }
 `
+
+export const NormalSelect = styled(Select)`
+
+`
+

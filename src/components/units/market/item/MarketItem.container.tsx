@@ -41,6 +41,9 @@ export default function MarketItem(props: IMarketItemProps) {
     }
 
     return (
-        <MarketItemUI data = { props.data } getCategoryIcon = { getCategoryIcon } />
+        <MarketItemUI 
+        data = { props.data } 
+        getCategoryIcon = { getCategoryIcon } 
+        />
     )
 }

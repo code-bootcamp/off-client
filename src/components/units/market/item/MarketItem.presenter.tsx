@@ -4,7 +4,6 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
 
 export default function MarketListUI(props: any) {
-    console.log(props.data)
     return (
         <BadgeRibbon text = { props.data?.salesLocation?.address.slice(0, 2) } color = '#1290FF'>
             <Wrapper>
