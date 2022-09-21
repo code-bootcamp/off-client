@@ -30,9 +30,9 @@ export default function MarketWrite(props: MarketWriteProps) {
 // console.log(getValues(""))
     useEffect(() => {
         reset({
-            name: props.marketCreateData.name,
-            price: props.marketCreateData.price,
-            expDate: props.marketCreateData.expDate,
+            name: props.marketCreateData?.name,
+            price: props.marketCreateData?.price,
+            expDate: props.marketCreateData?.expDate,
             category: props.marketCreateData?.category?.id,
         })
     }, [props.marketCreateData])

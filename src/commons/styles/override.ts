@@ -2,6 +2,9 @@
 import * as B from './basic'
 import styled from '@emotion/styled'
 import { Drawer, Popover, Tabs } from 'antd';
+import Slider from 'react-slick';
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
 
 
 
@@ -81,5 +84,43 @@ export const MyPageTab = styled(Tabs)`
 export const TabItem = styled(Tabs.TabPane)`
 
 `
-export const Pop = styled(Popover)`
+export const ItemSlider = styled(Slider)`
+    width: 100%;
+    height: 100%;
+    .slick-dots li button:before
+    {
+        font-family: 'slick';
+        font-size: 6px;
+        line-height: 20px;
+
+        position: absolute;
+        top: 0;
+        left: 0;
+
+        width: 20px;
+        height: 20px;
+
+        content: '•';
+        text-align: center;
+
+        opacity: .25;
+        color: white;
+
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+    }
+    .slick-dots li.slick-active button:before
+    {
+        opacity: .75;
+        color: white;
+    }
+    .slick-slide
+    {
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+        height: 100%;
+    }
 `
