@@ -7,6 +7,7 @@ import { ItemSlider } from "../../../../commons/styles/override";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPen, faTrash } from "@fortawesome/free-solid-svg-icons";
 import MarketWrite from "../write/MarketWrite.container";
+import { timeForCreate } from "../../../../commons/libraries/timeForCreate";
 
 export default function MarketDetailUI (props: IMarketDetailUIProps) {
     const settings = {
@@ -21,25 +22,24 @@ export default function MarketDetailUI (props: IMarketDetailUIProps) {
             <MarketWrite
                 isMarketCreateModalOpen = { props.isMarketCreateModalOpen }
                 setIsMarketCreateModalOpen = { props.setIsMarketCreateModalOpen }
+                marketCreateData = { props.marketUpdateData }
             />
             <FormRow className="header" justify="start" align="middle">
-                <FormCol className="user" xs = { 4 } sm = { 4 } md = { 4 } lg = {  4 } xl = { 4 } >
+                <FormCol className="user" xs = { 12 } sm = { 12 } md = { 12 } lg = {  12 } xl = { 12 } >
                     <Thumb src={`https://storage.googleapis.com/${props.data?.fetchBoard.user.usersimage?.url}`}/>
                     <div>
                         {props.data?.fetchBoard.user.name}
                     </div>
-                </FormCol>
-                <FormCol xs = { 3 } sm = { 3 } md = { 3 } lg = {  3 } xl = { 3 } >
-                    <div>
-                        {getDate(props.data?.fetchBoard.regDate)}
+                    <div className="time">
+                        {timeForCreate(props.data?.fetchBoard.regDate)}
                     </div>
                 </FormCol>
-                <FormCol xs = { 3 } sm = { 3 } md = { 3 } lg = {  3 } xl = { 3 } offset={14}>
+                <FormCol className="tool" xs = { 12 } sm = { 12 } md = { 12 } lg = {  12 } xl = { 12 } >
                     <FontAwesomeIcon icon={ faPen } onClick = { props.onClickOpenMarketCreateModal } />
                     <FontAwesomeIcon icon={ faTrash }  />
                 </FormCol>
             </FormRow>
-            <FormRow>
+            <FormRow gutter={[20,20]}>
                 <FormCol xs = { 24 } sm = { 24 } md = { 24 } lg = { 12 } xl = { 12 } >
                     <ItemSlider {...settings} >
                     {
@@ -57,8 +57,12 @@ export default function MarketDetailUI (props: IMarketDetailUIProps) {
                 <FormCol xs = { 24 } sm = { 24 } md = { 24 } lg = { 12 } xl = { 12 } >
                     <div className="infoWrapper">
                         <div>
+                            <label>상품명</label>
+                            <span>{props.data?.fetchBoard.title}</span>
+                        </div>
+                        <div>
                             <label>유통기한</label>
-                            <span>{getDate(props.data?.fetchBoard.expDate)}</span>
+                            <span>{getDate(props.data?.fetchBoard.expDate)}&nbsp;까지</span>
                         </div>
                         <div>
                             <label>카테고리</label>
