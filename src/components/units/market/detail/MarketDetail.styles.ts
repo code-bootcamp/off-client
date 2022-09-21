@@ -13,12 +13,47 @@ export const Wrapper = styled.div`
             display: flex;
             justify-content: flex-start;
             align-items: center;
+            width: 50%;
+            .time{
+                margin-left: 0.2rem;
+                color: ${B.strongGrayColor};
+            }
         }
         div> div{
             font-size: ${B.deskTopFontSizeMicro}rem;
+            @media (min-width: ${B.bigTablet}px) and (max-width: ${B.noteBook - 1}px) {
+                font-size: ${B.noteBookFontSizeMicro}rem;
+            }
+            @media (min-width: ${B.smallTablet}px) and (max-width: ${B.bigTablet - 1}px) {
+                font-size: ${B.bigTabletFontSizeMicro}rem;
+            }
+            @media (min-width: ${B.mobile}px) and (max-width: ${B.smallTablet - 1}px) {
+                font-size: ${B.smallTabletFontSizeMicro}rem;
+            }
+            @media (max-width: ${B.mobile - 1}px) {
+                font-size: ${B.mobileFontSizeMicro}rem;
+            }
         }
-        svg {
-            cursor: pointer;
+        .tool{
+            display: flex;
+            justify-content: flex-end;
+            svg {
+                margin-left: 0.2rem;
+                font-size: 0.3rem;
+                cursor: pointer;
+                @media (min-width: ${B.bigTablet}px) and (max-width: ${B.noteBook - 1}px) {
+                font-size: 0.4rem;
+                }
+                @media (min-width: ${B.smallTablet}px) and (max-width: ${B.bigTablet - 1}px) {
+                    font-size: 0.48rem;
+                }
+                @media (min-width: ${B.mobile}px) and (max-width: ${B.smallTablet - 1}px) {
+                    font-size: 0.63rem;
+                }
+                @media (max-width: ${B.mobile - 1}px) {
+                    font-size: 0.82rem;
+                }
+            }
         }
     }
 `
@@ -29,6 +64,7 @@ export const FormCol = styled(Col)`
         display: block;
         font-size: ${B.deskTopFontSizeMicro}rem;
         color: ${B.strongGrayColor};
+        margin-bottom: 0.1rem;
     }
     span{
         display: block;
