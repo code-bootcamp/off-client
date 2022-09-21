@@ -1,5 +1,4 @@
 import styled from "@emotion/styled";
-import { Col, Row } from "antd";
 import * as B from "../../../../commons/styles/basic"
 
 export const Footer = styled.footer`
