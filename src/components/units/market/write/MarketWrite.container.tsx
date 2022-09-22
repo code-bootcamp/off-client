@@ -64,6 +64,7 @@ export default function MarketWrite(props: MarketWriteProps) {
             contents: "",
             address: ""
         })
+        setFileUrls(["", "", ""])
     }
 
     const onClickAddressOpen = () => {
@@ -105,32 +106,31 @@ export default function MarketWrite(props: MarketWriteProps) {
     };
 
     const onClickSubmit = async (data: any) => {
-        // try{
-        //     const result = await createBoard({
-        //         variables: {
-        //             createBoardInput: {
-        //                 title: data.name,
-        //                 contents: data.contents,
-        //                 categoryId: data.category,
-        //                 expDate: getDate(data.expDate),
-        //                 salesLocations: {
-        //                     address: data.address,
-        //                     detailAddress: data.detailAddress,
-        //                 },
-        //                 url: fileUrls
-        //             }
-        //         }
-        //     })
-        //     onClickAddressOpen()
-        //     await deleteFridgeFood({
-        //         variables: {
-        //             foodId: data.id
-        //         }
-        //     })
-        //     router.push(`/market/${result.data?.createBoard.id}`)
-        // } catch(error){
+        try {
+            const result = await createBoard({
+                variables: {
+                    createBoardInput: {
+                        title: data.name,
+                        contents: data.contents,
+                        categoryId: data.category,
+                        expDate: getDate(data.expDate),
+                        salesLocations: {
+                            address: data.address,
+                            detailAddress: data.detailAddress,
+                        },
+                        url: fileUrls
+                    }
+                }
+            })
+            await deleteFridgeFood({
+                variables: {
+                    foodId: props.marketCreateData?.id
+                }
+            })
+            router.push(`/market/${result.data?.createBoard.id}`)
+        } catch(error){
             
-        // }
+        }
     }
 
     return (
