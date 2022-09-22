@@ -94,7 +94,7 @@ export default function MarketWriteUI(props: MarketWriteUIProps) {
                     </FormRow>
                     <FormRow gutter={10} >
                     <FormCol xs = { 24 } sm = { 24 } md = { 12 } lg = { 12 } xl = { 12 }>
-                            <NormalButton title = { "등록" } color = 'blue' onClick = { props.handleSubmit(props.onClickSubmit)} />
+                            <NormalButton title = "등록" color = 'blue' onClick = { props.handleSubmit(props.onClickSubmit)} />
                         </FormCol>
                         <FormCol xs = { 24 } sm = { 24 } md = { 12 } lg = { 12 } xl = { 12 }>
                             <NormalButton title = '취소' color = 'red' onClick = { props.onClickCancelWriteModal } />
