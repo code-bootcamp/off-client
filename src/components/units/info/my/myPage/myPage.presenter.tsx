@@ -2,6 +2,7 @@ import { TabsPosition } from "antd/lib/tabs";
 import { useEffect, useState } from "react";
 import { useMediaQuery } from "react-responsive";
 import { MyPageTab, TabItem } from "../../../../../commons/styles/override";
+import ChatListContainer from "../chatList/ChatLIst.container";
 import FridgeInfoContainer from "../fridgeInfo/FridgeInfo.container";
 import MyInfoContainer from "../myInfo/MyInfo.container";
 import { Title, Wrapper } from "./MyPage.styles";
@@ -23,8 +24,8 @@ export default function MyPageUI() {
                 <TabItem tab="냉장고" key="fridgeInfo">
                     <FridgeInfoContainer/>
                 </TabItem>
-                <TabItem tab="나눔내역" key="marketInfo">
-
+                <TabItem tab="채팅" key="chatInfo">
+                    <ChatListContainer/>
                 </TabItem>
             </MyPageTab>
         </Wrapper>

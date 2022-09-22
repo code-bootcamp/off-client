@@ -4,5 +4,6 @@ import MyPageUI from "./MyPage.presenter";
 import { FETCH_FRIDGE_FOODS } from "./MyPage.queries";
 
 export default function MyPageContainer() {
+
     return<MyPageUI/>
 }

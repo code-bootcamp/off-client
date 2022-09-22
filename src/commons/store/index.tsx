@@ -24,3 +24,8 @@ export const addressState = atom({
     key: "addressState",
     default: ""
 })
+
+export const roomIdState = atom({
+    key: "roomIdState",
+    default: ""
+})

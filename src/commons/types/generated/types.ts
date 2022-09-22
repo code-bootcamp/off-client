@@ -49,6 +49,15 @@ export type ICategory = {
   name: Scalars['String'];
 };
 
+export type IChat = {
+  __typename?: 'Chat';
+  chatRoomId: Scalars['String'];
+  createAt: Scalars['DateTime'];
+  id: Scalars['String'];
+  message: Scalars['String'];
+  user: IUser;
+};
+
 export type ICreateBoardInput = {
   categoryId: Scalars['String'];
   contents: Scalars['String'];
@@ -227,11 +236,14 @@ export type IQuery = {
   fetchBoard: IBoard;
   fetchBoardCategory: Scalars['JSONObject'];
   fetchBoardLocation: Scalars['JSONObject'];
+  fetchBoardSearch: Scalars['JSONObject'];
   fetchBoardTitle: Scalars['JSONObject'];
   fetchBoards: Array<IBoard>;
   fetchCategory: Array<ICategory>;
+  fetchChatHistory: Array<IChat>;
   fetchFridgeFoodOne: IFridgeFood;
   fetchFridgeFoods: Array<IFridgeFood>;
+  fetchMyChattingList: Array<IChat>;
   fetchOrderHistory: Array<IOrderHistory>;
   fetchSalseHistory: Array<ISalesHistory>;
   fetchUserLoggedIn: IUser;
@@ -255,8 +267,20 @@ export type IQueryFetchBoardLocationArgs = {
 };
 
 
+export type IQueryFetchBoardSearchArgs = {
+  category?: InputMaybe<Scalars['String']>;
+  location?: InputMaybe<Scalars['String']>;
+  title?: InputMaybe<Scalars['String']>;
+};
+
+
 export type IQueryFetchBoardTitleArgs = {
   title?: InputMaybe<Scalars['String']>;
+};
+
+
+export type IQueryFetchChatHistoryArgs = {
+  chatRoodId: Scalars['String'];
 };
 
 

@@ -16,7 +16,7 @@ export default function FridgeInfoContainer() {
             },
             updateQuery: (prev, { fetchMoreResult }) => {
                 console.log("prev",prev,"fetchMore",fetchMoreResult)
-                if (fetchMoreResult.fetchFridgeFoods[0].id === prev.fetchFridgeFoods[0].id)
+                if (fetchMoreResult.fetchFridgeFoods[0]?.id === prev.fetchFridgeFoods[0]?.id)
                     return { fetchFridgeFoods: [...prev.fetchFridgeFoods] };
 
                 return {

@@ -1,5 +1,13 @@
 import { gql } from "@apollo/client";
 
+export const FETCH_USER_LOGGED_IN = gql`
+    query fetchUserLoggedIn{
+        fetchUserLoggedIn{
+            id
+            nickname
+        }
+    }
+`
 export const FETCH_BOARD = gql`
     query fetchBoard($id: String!){
         fetchBoard(id: $id){
@@ -14,6 +22,7 @@ export const FETCH_BOARD = gql`
             }
             regDate
             user{
+                id
                 name
                 usersimage{
                     url
