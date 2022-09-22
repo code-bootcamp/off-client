@@ -46,3 +46,8 @@ export const UPDATE_BOARD = gql`
         }
     }
 `
+export const DELETE_BOARD = gql`
+    mutation deleteBoard($boardId: String!){
+        deleteBoard(boardId: $boardId)
+    }
+`

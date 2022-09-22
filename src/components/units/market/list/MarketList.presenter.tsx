@@ -44,6 +44,7 @@ export default function MarketListUI(props: MarketListUIProps) {
                     <ListCol key = { uuidv4() } xs = { 24 } sm = { 12 } md = { 8 } lg = { 6 } xl = { 6 } className = "list-item" onClick = { props.onClickMoveDetail(data.id) }>
                         <MarketItem data = { data } />
                     </ListCol>
+
                 )) }
             </ListRow>
         </Wrapper>

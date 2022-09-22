@@ -20,20 +20,17 @@ export default function Chat(props){
     const [userId, setUserId] = useState<string | undefined>("");
     const [resultMsg, setResultMsg] = useState<string[]>([]);
     const { data } = useQuery(FETCH_CHAT_HISTORY, {
-        variables: { chatRoomId: room },
+      variables: { chatRoomId: room },
 
     });
-    console.log("123",data)
 
     const url = "https://freshfridge.shop/chat"
     const socket: Socket = useMemo(()=> io(url, { transports: ["websocket"] }),[])
-
+    if(userId&&room&&router.query.marketId){
+      socket.emit('message', userId, room, router.query.marketId)
+    }
 
     //  const socket: Socket = io(url);
-
-  const delay = (ms:number) => {
-    return new Promise((resolve) => setTimeout(resolve, ms));
-  };
 
   const { register, handleSubmit, resetField } = useForm({
     mode: "onChange",
@@ -62,7 +59,6 @@ export default function Chat(props){
         if(!room)return console.log("noRoom!!")
         console.log("전송할때",data)
         const message = await data.contents;
-        socket.emit('message', userId, room, router.query.marketId)
         socket.emit('send', room, userId, message);
         resetField("contents");
     };

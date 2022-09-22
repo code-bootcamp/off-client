@@ -8,6 +8,50 @@ export const Wrapper = styled.div`
     box-shadow: 0px 0px 10px -2px rgba(0,0,0,0.3);
     border-radius: 20px;
     cursor: pointer;
+    .imageWrapper{
+        width: 100%;
+        height: 3rem;
+        border-radius: 20px 20px 0 0;
+        margin-bottom: 0.25rem;
+        @media (min-width: ${B.bigTablet}px) and (max-width: ${B.noteBook - 1}px) {
+            height: 3.5rem;
+            margin-bottom: 0.33rem;
+        }
+        @media (min-width: ${B.smallTablet}px) and (max-width: ${B.bigTablet - 1}px) {
+            height: 4rem;
+            margin-bottom: 0.4rem;
+        }
+        @media (min-width: ${B.mobile}px) and (max-width: ${B.smallTablet - 1}px) {
+            height: 7rem;
+            margin-bottom: 0.52rem;
+        }
+        @media (max-width: ${B.mobile - 1}px) {
+            height: 12rem;
+            margin-bottom: 0.69rem;
+        }
+        .noimage{
+            object-fit: contain;
+            /* width: 100%;
+            height: 80%;
+            margin-bottom: 0;
+            @media (min-width: ${B.bigTablet}px) and (max-width: ${B.noteBook - 1}px) {
+                height: 100%;
+                margin-bottom: 0rem;
+            }
+            @media (min-width: ${B.smallTablet}px) and (max-width: ${B.bigTablet - 1}px) {
+                height: 100%;
+                margin-bottom: 0rem;
+            }
+            @media (min-width: ${B.mobile}px) and (max-width: ${B.smallTablet - 1}px) {
+                height: 100%;
+                margin-bottom: 0rem;
+            }
+            @media (max-width: ${B.mobile - 1}px) {
+                height: 100%;
+                margin-bottom: 0rem;
+            } */
+        }
+    }
 `
 
 export const ItemImage = styled.img`
