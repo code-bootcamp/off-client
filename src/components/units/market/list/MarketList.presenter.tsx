@@ -2,10 +2,10 @@ import { useForm } from "react-hook-form";
 import { NormalInput } from "../../../commons/inputs/normalInput/NormalInput.styles";
 import { NormalSelectBox}  from "../../../commons/selectBoxes/normalSelectBox/NormalSelectBox.styles";
 import MarketItem from "../item/MarketItem.container";
-import { Wrapper, Title, TitleInfo, SearchBox, ListRow, ListCol } from "./MarketList.styles";
+import { Wrapper, Title, TitleInfo, SearchBox, ListRow, ListCol, NoSearch } from "./MarketList.styles";
 import { MarketListUIProps } from "./MarketList.types";
 import { v4 as uuidv4 } from 'uuid'
-import { Select } from 'antd';
+import { Select, Result } from 'antd';
 
 const { Option } = Select
 
@@ -40,12 +40,15 @@ export default function MarketListUI(props: MarketListUIProps) {
                 </ListRow>
             </SearchBox>
             <ListRow gutter = { 20 }>
-                { props.data?.map((data: any, index: any) => (
+                { props.data?.length > 0 ? 
+                props.data?.map((data: any, index: any) => (
                     <ListCol key = { uuidv4() } xs = { 24 } sm = { 12 } md = { 8 } lg = { 6 } xl = { 6 } className = "list-item" onClick = { props.onClickMoveDetail(data.id) }>
                         <MarketItem data = { data } />
                     </ListCol>
-
-                )) }
+                )) 
+                : 
+                <NoSearch title = "검색결과가 없습니다"></NoSearch> 
+                }
             </ListRow>
         </Wrapper>
     )

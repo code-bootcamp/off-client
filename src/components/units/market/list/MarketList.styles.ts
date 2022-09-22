@@ -1,5 +1,5 @@
 import styled from "@emotion/styled"
-import { Select, Col, Row } from "antd"
+import { Result, Col, Row } from "antd"
 import * as B from "../../../../commons/styles/basic"
 
 export const Wrapper = styled.div`
@@ -88,7 +88,53 @@ export const ListCol = styled(Col)`
     }
 `
 
-export const NormalSelect = styled(Select)`
-
+export const NoSearch = styled(Result)`
+    width: 100%!important;
+    padding: 2rem 0!important;
+    @media (min-width: ${B.bigTablet}px) and (max-width: ${B.noteBook - 1}px) {
+        padding: 2.5rem 0!important;
+    }
+    @media (min-width: ${B.smallTablet}px) and (max-width: ${B.bigTablet - 1}px) {
+        padding: 2.7rem 0!important;
+    }
+    @media (min-width: ${B.mobile}px) and (max-width: ${B.smallTablet - 1}px) {
+        padding: 2.9rem 0!important;
+    }
+    @media (max-width: ${B.mobile - 1}px) {
+        padding: 3.5rem 0!important;
+    }
+    div.ant-result-icon {
+        span {
+            font-size: 1.5rem!important;
+            @media (min-width: ${B.bigTablet}px) and (max-width: ${B.noteBook - 1}px) {
+                font-size: 1.8rem!important;
+            }
+            @media (min-width: ${B.smallTablet}px) and (max-width: ${B.bigTablet - 1}px) {
+                font-size: 2rem!important;
+            }
+            @media (min-width: ${B.mobile}px) and (max-width: ${B.smallTablet - 1}px) {
+                font-size: 2.2rem!important;
+            }
+            @media (max-width: ${B.mobile - 1}px) {
+                font-size: 2.4rem!important;
+            }
+        }
+    }
+    div.ant-result-title {
+        font-size: 0.4rem!important;
+        @media (min-width: ${B.bigTablet}px) and (max-width: ${B.noteBook - 1}px) {
+            font-size: 0.5rem!important;
+        }
+        @media (min-width: ${B.smallTablet}px) and (max-width: ${B.bigTablet - 1}px) {
+            font-size: 0.6rem!important;
+        }
+        @media (min-width: ${B.mobile}px) and (max-width: ${B.smallTablet - 1}px) {
+            font-size: 0.7rem!important;
+        }
+        @media (max-width: ${B.mobile - 1}px) {
+            font-size: 0.8rem!important;
+        }
+    }
 `
+
 

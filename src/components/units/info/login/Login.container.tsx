@@ -48,9 +48,10 @@ export default function Login() {
                     Authorization: `Bearer ${accessToken}`,
                 },
             },
+            fetchPolicy: "network-only"
         });
+        console.log(resultUserInfo)
         const userInfo = resultUserInfo.data?.fetchUserLoggedIn
-        // recoilState에 담을때 한번에 안담기는 모습나옴!!
         setAccessToken(accessToken as string)
         setUserInfo(userInfo)
         setIsLogin(true)
