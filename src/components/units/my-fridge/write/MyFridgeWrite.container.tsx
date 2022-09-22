@@ -91,6 +91,14 @@ export default function MyFridgeWrite(props: MyFridgeWriteProps) {
     }
 
     const onClickUpdateProduct = async (data: any) => {
+        let statusName = ''
+        if(props.editColumnId === "createProductList") {
+            statusName = 'LIST'
+        } else if (props.editColumnId === "frozenList") {
+            statusName = 'FREEZER'
+        } else if (props.editColumnId === "fridgeList") {
+            statusName = 'FRIDGE'
+        }
         try {
             await updateFridgeFoods({
                 variables: {
@@ -102,15 +110,27 @@ export default function MyFridgeWrite(props: MyFridgeWriteProps) {
                         alarm: getDate(data.alarm),
                         category: data.category
                     },
-                    status: props.editData.status
+                    status: statusName
                 },
                 refetchQueries: [
                     {
                         query: FETCH_FRIDGE_FOODS,
                         variables: {
-                            status: props.editData.status
+                            status: 'LIST'
                         }
-                    }
+                    },
+                    {
+                        query: FETCH_FRIDGE_FOODS,
+                        variables: {
+                            status: 'FREEZER'
+                        }
+                    },
+                    {
+                        query: FETCH_FRIDGE_FOODS,
+                        variables: {
+                            status: 'FRIDGE'
+                        }
+                    },
                 ]
             })
             props.setIsWriteModalOpen(false)

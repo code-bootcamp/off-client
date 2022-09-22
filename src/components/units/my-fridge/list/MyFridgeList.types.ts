@@ -7,8 +7,8 @@ export interface IMyFridgeListUIProps {
     isEdit: boolean
     onDragEnd: (result: any, columns: any, setColumns: any) => void
     onClickOpenWriteModal: () => void
-    onClickOpenEditModal: (data: any) => () => void
-    onClickDeleteItem: (data: any) => () => void
+    onClickOpenEditModal: (data: any, columnId: any) => () => void
+    onClickDeleteItem: (data: any, columnId: any) => () => void
     onClickOpenMarketCreateModal: (data: any) => () => void
     getCategoryIcon: (categoryName: string) => void
     columns: any
@@ -17,6 +17,7 @@ export interface IMyFridgeListUIProps {
     setIsMarketCreateModalOpen: any
     setIsEdit: any
     editData: any
+    editColumnId: any
     marketCreateData: any
     userInfo: any
 }
@@ -24,18 +25,18 @@ export interface IMyFridgeListUIProps {
 export interface MyFridgeListDroppableProps {
     columnId: any
     column: any
-    onClickOpenEditModal: (data: any) => void
+    onClickOpenEditModal: (data: any, columnId: any) => void
     onClickOpenMarketCreateModal: (data: any) => () => void
-    onClickDeleteItem: (data: any) => void
+    onClickDeleteItem: (data: any, columnId: any) => void
     getCategoryIcon: (categoryName: string) => void
 }
 
 export interface MyFridgeListDraggableProps {
     item: any
     index: any
-    onClickOpenEditModal: (data: any) => void
+    onClickOpenEditModal: (data: any, columnId: any) => void
     onClickOpenMarketCreateModal: (data: any) => () => void
-    onClickDeleteItem: (data: any) => void
+    onClickDeleteItem: (data: any, columnId: any) => void
     getCategoryIcon: (categoryName: string) => void
     columnId: any
 }
