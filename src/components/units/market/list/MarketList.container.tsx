@@ -1,6 +1,6 @@
 import { useQuery } from "@apollo/client";
 import { useRouter } from "next/router";
-import { useEffect, useState } from "react";
+import { MouseEventHandler, SetStateAction, useEffect, useState } from "react";
 import { FETCH_CATEGORY } from "../../my-fridge/list/MyFridgeList.queries";
 import MarketListUI from "./MarketList.presenter";
 import { FETCH_BOARDS } from "./MarketList.queries";
@@ -92,7 +92,7 @@ export default function MarketListContainer() {
     const { data: dataCategory } = useQuery(FETCH_CATEGORY)
 
     useEffect(() => {
-        let newData = []
+        let newData: any[] = []
         if(location === "" && category === "" && searchInput === "") {
             data?.fetchBoards?.forEach((element1: any) => {
                 newData.push(element1)
@@ -125,7 +125,7 @@ export default function MarketListContainer() {
     }, [location])
 
     useEffect(() => {
-        let newData = []
+        let newData: any[] = []
         if(location === "" && category === "" && searchInput === "") {
             data?.fetchBoards?.forEach((element1: any) => {
                 newData.push(element1)
@@ -158,7 +158,7 @@ export default function MarketListContainer() {
     }, [category])
 
     useEffect(() => {
-        let newData = []
+        let newData: any[] = []
         if(location === "" && category === "" && searchInput === "") {
             data?.fetchBoards?.forEach((element1: any) => {
                 newData.push(element1)
@@ -198,7 +198,7 @@ export default function MarketListContainer() {
         setCategory(value)
     }
 
-    const onChangeInput = (event) => {
+    const onChangeInput = (event: { target: { value: SetStateAction<string>; }; }) => {
         setSearchInput(event.target.value)
     }
 

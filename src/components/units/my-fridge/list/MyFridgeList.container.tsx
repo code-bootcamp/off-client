@@ -17,6 +17,7 @@ import { useRecoilState } from "recoil";
 import { userInfoState } from "../../../../commons/store";
 import { FETCH_USER_LOGGED_IN } from "../../info/my/myInfo/MyInfo.queries";
 import { useRouter } from "next/router";
+import { IForeachType } from "./MyFridgeList.types";
 
 export default function MyFridgeList() {
     const columnData = {
@@ -315,10 +316,10 @@ export default function MyFridgeList() {
                 ["createProductList"]: {
                     isCreateBtn: true,
                     name: "목록",
-                    items: []
+                    items: [] 
                 }
             }
-            columns.createProductList.items.forEach((element1) => {
+            columns.createProductList.items.forEach((element1: any) => {
                 if(element1.id !== data.id) {
                     newData.createProductList.items.push(element1)
                 }

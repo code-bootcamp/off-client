@@ -9,7 +9,6 @@ import { FETCH_USER_LOGGED_IN, LOGIN } from "./Login.queries";
 import * as yup from "yup"
 import { yupResolver } from "@hookform/resolvers/yup"
 import { message, Modal } from "antd";
-import { GoogleLogin, GoogleLogout } from 'react-google-login'
 
 
 const schema = yup.object({

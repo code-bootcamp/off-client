@@ -5,7 +5,7 @@ import { MyPageTab, TabItem } from "../../../../../commons/styles/override";
 import ChatListContainer from "../chatList/ChatLIst.container";
 import FridgeInfoContainer from "../fridgeInfo/FridgeInfo.container";
 import MyInfoContainer from "../myInfo/MyInfo.container";
-import { Title, Wrapper } from "./MyPage.styles";
+import { Title, Wrapper } from "./myPage.styles";
 
 export default function MyPageUI() {
     const [position, setPosition] = useState<TabsPosition>('left')

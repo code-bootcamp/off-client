@@ -1,6 +1,6 @@
 import { ChatBox, ChatContents, ChatWrite, Header, LeftSide, Msg, RightSide, SubmitBtn, Wrapper, WriteWrapper } from "./Chat.styles";
 import { v4 as uuidv4 } from 'uuid'
-export default function ChatUI(props) {
+export default function ChatUI(props: any) {
     return(
         <ChatBox>
             <Wrapper className={props.toggle ? "on" : "off" } onSubmit={props.handleSubmit(props.onClickSubmit)}>
@@ -8,7 +8,7 @@ export default function ChatUI(props) {
                     <div className="to">ㅇㅇㅇ</div>
                 </Header>
                 <ChatContents>
-                    {props.data?.fetchChatHistory.map((el)=>(
+                    {props.data?.fetchChatHistory.map((el: any)=>(
                         <div key={uuidv4()} >
                                 {el.user.id===props.userId
                                     ? (
@@ -29,7 +29,7 @@ export default function ChatUI(props) {
                                 }
                         </div>
                     ))}
-                     {props.resultMsg.map((el) => (
+                     {props.resultMsg.map((el: any) => (
                         <div key={uuidv4()}>
                             {el[0] === props.nickname ? (
                             <RightSide>

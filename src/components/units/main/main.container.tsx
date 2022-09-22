@@ -1,5 +1,5 @@
 import { useRouter } from "next/router";
-import MainUI from "./Main.presenter";
+import MainUI from "./main.presenter";
 export default function MainContainer() {
     const router = useRouter()
     const onClickMoveToMarket = () => {

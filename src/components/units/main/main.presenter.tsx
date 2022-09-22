@@ -3,8 +3,8 @@ import { PropertySafetyFilled } from "@ant-design/icons";
 import NormalButton from "../../commons/buttons/normalButton/normalButton.container";
 import SlideCol from "../../commons/slider/col/ColSlide";
 import SlideRow from "../../commons/slider/row/RowSlide";
-import { Circle, IntroCol, Introduce1, Introduce2, Introduce3, IntroRow, Main, MainCol, MainImgWrapper, MainRow, MainTitle, MainTitleWrapper, Phone, SubTitle } from "./Main.styles";
-import { IMainUIProps } from "./Main.types";
+import { Circle, IntroCol, Introduce1, Introduce2, Introduce3, IntroRow, Main, MainCol, MainImgWrapper, MainRow, MainTitle, MainTitleWrapper, Phone, SubTitle } from "./main.styles";
+import { IMainUIProps } from "./main.types";
 export default function MainUI(props: IMainUIProps) {
     return(
         <Main>
