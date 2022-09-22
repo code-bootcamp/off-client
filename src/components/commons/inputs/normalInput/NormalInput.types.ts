@@ -4,6 +4,7 @@ export interface INormalInputProps {
     name: string
     placeholder: string
     defaultValue?: string
+    readonly?: boolean
 }
 
 export interface INormalInputUIProps {
@@ -12,4 +13,5 @@ export interface INormalInputUIProps {
     name: string
     placeholder: string
     defaultValue?: string
+    readonly?: boolean
 }

@@ -13,6 +13,7 @@ export default function NormalDatePickerUI(props: INormalDatePickerUIProps) {
         name = { props.name }
         render = {({ field: { onChange } }) => (
             <NormalDatePicker 
+            disabled = { props.readonly }
             locale = { locale }
             placeholder = { props.placeholder } 
             format = "YYYY-MM-DD"

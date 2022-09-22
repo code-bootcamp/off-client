@@ -14,7 +14,7 @@ import {
     faSeedling
 } from '@fortawesome/free-solid-svg-icons'
 import { useRecoilState } from "recoil";
-import { fridgeIsCall, userInfoState } from "../../../../commons/store";
+import { userInfoState } from "../../../../commons/store";
 import { FETCH_USER_LOGGED_IN } from "../../info/my/myInfo/MyInfo.queries";
 import { useRouter } from "next/router";
 
@@ -167,7 +167,7 @@ export default function MyFridgeList() {
                                 category: selectItem.category
                             },
                             status: "FREEZER"
-                        },
+                        }
                     })
                 } catch(error) {
                     message.error("등록에 실패하셨습니다")
@@ -306,20 +306,60 @@ export default function MyFridgeList() {
         setMarketCreateData(data)
     }
 
-    const onClickDeleteItem = (data: any) => () => {
+    const onClickDeleteItem = (data: any, columnId: any) => () => {
+        if(columnId === "createProductList") {
+            let newData = {
+                ...columns,
+                ["createProductList"]: {
+                    isCreateBtn: true,
+                    name: "목록",
+                    items: []
+                }
+            }
+            columns.createProductList.items.forEach((element1) => {
+                if(element1.id !== data.id) {
+                    newData.createProductList.items.push(element1)
+                }
+            })
+            setColumns(newData)
+        }
+        if(columnId === "frozenList") {
+            let newData = {
+                ...columns,
+                ["frozenList"]: {
+                    isCreateBtn: false,
+                    name: "냉동",
+                    items: []
+                }
+            }
+            columns.frozenList.items.forEach((element1) => {
+                if(element1.id !== data.id) {
+                    newData.frozenList.items.push(element1)
+                }
+            })
+            setColumns(newData)
+        }
+        if(columnId === "fridgeList") {
+            let newData = {
+                ...columns,
+                ["fridgeList"]: {
+                    isCreateBtn: false,
+                    name: "냉장",
+                    items: []
+                }
+            }
+            columns.fridgeList.items.forEach((element1) => {
+                if(element1.id !== data.id) {
+                    newData.fridgeList.items.push(element1)
+                }
+            })
+            setColumns(newData)
+        }
         try {
             deleteFridgeFood({
                 variables: {
                     foodId: data.id
-                },
-                refetchQueries: [
-                    {
-                        query: FETCH_FRIDGE_FOODS,
-                        variables: {
-                            status: data.status
-                        }
-                    }
-                ]
+                }
             })
             message.success("삭제에 성공하셨습니다")
         } catch(error) {

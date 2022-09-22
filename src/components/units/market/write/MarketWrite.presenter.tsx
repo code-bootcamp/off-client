@@ -25,24 +25,28 @@ export default function MarketWriteUI(props: MarketWriteUIProps) {
                 <form>
                     <FormRow gutter={10}>
                         <FormCol xs = { 24 } sm = { 24 } md = { 12 } lg = { 12 } xl = { 12 } >
-                            <NormalSelectBox name = "category" placeholder = '카테고리를 선택해주세요' category = { props.category?.fetchCategory } control = { props.control } defaultValue = { props.marketCreateData?.category?.id }/>
+                            <NormalSelectBox name = "category" readonly = { true } placeholder = '카테고리를 선택해주세요' category = { props.category?.fetchCategory } control = { props.control } defaultValue = { props.marketCreateData?.category?.id }/>
+                            { props.formState.errors.category?.message && <Error message = { props.formState.errors.category?.message }/> }
                         </FormCol>
                         <FormCol xs = { 24 } sm = { 24 } md = { 12 } lg = { 12 } xl = { 12 } >
-                            <NormalInput name = "name" type = 'text' placeholder = '상품명을 입력해주세요' control = { props.control } defaultValue = { props.marketCreateData ? props.marketCreateData?.name : "" } />
+                            <NormalInput readonly = { true } name = "name" type = 'text' placeholder = '상품명을 입력해주세요' control = { props.control } defaultValue = { props.marketCreateData ? props.marketCreateData?.name : "" } />
+                            { props.formState.errors.name?.message && <Error message = { props.formState.errors.name?.message }/> }
                         </FormCol>
                     </FormRow>
                     <FormRow gutter={10}>
                         <FormCol xs = { 24 } sm = { 24 } md = { 12 } lg = { 12 } xl = { 12 } >
-                            <NormalDatePicker name = "expDate" placeholder = '유효기간을 설정해주세요' control = { props.control } defaultValue = { props.editData?.expDate ? getDate(props.editData.expDate) : getDate(props.marketCreateData?.expDate) } />
+                            <NormalDatePicker readonly = { true } name = "expDate" placeholder = '유효기간을 설정해주세요' control = { props.control } defaultValue = { props.editData?.expDate ? getDate(props.editData.expDate) : getDate(props.marketCreateData?.expDate) } />
+                            { props.formState.errors.expDate?.message && <Error message = { props.formState.errors.expDate?.message }/> }
                         </FormCol>
                         <FormCol xs = { 24 } sm = { 24 } md = { 12 } lg = { 12 } xl = { 12 } >
-                            <NormalInput name = "price" type = 'text' placeholder = '가격을 입력해주세요' control = { props.control } defaultValue = { props.marketCreateData?.price } />
+                            <NormalInput readonly = { true } name = "price" type = 'text' placeholder = '가격을 입력해주세요' control = { props.control } defaultValue = { props.marketCreateData?.price } />
+                            { props.formState.errors.price?.message && <Error message = { props.formState.errors.price?.message }/> }
                         </FormCol>
                     </FormRow>
                     <FormRow gutter={10} >
                         <FormCol xs = { 24 } sm = { 24 } md = { 24 } lg = { 24 } xl = { 24 } >
                             <TextAreaInput name = "contents" placeholder = '내용을 입력해주세요' control = { props.control } defaultValue = { "" }  />
-                            <Error message = { props.formState.errors.contents?.message }/>
+                            { props.formState.errors.contents?.message && <Error message = { props.formState.errors.contents?.message }/> }
                         </FormCol>
                     </FormRow>
                     <FormRow gutter={10}>
@@ -50,22 +54,28 @@ export default function MarketWriteUI(props: MarketWriteUIProps) {
                             <KaKaoMap address = { props.address } />
                         </FormCol>
                         <FormCol xs = { 24 } sm = { 24 } md = { 12 } lg = { 12 } xl = { 12 }>
-                            <div className="address" >
-                                <NormalButton title = '주소 검색' color = 'blue' onClick = {props.onClickAddressOpen} />
-                                <AddressInput type = 'text' placeholder = '주소를 입력해주세요' value={props.address} readOnly />
-                                <Error message = { props.formState.errors.address?.message }/>
-                                <AddressInput type = 'text' placeholder = '상세주소를 입력해주세요' {...props.register("detailAddress")} defaultValue = { "" } />
-                                {props.isAddressOpen && (
-                                    <Modal
-                                        title="주소 검색"
-                                        visible={true}
-                                        onOk={props.onClickAddressOpen}
-                                        onCancel={props.onClickAddressOpen}
+                            <FormRow className = "address-row">
+                                <FormCol xs = { 24 } sm = { 24 } md = { 24 } lg = { 24 } xl = { 24 } className = "address-input">
+                                    <NormalButton title = '주소 검색' color = 'blue' onClick = {props.onClickAddressOpen} />
+                                </FormCol>
+                                <FormCol xs = { 24 } sm = { 24 } md = { 24 } lg = { 24 } xl = { 24 } className = "address-input">
+                                    <AddressInput type = 'text' placeholder = '주소를 입력해주세요' value={props.address} readOnly />
+                                    { props.formState.errors.address?.message && <Error message = { props.formState.errors.address?.message }/> }
+                                </FormCol>
+                                <FormCol xs = { 24 } sm = { 24 } md = { 24 } lg = { 24 } xl = { 24 }>
+                                    <AddressInput type = 'text' placeholder = '상세주소를 입력해주세요' {...props.register("detailAddress")} defaultValue = { "" } />
+                                </FormCol>
+                            </FormRow>
+                            { props.isAddressOpen && (
+                                <Modal
+                                    title="주소 검색"
+                                    visible={true}
+                                    onOk={props.onClickAddressOpen}
+                                    onCancel={props.onClickAddressOpen}
                                     >
-                                        <DaumPostcodeEmbed onComplete={props.onCompletePostcode} />
-                                    </Modal>
-                                )}
-                            </div>
+                                    <DaumPostcodeEmbed onComplete={props.onCompletePostcode} />
+                                </Modal>
+                            )}
                         </FormCol>
                     </FormRow>
                     <FormRow gutter={10} >

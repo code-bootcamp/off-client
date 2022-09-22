@@ -9,7 +9,7 @@ export default function NormalInputUI(props: INormalInputUIProps) {
         name = { props.name }
         defaultValue = { props.defaultValue }
         render = {({ field: { onChange } }) => (
-            <NormalInput type = { props.type } placeholder = { props.placeholder } defaultValue = { props.defaultValue ? props.defaultValue : "" } onChange = {(value) => {
+            <NormalInput type = { props.type } placeholder = { props.placeholder } readOnly = { props.readonly } defaultValue = { props.defaultValue ? props.defaultValue : "" } onChange = {(value) => {
                 onChange(value)
             }} />
         )}

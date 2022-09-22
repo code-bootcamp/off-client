@@ -9,6 +9,7 @@ export default function NormalInput(props: INormalInputProps) {
         placeholder = { props.placeholder }
         defaultValue = { props.defaultValue }
         control = { props.control }
+        readonly = { props.readonly }
         />
     )
 }

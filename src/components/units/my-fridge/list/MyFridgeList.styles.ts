@@ -45,7 +45,6 @@ export const Title = styled.h1`
 
 export const ListWrapper = styled.div`
     width: 100%;
-    /* box-shadow: 4px 10px 9px #00000030; */
     box-shadow: 0px 0px 10px -2px rgba(0,0,0,0.3);
     border-radius: 20px;
     padding: 0.3rem;

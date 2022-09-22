@@ -9,6 +9,7 @@ export default function NormalSelectBox(props: INormalSelectBoxProps) {
         placeholder = { props.placeholder } 
         category = { props.category } 
         defaultValue = { props.defaultValue }
+        readonly = { props.readonly }
         />
     )
 }
