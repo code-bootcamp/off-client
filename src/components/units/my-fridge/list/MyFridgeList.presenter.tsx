@@ -18,6 +18,7 @@ export default function MyFridgeListUI(props: IMyFridgeListUIProps) {
                 isWriteModalOpen = { props.isWriteModalOpen } 
                 setIsWriteModalOpen = { props.setIsWriteModalOpen } 
                 editData = { props.editData }
+                editColumnId = { props.editColumnId }
                 />
                 <MarketWrite
                 isMarketCreateModalOpen = { props.isMarketCreateModalOpen }

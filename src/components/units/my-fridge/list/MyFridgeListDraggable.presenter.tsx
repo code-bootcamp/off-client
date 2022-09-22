@@ -35,7 +35,7 @@ export default function MyFridgeListDraggable(props: MyFridgeListDraggableProps)
                                             />
                                             <FontAwesomeIcon 
                                                 icon = { faPen } 
-                                                onClick = { props.onClickOpenEditModal(props.item) }
+                                                onClick = { props.onClickOpenEditModal(props.item, props.columnId) }
                                             />
                                             <FontAwesomeIcon 
                                                 icon = { faXmark } 

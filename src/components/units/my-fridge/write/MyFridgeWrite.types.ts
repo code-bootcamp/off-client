@@ -4,6 +4,7 @@ export interface MyFridgeWriteProps {
     isWriteModalOpen: boolean
     setIsWriteModalOpen: any
     editData: any
+    editColumnId: any
 }
 
 export interface MyFridgeWriteUIProps {

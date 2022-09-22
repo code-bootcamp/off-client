@@ -44,6 +44,7 @@ export default function MyFridgeList() {
     const [isMarketCreateModalOpen, setIsMarketCreateModalOpen] = useState(false)
     const [isEdit, setIsEdit] = useState(false)
     const [editData, setEditData] = useState({})
+    const [editColumnId, setEditColumnId] = useState("")
     const [marketCreateData, setMarketCreateData] = useState({})
 
     const [updateFridgeFoods] = useMutation(UPDATE_FRIDGE_FOODS)
@@ -295,10 +296,11 @@ export default function MyFridgeList() {
         setEditData({})
     }
 
-    const onClickOpenEditModal = (data: any) => () => {
+    const onClickOpenEditModal = (data: any, columnId: any) => () => {
         setIsWriteModalOpen(true)
         setIsEdit(true)
         setEditData(data)
+        setEditColumnId(columnId)
     }
 
     const onClickOpenMarketCreateModal = (data: any) => () => {
@@ -385,6 +387,7 @@ export default function MyFridgeList() {
         isEdit = { isEdit }
         setIsEdit = { setIsEdit }
         editData = { editData }
+        editColumnId = { editColumnId }
         marketCreateData = { marketCreateData }
         getCategoryIcon = { getCategoryIcon }
         />
