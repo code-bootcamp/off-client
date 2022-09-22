@@ -5,4 +5,5 @@ export interface MarketListUIProps {
     onChangeLocation: (value: any) => void
     onChangeCategory: (value: any) => void
     onChangeInput: (value: any) => void
+    onClickMoveDetail: (id: string) => void
 }

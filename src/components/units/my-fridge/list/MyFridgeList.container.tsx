@@ -14,7 +14,7 @@ import {
     faSeedling
 } from '@fortawesome/free-solid-svg-icons'
 import { useRecoilState } from "recoil";
-import { userInfoState } from "../../../../commons/store";
+import { fridgeIsCall, userInfoState } from "../../../../commons/store";
 import { FETCH_USER_LOGGED_IN } from "../../info/my/myInfo/MyInfo.queries";
 import { useRouter } from "next/router";
 
@@ -55,7 +55,7 @@ export default function MyFridgeList() {
         variables: {
             status: "LIST"
         },
-        fetchPolicy: 'network-only',
+        fetchPolicy: "network-only",
         onCompleted(data) {
             const _columns = {
                 ...columns,
@@ -111,6 +111,7 @@ export default function MyFridgeList() {
 
     useEffect(() => {
         setWinReady(true)
+
     }, [])
 
     const onDragEnd = async (result: any, columns: any, setColumns: any) => {
@@ -124,6 +125,17 @@ export default function MyFridgeList() {
             const destItems = [...destColumn.items];
             const [removed] = sourceItems.splice(source.index, 1)
             destItems.splice(destination.index, 0, removed)
+            setColumns({
+                ...columns,
+                [source.droppableId]: {
+                    ...sourceColumn,
+                    items: sourceItems
+                },
+                [destination.droppableId]: {
+                    ...destColumn,
+                    items: destItems
+                }
+            })
             if(destination.droppableId === "frozenList") {
                 let selectItem = {
                     id: "",
@@ -233,17 +245,6 @@ export default function MyFridgeList() {
                     message.error("등록에 실패하셨습니다")
                 }
             }
-            setColumns({
-                ...columns,
-                [source.droppableId]: {
-                    ...sourceColumn,
-                    items: sourceItems
-                },
-                [destination.droppableId]: {
-                    ...destColumn,
-                    items: destItems
-                }
-            })
         } else {
             const column = columns[source.droppableId]
             const copiedItems = [...column.items]
