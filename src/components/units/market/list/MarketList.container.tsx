@@ -1,4 +1,5 @@
 import { useQuery } from "@apollo/client";
+import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
 import { FETCH_CATEGORY } from "../../my-fridge/list/MyFridgeList.queries";
 import MarketListUI from "./MarketList.presenter";
@@ -76,6 +77,8 @@ const locationValue = [
 ]
 
 export default function MarketListContainer() {
+    const router = useRouter()
+
     const [convertData, setConvertData] = useState<any>()
     const [location, setLocation] = useState("")
     const [category, setCategory] = useState("")
@@ -199,6 +202,10 @@ export default function MarketListContainer() {
         setSearchInput(event.target.value)
     }
 
+    const onClickMoveDetail = (id: string) => () => {
+        router.push(`/market/${id}`)
+    }
+
     return (
         <MarketListUI 
         data = { convertData }  
@@ -207,6 +214,7 @@ export default function MarketListContainer() {
         onChangeLocation = { onChangeLocation }
         onChangeCategory = { onChangeCategory }
         onChangeInput = { onChangeInput }
+        onClickMoveDetail = { onClickMoveDetail }
         />
     )
 }

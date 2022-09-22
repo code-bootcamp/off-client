@@ -41,7 +41,7 @@ export default function MarketListUI(props: MarketListUIProps) {
             </SearchBox>
             <ListRow gutter = { 20 }>
                 { props.data?.map((data: any, index: any) => (
-                    <ListCol key = { uuidv4() } xs = { 24 } sm = { 12 } md = { 8 } lg = { 6 } xl = { 6 } className = "list-item">
+                    <ListCol key = { uuidv4() } xs = { 24 } sm = { 12 } md = { 8 } lg = { 6 } xl = { 6 } className = "list-item" onClick = { props.onClickMoveDetail(data.id) }>
                         <MarketItem data = { data } />
                     </ListCol>
                 )) }

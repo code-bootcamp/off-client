@@ -7,19 +7,21 @@ import { FETCH_BOARD, UPDATE_BOARD } from "./MarketDetail.queries"
 
 export default function MarketDetailContainer () {
     const router = useRouter()
+
     const [isMarketCreateModalOpen, setIsMarketCreateModalOpen] = useState(false)
     const [marketUpdateData, setMarketUpdateData] = useState({})
+
     const { data } = useQuery<Pick<IQuery,"fetchBoard">,IQueryFetchBoardArgs>(FETCH_BOARD,{
         variables: {
             id: String(router.query.marketId)
         },
     })
+
     const onClickOpenMarketCreateModal = (data:any) => {
         setIsMarketCreateModalOpen(true)
         setMarketUpdateData(data)
     }
-    console.log(marketUpdateData)
-    console.log(isMarketCreateModalOpen)
+    
     return<MarketDetailUI
             data = { data }
             isMarketCreateModalOpen = { isMarketCreateModalOpen }

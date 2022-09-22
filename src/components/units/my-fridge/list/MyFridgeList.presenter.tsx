@@ -29,7 +29,7 @@ export default function MyFridgeListUI(props: IMyFridgeListUIProps) {
                         상품을 추가하신 후 드래그 앤 드롭으로 이용해주세요!!
                     </Marquee>
                 } />
-                <Title>{ props.userInfo?.name }님의 냉장고</Title>
+                <Title>{ props.userInfo?.nickname }님의 냉장고</Title>
                 <Row gutter = { 30 }>
                     <DragDropContext onDragEnd = { result => props.onDragEnd(result, props.columns, props.setColumns) }>
                         { Object.entries(props.columns).map(([columnId, column]: any, index) => {
