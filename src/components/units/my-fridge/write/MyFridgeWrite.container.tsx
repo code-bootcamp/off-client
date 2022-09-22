@@ -80,7 +80,7 @@ export default function MyFridgeWrite(props: MyFridgeWriteProps) {
                         variables: {
                             status: "LIST"
                         }
-                    }
+                    },
                 ]
             })
             props.setIsWriteModalOpen(false)

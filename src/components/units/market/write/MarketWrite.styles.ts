@@ -47,6 +47,7 @@ export const WriteModal = styled(Modal)`
         }
     }
 `
+
 export const AddressInput = styled.input`
     display: block!important;
     width: 100%!important;
@@ -86,6 +87,9 @@ export const AddressInput = styled.input`
 `
 
 export const FormRow = styled(Row)`
+    &.address-row {
+        margin-bottom: 0;
+    }
     margin-bottom: 0.6rem;
     @media (min-width: ${B.bigTablet}px) and (max-width: ${B.noteBook - 1}px) {
         margin-bottom: 0.6rem;
@@ -108,10 +112,8 @@ export const FormCol = styled(Col)`
             margin-right: 0.6rem;
         }
     }
-    .address{
-        input:not(:last-of-type), button{
-            margin-bottom: 0.6rem;
-        }
+    &.address-input {
+        margin-bottom: 0.5rem;
     }
     @media (min-width: ${B.mobile}px) and (max-width: ${B.smallTablet - 1}px) {
         margin-bottom: 0.6rem;

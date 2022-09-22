@@ -8,6 +8,7 @@ import {
     faCartShopping
 } from '@fortawesome/free-solid-svg-icons'
 import { getDate } from '../../../../commons/libraries/utils'
+import { useState } from 'react'
 
 export default function MyFridgeListDraggable(props: MyFridgeListDraggableProps) {
     return (
@@ -38,7 +39,7 @@ export default function MyFridgeListDraggable(props: MyFridgeListDraggableProps)
                                             />
                                             <FontAwesomeIcon 
                                                 icon = { faXmark } 
-                                                onClick = { props.onClickDeleteItem(props.item) }
+                                                onClick = { props.onClickDeleteItem(props.item, props.columnId) }
                                             />
                                         </div>
                                     </div>

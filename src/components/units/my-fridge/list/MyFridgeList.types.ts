@@ -37,6 +37,7 @@ export interface MyFridgeListDraggableProps {
     onClickOpenMarketCreateModal: (data: any) => () => void
     onClickDeleteItem: (data: any) => void
     getCategoryIcon: (categoryName: string) => void
+    columnId: any
 }
 
 export interface MyFridgeListItemIsAlarmProps {

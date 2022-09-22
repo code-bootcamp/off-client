@@ -4,6 +4,7 @@ export interface INormalSelectBoxProps {
     placeholder: string
     category: any
     defaultValue?: any
+    readonly?: boolean
 }
 
 export interface INormalSelectBoxUIProps {
@@ -12,4 +13,5 @@ export interface INormalSelectBoxUIProps {
     placeholder: string
     category: any
     defaultValue?: any
+    readonly?: boolean
 }

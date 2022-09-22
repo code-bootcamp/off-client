@@ -1,7 +1,7 @@
 import { useMutation, useQuery } from "@apollo/client";
 import { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
-import { FETCH_CATEGORY } from "../../my-fridge/list/MyFridgeList.queries";
+import { DELETE_FRIDGE_FOOD, FETCH_CATEGORY } from "../../my-fridge/list/MyFridgeList.queries";
 import MarketWriteUI from "./MarketWrite.presenter";
 import { MarketWriteProps } from "./MarketWrite.types";
 import * as yup from "yup"
@@ -23,11 +23,11 @@ const schema = yup.object({
 })
 
 export default function MarketWrite(props: MarketWriteProps) {
-    console.log
     const { control, handleSubmit, formState, reset, setValue, trigger, register } = useForm({
         resolver: yupResolver(schema),
         mode: "onChange",
     })
+
     useEffect(() => {
         reset({
             name: props.marketCreateData?.name,
@@ -38,12 +38,14 @@ export default function MarketWrite(props: MarketWriteProps) {
     }, [props.marketCreateData])
 
     const { data: dataCategory } = useQuery(FETCH_CATEGORY)
+
     const router = useRouter()
     const [createBoard] = useMutation<Pick<IMutation,"createBoard">,IMutationCreateBoardArgs>(CREATE_BOARD)
     const [isAddressOpen, setIsAddressOpen] = useState(false)
     const [address, setAddress] = useState("")
     const [fileUrls, setFileUrls] = useState(["", "", ""])
 
+    const [deleteFridgeFood] = useMutation(DELETE_FRIDGE_FOOD)
 
     const onChangeFileUrls = (fileUrl: string, index: number) => {
         const newFileUrls = [...fileUrls]
@@ -102,31 +104,33 @@ export default function MarketWrite(props: MarketWriteProps) {
         onClickAddressOpen()
     };
 
-    const onClickSubmit = async(data: any) => {
-        console.log("data",data)
-        try{
-            const result = await createBoard({
-                variables: {
-                    createBoardInput: {
-                        title: data.name,
-                        contents: data.contents,
-                        categoryId: data.category,
-                        expDate: getDate(data.expDate),
-                        salesLocations: {
-                            address: data.address,
-                            detailAddress: data.detailAddress,
-                        },
-                        url: fileUrls
-                    }
-                }
-            })
-            console.log("결과",result)
-            onClickAddressOpen()
-            router.push(`/market/${result.data?.createBoard.id}`)
-        }catch(error){
-            if(error instanceof Error)
-            console.log(error.message)
-        }
+    const onClickSubmit = async (data: any) => {
+        // try{
+        //     const result = await createBoard({
+        //         variables: {
+        //             createBoardInput: {
+        //                 title: data.name,
+        //                 contents: data.contents,
+        //                 categoryId: data.category,
+        //                 expDate: getDate(data.expDate),
+        //                 salesLocations: {
+        //                     address: data.address,
+        //                     detailAddress: data.detailAddress,
+        //                 },
+        //                 url: fileUrls
+        //             }
+        //         }
+        //     })
+        //     onClickAddressOpen()
+        //     await deleteFridgeFood({
+        //         variables: {
+        //             foodId: data.id
+        //         }
+        //     })
+        //     router.push(`/market/${result.data?.createBoard.id}`)
+        // } catch(error){
+            
+        // }
     }
 
     return (

@@ -19,11 +19,6 @@ export default function MarketDetailUI (props: IMarketDetailUIProps) {
       };
     return(
         <Wrapper>
-            <MarketWrite
-                isMarketCreateModalOpen = { props.isMarketCreateModalOpen }
-                setIsMarketCreateModalOpen = { props.setIsMarketCreateModalOpen }
-                marketCreateData = { props.marketUpdateData }
-            />
             <FormRow className="header" justify="start" align="middle">
                 <FormCol className="user" xs = { 12 } sm = { 12 } md = { 12 } lg = {  12 } xl = { 12 } >
                     <Thumb src={`https://storage.googleapis.com/${props.data?.fetchBoard.user.usersimage?.url}`}/>

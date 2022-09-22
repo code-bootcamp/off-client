@@ -23,7 +23,6 @@ const Map = styled.div`
 
 
 export default function KaKaoMap(props: IKaKaoMapProps) {
-    console.log("맵에서",props.address)
     useEffect(() => {
         const script = document.createElement("script");
         script.src = "//dapi.kakao.com/v2/maps/sdk.js?appkey=0ffdae4bb23834370529158b7c4f1304&autoload=false&libraries=services";
