@@ -8,9 +8,10 @@ import { useQuery } from "@apollo/client";
 
 import { FETCH_CHAT_HISTORY } from "./Chat.queries";
 import { useForm } from "react-hook-form";
+import { IChatProps } from "./Chat.types";
 
 
-export default function Chat(props){
+export default function Chat(props: IChatProps){
     const messagesEndRef = useRef<HTMLDivElement>(null);
     const [accessToken] = useRecoilState(accessTokenState);
     const [roomId] = useRecoilState(roomIdState)

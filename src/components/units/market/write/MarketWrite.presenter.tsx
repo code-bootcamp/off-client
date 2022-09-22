@@ -35,7 +35,7 @@ export default function MarketWriteUI(props: MarketWriteUIProps) {
                     </FormRow>
                     <FormRow gutter={10}>
                         <FormCol xs = { 24 } sm = { 24 } md = { 12 } lg = { 12 } xl = { 12 } >
-                            <NormalDatePicker readonly = { true } name = "expDate" placeholder = '유효기간을 설정해주세요' control = { props.control } defaultValue = { props.editData?.expDate ? getDate(props.editData.expDate) : getDate(props.marketCreateData?.expDate) } />
+                            <NormalDatePicker readonly = { true } name = "expDate" placeholder = '유효기간을 설정해주세요' control = { props.control } defaultValue = { props.marketCreateData?.expDate ? getDate(props.marketCreateData.expDate) : getDate(props.marketCreateData?.expDate) } />
                             { props.formState.errors.expDate?.message && <Error message = { props.formState.errors.expDate?.message }/> }
                         </FormCol>
                         <FormCol xs = { 24 } sm = { 24 } md = { 12 } lg = { 12 } xl = { 12 } >

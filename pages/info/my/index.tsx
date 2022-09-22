@@ -1,4 +1,4 @@
-import MyPageContainer from "../../../src/components/units/info/my/myPage/MyPage.container";
+import MyPageContainer from "../../../src/components/units/info/my/myPage/myPage.container";
 
 export default function MyPage() {
     return<MyPageContainer/>

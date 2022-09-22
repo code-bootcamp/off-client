@@ -4,7 +4,6 @@ export interface MarketWriteProps {
     isMarketCreateModalOpen: boolean
     setIsMarketCreateModalOpen: any
     marketCreateData: any
-    onChangFileUrls: (fileUrl: string, index: number) => void
 }
 
 export interface MarketWriteUIProps {
@@ -23,5 +22,4 @@ export interface MarketWriteUIProps {
     onCompletePostcode: (data: any) => void
     isAddressOpen: boolean
     address: string
-
 }

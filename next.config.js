@@ -3,6 +3,9 @@ const nextConfig = {
   reactStrictMode: false,
   swcMinify: true,
   trailingSlash: true,
+  typescript: {
+    ignoreBuildErrors: true
+  }
   // exportPathMap: () => ({
   //   "/": { page: "/" },
   //   "/boards": { page: "/boards" },
