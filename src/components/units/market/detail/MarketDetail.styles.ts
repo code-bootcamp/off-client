@@ -4,7 +4,8 @@ import { Col, Row } from "antd";
 import Slider from "react-slick";
 
 export const Wrapper = styled.div`
-    padding: 1rem;
+    padding: 1rem  2rem;
+    /* overflow: hidden; */
     .header{
         padding-bottom: 0.2rem;
         margin-bottom: 1rem;

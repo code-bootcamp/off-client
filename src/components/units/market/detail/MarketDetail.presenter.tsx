@@ -8,6 +8,8 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPen, faTrash } from "@fortawesome/free-solid-svg-icons";
 import MarketWrite from "../write/MarketWrite.container";
 import { timeForCreate } from "../../../../commons/libraries/timeForCreate";
+import Chat from "../../../commons/chat/Chat.container";
+import NormalButton from "../../../commons/buttons/normalButton/normalButton.container";
 
 export default function MarketDetailUI (props: IMarketDetailUIProps) {
     const settings = {
@@ -19,6 +21,10 @@ export default function MarketDetailUI (props: IMarketDetailUIProps) {
       };
     return(
         <Wrapper>
+            <Chat
+                toggle = { props.toggle }
+                user = { props.user }
+            />
             <FormRow className="header" justify="start" align="middle">
                 <FormCol className="user" xs = { 12 } sm = { 12 } md = { 12 } lg = {  12 } xl = { 12 } >
                     <Thumb src={`https://storage.googleapis.com/${props.data?.fetchBoard.user.usersimage?.url}`}/>
@@ -71,6 +77,7 @@ export default function MarketDetailUI (props: IMarketDetailUIProps) {
                             <label>내용</label>
                             <p>{props.data?.fetchBoard.contents}</p>
                         </div>
+                        <NormalButton title="채팅하러가기" color="blue" onClick={props.onClickToChat} disabled={false}/>
                     </div>
                 </FormCol>
             </FormRow>
