@@ -3,7 +3,7 @@ import MainUI from "./Main.presenter";
 export default function MainContainer() {
     const router = useRouter()
     const onClickMoveToMarket = () => {
-        router.push('/market')
+        router.push('/my-fridge')
     }
     return<MainUI onClickMoveToMarket={ onClickMoveToMarket } />
 }

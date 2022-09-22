@@ -10,11 +10,11 @@ export const withAuth = (Component:any) => (props:any) => {
     const [accessToken, setAccessToken] = useRecoilState(accessTokenState);
 
     useEffect(() => {
-        if (isLogin && !accessToken) {
+        if (!isLogin || !accessToken) {
             message.error("로그인 후 이용 가능합니다!");
             router.push("/info/login");
         }
-    }, [isLogin]);
+    }, [isLogin, accessToken]);
 
 
 

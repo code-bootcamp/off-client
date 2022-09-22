@@ -242,17 +242,17 @@ export const ListAddBtn = styled.button`
     @media (min-width: ${B.smallTablet}px) and (max-width: ${B.bigTablet - 1}px) {
         font-size: ${B.bigTabletFontSizeMicro}rem;
         height: 2rem;
-        margin-bottom: 2rem;
+        margin-bottom: 0.3rem;
     }
     @media (min-width: ${B.mobile}px) and (max-width: ${B.smallTablet - 1}px) {
         font-size: ${B.smallTabletFontSizeMicro}rem;
         height: 4.5rem;
-        margin-bottom: 2rem;
+        margin-bottom: 0.5rem;
     }
     @media (max-width: ${B.mobile - 1}px) {
         font-size: ${B.mobileFontSizeMicro}rem;
         height: 4.5rem;
-        margin-bottom: 2rem;
+        margin-bottom: 0.5rem;
     }
 `
 

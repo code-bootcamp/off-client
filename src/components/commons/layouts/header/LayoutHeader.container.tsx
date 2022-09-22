@@ -28,6 +28,7 @@ export default function LayoutHeader() {
             setIsLogin(false)
             setIsAccessToken("")
             setMenuVisible(false)
+            message.success("로그아웃에 성공하셨습니다")
         } catch {
             message.error("로그아웃에 실패하셨습니다")
         }
