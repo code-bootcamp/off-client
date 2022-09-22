@@ -37,7 +37,7 @@ export default function MarketDetailUI (props: IMarketDetailUIProps) {
                 </FormCol>
                 <FormCol className="tool" xs = { 12 } sm = { 12 } md = { 12 } lg = {  12 } xl = { 12 } >
                     <FontAwesomeIcon icon = { faPen } onClick = { props.onClickOpenMarketCreateModal(props.data?.fetchBoard) } />
-                    <FontAwesomeIcon icon = { faTrash } />
+                    <FontAwesomeIcon icon = { faTrash } onClick = { props.onClickDeleteBoard } />
                 </FormCol>
             </FormRow>
             <FormRow gutter={[20,20]}>
